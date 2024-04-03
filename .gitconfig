@@ -1,0 +1,21 @@
+[user]
+	name = Sam Praneis
+	email = sampraneis@gmail.com
+	signingkey = /home/samp/.ssh/git_id.pub
+[gpg]
+	format = ssh
+[core]
+  editor = nvim
+[merge]
+  tool = "nvim -d"
+  conflictstyle = diff3
+[alias]
+  fpush = push --force-with-lease
+  s = status
+  co = switch
+  last = log -1 HEAD
+  lg = log --all --decorate --graph --abbrev-commit --oneline
+[color]
+  ui = true
+[init]
+	defaultBranch = main
