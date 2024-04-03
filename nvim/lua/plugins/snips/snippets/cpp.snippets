@@ -1,0 +1,74 @@
+extends c
+
+# iterator
+snippet iter
+	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin(); $4 != $5.end(); ++$4) {
+		${6}
+	}
+
+snippet print-vars
+	${1:type} ${2:var}, ${3:var}, ${4:var};
+	std::cout << "$2: " << $2 << "$3: " << $3 << 
+								"$4: " << $4 << '\n';
+
+snippet new_file
+  #include <iostream>
+
+  // date: `system("date +%m-%d-%Y")`
+  // author: Sam Praneis
+  // class: ${1}
+  
+  using namespace std;
+
+  int main(){
+    ${2}
+  }
+
+snippet dmf1
+  /**
+    * ${5: purpose (one line)}
+    *
+    * ${6: details}
+    *
+    * @param1 $4  ${7:descrip of para1}
+    * @return ${8:descrip of return}
+    */
+  ${1:return_type} ${2:name}(${3: type} ${4:param1}){
+    ${9}
+  }
+
+snippet dmf2
+  /**
+    * ${7: purpose (one line)}
+    *
+    * ${8: details}
+    *
+    * @param1 $4  ${9:descrip of para1}
+    * @param2 $6  ${10:descrip of para1}
+    * @return ${11:descrip of return}
+    */
+  ${1:return_type} ${2:name}(${3: type} ${4:param1}, ${5:type} ${6:param2}){
+    ${10}
+  }
+
+snippet dmf3
+  /**
+    * ${9: purpose (one line)}.
+    *
+    * ${10: details}
+    *
+    * @param1 $4  ${11:descrip of para1}
+    * @param2 $6  ${12:descrip of para2}
+    * @param3 $6  ${13:descrip of para3}
+    * @return ${14:descrip of return}
+    */
+  ${1:return_type} ${2:name}(${3: type} ${4:param1}, ${5:type} ${6:param2}, ${7:type} ${8:param2}){
+    ${14}
+  }
+
+snippet h1
+  //>>>>>>>>>>>>>>>>>>> ${1:heading} <<<<<<<<<<<<<<<<
+snippet h2
+  /*--------------------------------------------------------------*\
+   *              ${1: heading}
+  \*--------------------------------------------------------------*/

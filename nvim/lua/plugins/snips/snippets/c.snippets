@@ -1,0 +1,30 @@
+## Main
+# main
+snippet main
+	int main(int argc, char *argv[])
+	{
+		${0}
+	}
+
+snippet func1wdoc
+  /**
+    * ${5: purpose (one line)}
+    *
+    * ${6: details}
+    *
+    * @param1 $4  ${7:descrip of para1}
+    * @return ${8:descrip of return}
+    */
+  ${1:return_type} ${2:name}(${3: type} ${4:param1});
+
+snippet func2wdoc
+  /**
+    * ${7: purpose (one line)}
+    *
+    * ${8: details}
+    *
+    * @param1 $4  ${9:descrip of para1}
+    * @param2 $6  ${10:descrip of para1}
+    * @return ${11:descrip of return}
+    */
+  ${1:return_type} ${2:name}(${3: type} ${4:param1}, ${5:type} ${6:param2});
