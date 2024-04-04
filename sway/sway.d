@@ -38,7 +38,7 @@ set $wifi ~/dotfiles/sway/scripts/wifi_script
 output * {
   resolution 2880x1800
   scale 1.5
-  bg ~/Pictures/backgrounds/mountain_2.jpg fill
+  bg ~/Pictures/backgrounds/mountain.jpg fill
 }
 
 
