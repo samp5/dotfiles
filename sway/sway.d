@@ -1,4 +1,5 @@
 include ~/dotfiles/sway/input.d
+include ~/dotfiles/sway/borders.d
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -6,7 +7,7 @@ include ~/dotfiles/sway/input.d
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-exec systemclt --user import-environment
+xwayland enable
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -40,17 +41,6 @@ output * {
   bg ~/Pictures/backgrounds/mountain_2.jpg fill
 }
 
-# Window Borders
-default_border pixel 1b
-default_floating_border normal
-hide_edge_borders smart
-
-gaps inner 10
-
-# Border colors
-# class           border backgnd text    indicator child_border
-client.focused    #7E9CD8 #7E9CD8 #000000 #87AF5F
-client.unfocused  #303030 #303030 #303030 
 
 
 ### Idle configuration
@@ -121,30 +111,47 @@ client.unfocused  #303030 #303030 #303030
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
 #
+
 # Workspaces:
-#
+
+
+    # workspaces
+    set $ws1   "1: "
+    set $ws2   "2: "
+    set $ws3   "3:󱆀 "
+    set $ws4   4
+    set $ws5   5
+    set $ws6   6
+    set $ws7   7
+    set $ws8   8
+    set $ws9   9
+    set $ws0   "0: "
+
+    assign [class="Spotify"] $ws0 
+
+    # Relative Switching
+    bindsym $mod+Ctrl+l workspace next
+    bindsym $mod+Ctrl+h workspace prev
+
+    bindsym $mod+p workspace back_and_forth
+
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws0
+
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+0 move container to workspace $ws0
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -154,7 +161,7 @@ client.unfocused  #303030 #303030 #303030
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+n splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+e layout toggle split
@@ -163,7 +170,7 @@ client.unfocused  #303030 #303030 #303030
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Ctrl+space floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -202,9 +209,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Shortcuts
-bindsym $mod+Shift+p exec $screenclip
+bindsym Print exec $screenclip
 bindsym $mod+F11 exec $lock
 bindsym $mod+w exec $wifi
+
+# auto startup
+exec spotify
+exec sensible-browser https://uic.blackboard.com/ultra/institution-page
+exec sensible-browser https://keep.google.com/u/1/#label/%E2%9A%99%EF%B8%8F
 
 
 # Status Bar:
@@ -212,17 +224,14 @@ bindsym $mod+w exec $wifi
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while ~/dotfiles/sway/scripts/sway_bar.sh; do sleep 1; done
     
-
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #303030
+        inactive_workspace #303030 #32323200 #5c5c5c
+        focused_workspace #303030 #7E9CD8 #303030
+
     }
 }
-
-
