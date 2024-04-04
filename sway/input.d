@@ -1,0 +1,14 @@
+input "1:1:AT_Translated_Set_2_keyboard" {
+  repeat_delay 175
+  repeat_rate 110
+  xkb_layout us
+  xkb_options ctrl:swapcaps
+}
+
+input "1739:52914:SYNA8017:00_06CB:CEB2_Touchpad" {
+  dwt enabled
+  tap enabled
+  scroll_factor 1
+  natural_scroll enabled
+  middle_emulation enabled
+}
