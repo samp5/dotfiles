@@ -88,6 +88,10 @@ client.unfocused  #303030 #303030 #303030
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    bindsym $mod+Shift+Home exec swaynag -t warning -m 'Reboot?' -B 'reboot' 'swaymsg exit'
+
+    bindsym $mod+Shift+End exec swaynag -t warning -m 'Shutdown?' -B 'shutdown' 'swaymsg exit'
+
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?. This will end your Wayland session.' -B 'Exit sway' 'swaymsg exit'
 #

@@ -11,7 +11,6 @@ battery_status=$(upower --show-info $(upower --enumerate | grep 'BAT') | egrep "
 ping=$(ping -c 1 www.google.es | tail -1| awk '{print $4}' | cut -d '/' -f 2 | cut -d '.' -f 1)
 loadavg_5min=$(cat /proc/loadavg | awk -F ' ' '{print $2}')
 
-
 if [ "$battery_status" = "discharging" ]; then
     battery_pluggedin='󱧥'
 else
