@@ -12,3 +12,7 @@ input "1739:52914:SYNA8017:00_06CB:CEB2_Touchpad" {
   natural_scroll enabled
   middle_emulation enabled
 }
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle

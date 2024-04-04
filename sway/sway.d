@@ -6,6 +6,7 @@ include ~/dotfiles/sway/input.d
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
+exec systemclt --user import-environment
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -19,13 +20,15 @@ set $right l
 # Your preferred terminal emulator
 set $term /usr/bin/wezterm
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
-set $screenclip slurp | grim -g - ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $screenclip  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg
 set $term_float $term --class floating_shell
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu  rofi -show run | xargs swaymsg exec --
+set $lock swaylock --config ~/dotfiles/sway/swaylock_config
+set $wifi ~/dotfiles/sway/scripts/wifi_script
 
 
 ### Output configuration
@@ -38,7 +41,7 @@ output * {
 }
 
 # Window Borders
-default_border pixel 1
+default_border pixel 1b
 default_floating_border normal
 hide_edge_borders smart
 
@@ -150,8 +153,6 @@ client.unfocused  #303030 #303030 #303030
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -197,7 +198,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Shortcuts
-bindsym $mod+Print exec $screenclip
+bindsym $mod+Shift+p exec $screenclip
+bindsym $mod+F11 exec $lock
+bindsym $mod+w exec $wifi
 
 
 # Status Bar:
@@ -217,4 +220,5 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
 
