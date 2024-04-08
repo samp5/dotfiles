@@ -228,9 +228,9 @@ bar {
     status_command while ~/dotfiles/sway/scripts/sway_bar.sh; do sleep 1; done
     
     colors {
-        background #303030
-        inactive_workspace #303030 #32323200 #5c5c5c
-        focused_workspace #303030 #7E9CD8 #303030
+        background #1F1F28
+        inactive_workspace #1F1F28 #32323200 #1F1F28
+        focused_workspace #1F1F28 #7E9CD8 #1F1F28
 
     }
 }

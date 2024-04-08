@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 date_and_week=$(date "+%Y/%m/%d")
 current_time=$(date "+%H:%M")
 network=$(ip route get 1.1.1.1 | grep -Po '(?<=dev\s)\w+' | cut -f1 -d ' ')
@@ -5,6 +6,7 @@ network=$(ip route get 1.1.1.1 | grep -Po '(?<=dev\s)\w+' | cut -f1 -d ' ')
 memtotal=$(cat /proc/meminfo | grep 'MemTotal:' | awk '{print $2}')
 memavailable=$(cat /proc/meminfo | grep 'MemAvailable:' | awk '{print $2}')
 percent=$(echo $(( 100 - (100 * $memavailable  + $memtotal / 2) / $memtotal)))
+brightness=$(brightnessctl i | grep -Po "(..%)")
 
 battery_charge=$(upower --show-info $(upower --enumerate | grep 'BAT') | egrep "percentage" | awk '{print $2}')
 battery_status=$(upower --show-info $(upower --enumerate | grep 'BAT') | egrep "state" | awk '{print $2}')
@@ -23,4 +25,4 @@ else
    network_active="⇆"
 fi
 
-echo "  $network_active $ping ms  󰍛 $loadavg_5min  $percent%  $battery_pluggedin $battery_charge    $date_and_week  $current_time "
+echo "  $network_active $ping ms  󰍛 $loadavg_5min  $percent%  󰃝 $brightness  $battery_pluggedin $battery_charge    $date_and_week  $current_time "

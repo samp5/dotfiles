@@ -17,5 +17,5 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
-# bindsym XF86MonBrightnessDown exec sudo brightnessctl set 10%-
-# bindsym XF86MonBrightnessUp exec sudo brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
