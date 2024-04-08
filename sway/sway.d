@@ -1,5 +1,6 @@
 include ~/dotfiles/sway/input.d
 include ~/dotfiles/sway/borders.d
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -28,7 +29,9 @@ set $term_float $term --class floating_shell
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu  rofi -show run | xargs swaymsg exec --
+
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
+
 set $wifi ~/dotfiles/sway/scripts/wifi_script
 
 
@@ -46,12 +49,12 @@ output * {
 ### Idle configuration
 #
 # Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+
+exec swayidle -w \
+          timeout 300 'swaylock -f -C ~/dotfiles/sway/swaylock_config' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -C ~/dotfiles/sway/swaylock_config'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -78,12 +81,11 @@ output * {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    bindsym $mod+Shift+Home exec swaynag -t warning -m 'Reboot?' -B 'reboot' 'swaymsg exit'
-
-    bindsym $mod+Shift+End exec swaynag -t warning -m 'Shutdown?' -B 'shutdown' 'swaymsg exit'
+    bindsym $mod+Shift+Home exec swaynag -c ~/dotfiles/sway/swaynag.d  -t warning -m 'Reboot?' -B 'reboot' 'swaymsg exit'
+    bindsym $mod+Shift+End exec swaynag -c ~/dotfiles/sway/swaynag.d -t warning -m 'Shutdown?' -B 'shutdown' 'swaymsg exit'
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?. This will end your Wayland session.' -B 'Exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -c ~/dotfiles/sway/swaynag.d -t warning -m 'Exit sway?. This will end your Wayland session.' -B 'Exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -215,9 +217,6 @@ bindsym $mod+w exec $wifi
 
 # auto startup
 exec spotify
-exec sensible-browser https://uic.blackboard.com/ultra/institution-page
-exec sensible-browser https://keep.google.com/u/1/#label/%E2%9A%99%EF%B8%8F
-
 
 # Status Bar:
 #

@@ -1,8 +1,3 @@
-/**
- * ROFI Color theme
- * User: milouse
- * Copyright: Étienne Deparis
- */
 
 * {
     selected-normal-foreground:  #303030;
@@ -145,7 +140,7 @@ inputbar {
 }
 textbox-prompt-colon {
     expand:     false;
-    str:        ":";
+    str:        " => ";
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
 }

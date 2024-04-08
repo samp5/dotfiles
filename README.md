@@ -7,4 +7,5 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.wezterm.lua ~/.wezterm.lua
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/bat/config ~/.config/bat/config
+ln -s ~/dotfiles/sway/swaynag.d ~/.config/.swaynag/config
 ```

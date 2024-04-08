@@ -16,3 +16,6 @@ input "1739:52914:SYNA8017:00_06CB:CEB2_Touchpad" {
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+
+# bindsym XF86MonBrightnessDown exec sudo brightnessctl set 10%-
+# bindsym XF86MonBrightnessUp exec sudo brightnessctl set +10%

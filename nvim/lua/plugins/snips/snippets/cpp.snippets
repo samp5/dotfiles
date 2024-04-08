@@ -72,3 +72,38 @@ snippet h2
   /*--------------------------------------------------------------*\
    *              ${1: heading}
   \*--------------------------------------------------------------*/
+
+snippet proj5test
+
+  hand->getDice(0)->setValue($1);
+  hand->getDice(1)->setValue($2);
+  hand->getDice(2)->setValue($3);
+  hand->getDice(3)->setValue($4);
+  hand->getDice(4)->setValue($5);
+
+  bool check$6 = true;
+  if (game.calcScore(hand, $7) != $8) {
+    check$6 = false;
+  }
+
+  if (check$6) {
+    cout << "check $6 passed\n";
+  }
+
+
+snippet fullHouse
+
+  hand->getDice(0)->setValue($1);
+  hand->getDice(1)->setValue($2);
+  hand->getDice(2)->setValue($3);
+  hand->getDice(3)->setValue($4);
+  hand->getDice(4)->setValue($5);
+
+  bool check$6 = true;
+  if (game.calcFullHouse(hand) != $7) {
+    check$6 = false;
+  }
+
+  if (check$6) {
+    cout << "check $6 passed\n";
+  }
