@@ -1,5 +1,6 @@
 alias vi="nvim"
 alias t="tmux attach -t"
+alias tl="tmux ls"
 
 # long, header, created, modified time stamp, 
 alias ll="exa -l -U -h -m --no-user --icons"

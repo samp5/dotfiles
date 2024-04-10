@@ -33,13 +33,22 @@ set $menu  rofi -show run | xargs swaymsg exec --
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 
 set $wifi ~/dotfiles/sway/scripts/wifi_script
+set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
 
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
+
+
 output * {
   resolution 2880x1800
+  scale 1.5
+  bg ~/Pictures/backgrounds/mountain.jpg fill
+}
+
+output eDP-1  {
+  mode 2880x1800@90Hz
   scale 1.5
   bg ~/Pictures/backgrounds/mountain.jpg fill
 }
@@ -210,9 +219,54 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+set $mode_system  (l)ock, 󰍃 l(o)gout, 󰤄 (s) suspend,  (r) reboot, ⏻ (S)hutdown 
+
+mode "$mode_system" {
+    bindsym l exec $lock, mode "default"
+    bindsym o exit
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+s mode "$mode_system" 
+
+set $media 󰐎 (p)lay-pause,  (s)huffle, 󰒭 (n)ext, 󰒮 p(r)evious  (j)  (k) 
+
+mode "$media" {
+
+    bindsym p exec playerctl play-pause
+    bindsym s exec playerctl shuffle Toggle
+    bindsym n exec playerctl next
+    bindsym r exec playerctl previous
+    bindsym k exec playerctl volume 0.05+
+    bindsym j exec playerctl volume 0.05-
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "$media" 
+
+set $connections  (w)ifi  (b)luetooth
+
+mode "$connections" {
+
+    bindsym w exec $wifi
+    bindsym b exec $bluetooth
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+c mode "$connections" 
+
+
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+F11 exec $lock
 bindsym $mod+w exec $wifi
 
 # auto startup
@@ -221,16 +275,4 @@ exec spotify
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while ~/dotfiles/sway/scripts/sway_bar.sh; do sleep 1; done
-    
-    colors {
-        background #1F1F28
-        inactive_workspace #1F1F28 #32323200 #1F1F28
-        focused_workspace #1F1F28 #7E9CD8 #1F1F28
-
-    }
-}
+include ~/dotfiles/sway/custom-bar.d
