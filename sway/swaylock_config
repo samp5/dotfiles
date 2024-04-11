@@ -1,11 +1,24 @@
 color=#1F1F28
+
 font="Fira Code"
 font-size=1
+
 line-uses-inside
-separator-color=#2C323C
-ring-wrong-color=#B8B4D0
 indicator-thickness=5
+
+separator-color=#2C323C
+
+ring-wrong-color=#C34043
+line-wrong-color=#C34043
+inside-wrong-color=#C34043
+
 bs-hl-color=#E6C384
+
 inside-color=#9CABCA
+
+ring-clear-color=#6A9589
 inside-clear-color=#6A9589
+line-clear-color=#6A9589
+
 inside-ver-color=#76946A
+ring-ver-color=#76946A
