@@ -47,7 +47,7 @@ battery_charge=$(upower --show-info $(upower --enumerate | grep 'BAT') | egrep "
 battery_status=$(upower --show-info $(upower --enumerate | grep 'BAT') | egrep "state" | awk '{print $2}')
 ping=$(ping -c 1 www.google.es | tail -1| awk '{print $4}' | cut -d '/' -f 2 | cut -d '.' -f 1)
 loadavg_5min=$(cat /proc/loadavg | awk -F ' ' '{print $2}')
-cpu_temp=$(sensors | head -n3 | grep -Po ".....C" | head -n1)
+cpu_temp=$(sensors | grep "Package id 0:" | grep -Po ".....C" | head -n1)
 
 if [ "$battery_status" = "discharging" ]; then
     battery_pluggedin='󱧥'

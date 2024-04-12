@@ -50,7 +50,7 @@ output * {
 output eDP-1  {
   mode 2880x1800@90Hz
   scale 1.5
-  bg ~/Pictures/backgrounds/mountain.jpg fill
+  bg ~/Pictures/backgrounds/water.jpg fill
 }
 
 
@@ -78,7 +78,7 @@ exec swayidle -w \
     bindsym $mod+End kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+o exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -90,12 +90,6 @@ exec swayidle -w \
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    bindsym $mod+Shift+Home exec swaynag -c ~/dotfiles/sway/swaynag.d  -t warning -m 'Reboot?' -B 'reboot' 'swaymsg exit'
-    bindsym $mod+Shift+End exec swaynag -c ~/dotfiles/sway/swaynag.d -t warning -m 'Shutdown?' -B 'shutdown' 'swaymsg exit'
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -c ~/dotfiles/sway/swaynag.d -t warning -m 'Exit sway?. This will end your Wayland session.' -B 'Exit sway' 'swaymsg exit'
-#
 # Moving around:
 #
     # Move your focus around
@@ -104,23 +98,11 @@ exec swayidle -w \
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 
 # Workspaces:
@@ -135,10 +117,11 @@ exec swayidle -w \
     set $ws6   6
     set $ws7   7
     set $ws8   8
-    set $ws9   9
+    set $ws9   "9:󰒱"
     set $ws0   "0: "
 
     assign [class="Spotify"] $ws0 
+    assign [class="Slack"] $ws9
 
     # Relative Switching
     bindsym $mod+Ctrl+l workspace next
@@ -262,12 +245,12 @@ mode "$connections" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+c mode "$connections" 
+bindsym $mod+w mode "$connections" 
 
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+w exec $wifi
+bindsym $mod+i exec google-chrome
 
 # auto startup
 exec spotify

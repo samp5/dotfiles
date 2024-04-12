@@ -19,5 +19,6 @@ config.use_fancy_tab_bar = false;
 config.show_tabs_in_tab_bar = false;
 config.show_new_tab_button_in_tab_bar = false;
 config.color_scheme = 'Kanagawa (Gogh)'
+config.window_background_opacity = 0.96;
 config.window_decorations = "RESIZE"
 return config
