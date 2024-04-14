@@ -97,6 +97,17 @@ nnoremap('<leader>we', '<C-w>=', 'Equalize Windows')
 nnoremap('<leader>wl', '5<C-w>>', 'Increase current window size')
 nnoremap('<leader>wh', '5<C-w><', 'Decrease current window size')
 nnoremap('<leader>ws', '<C-w>x', 'Swap windows')
+vim.keymap.set("x", "<leader>p", [["_dP]], { noremap = true, desc = "Paste over selection" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selection up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "Move up half page and center" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "Move down half page and center" })
+vim.keymap.set("n", "n", "nzzzv", { noremap = true, desc = "Next, center, open folds" })
+vim.keymap.set("n", "N", "Nzzzv", { noremap = true, desc = "Previous center, open folds" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set("n", "<C-o>", "<C-o>zz")
+vim.keymap.set("n", "<C-i>", "<C-i>zz")
 
 -- -- Colorscheme
 vim.cmd [[colorscheme kanagawa]]

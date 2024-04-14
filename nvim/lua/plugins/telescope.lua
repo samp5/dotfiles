@@ -9,12 +9,11 @@ return {
       require('telescope').setup {
       }
       -- nnoremaps!
+      nnoremap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>',
+        'Help tags')
       nnoremap('<leader>fn', '<cmd>lua require("telescope.builtin").find_files({cwd = "~/obsidian/SCHOOL/"})<cr>',
         'Find note')
       nnoremap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', 'Find files')
-      nnoremap('gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', 'Workspace References')
-      nnoremap('gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>', 'Implementations')
-      nnoremap('gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', 'Definitions')
       nnoremap('<leader>fs', '<cmd>lua require("telescope.builtin").live_grep()<cr>', 'Live Grep')
       nnoremap('<leader>fw', '<cmd>lua require("telescope.builtin").treesitter()<cr>', 'Workspace Symbols')
       nnoremap('<leader>fc', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>',
