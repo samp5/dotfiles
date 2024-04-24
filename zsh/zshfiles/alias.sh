@@ -20,6 +20,6 @@ alias cat='batcat'
 alias ff='fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}"'
 
 alias mon='gotop'
-# Execute these gdb commands
-# alias cd="z"
+
+alias cd="z"
 # alias cdi="zi"
