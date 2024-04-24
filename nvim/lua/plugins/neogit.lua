@@ -9,11 +9,13 @@ return {
   },
   config = function()
     require("neogit").setup({
+      graph_style = "unicode",
       signs = {
         hunk = { "", "" },
         item = { "", "" },
         section = { "", "" },
       },
+      disable_line_numbers = false,
     })
   end
 
