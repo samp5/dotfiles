@@ -64,7 +64,7 @@ return {
     nnoremap('H', '<Plug>(cokeline-focus-prev)', 'Focus previous buffer')
     nnoremap('L', '<Plug>(cokeline-focus-next)', 'Focus Next buffer')
     nnoremap('X', '<Plug>(cokeline-pick-close)', 'Pick Close')
-    vim.keymap.set("n", "<leader>pp", function()
+    vim.keymap.set("n", "<leader>p", function()
       require('cokeline.mappings').pick("focus")
     end, { desc = "Pick a buffer to focus" })
   end
