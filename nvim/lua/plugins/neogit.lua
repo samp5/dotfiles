@@ -7,5 +7,14 @@ return {
     -- Only one of these is needed, not both.
     "nvim-telescope/telescope.nvim", -- optional
   },
-  config = true
+  config = function()
+    require("neogit").setup({
+      signs = {
+        hunk = { "", "" },
+        item = { "", "" },
+        section = { "", "" },
+      },
+    })
+  end
+
 }
