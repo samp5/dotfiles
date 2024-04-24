@@ -29,9 +29,7 @@ set $term_float $term --class floating_shell
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu  rofi -show run | xargs swaymsg exec --
-
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
-
 set $wifi ~/dotfiles/sway/scripts/wifi_script
 set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
 
@@ -60,8 +58,8 @@ output eDP-1  {
 # Example configuration:
 
 exec swayidle -w \
-          timeout 300 'swaylock -f -C ~/dotfiles/sway/swaylock_config' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 600 'swaylock -f -C ~/dotfiles/sway/swaylock_config' \
+          timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -C ~/dotfiles/sway/swaylock_config'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
