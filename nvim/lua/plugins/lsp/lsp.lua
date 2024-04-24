@@ -35,8 +35,8 @@ return {
         bnnoremap('<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'See code actions', bufnr)
         bnnoremap('<space>sn', '<cmd>lua vim.lsp.buf.rename()<CR>', 'Smart Rename', bufnr)
         bnnoremap('K', '<cmd>lua vim.lsp.buf.hover()<CR>', 'Hover', bufnr)
-        bnnoremap('<leader>D', '<cmd>vim.diagnostic.open_float<CR>', 'Show diagnostics for line', bufnr) -- show diagnostics for line
-        bnnoremap('gd', '<cmd>lua vim.buf.definition()', 'go defintion', bufnr)
+        bnnoremap('<leader>vd', '<cmd>lua vim.diagnostic.open_float()<CR>', 'Show diagnostics for line', bufnr) -- show diagnostics for line
+        bnnoremap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', 'go defintion', bufnr)
         bnnoremap('td', '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>', 'telescope defintion', bufnr)
       end
 
@@ -89,6 +89,10 @@ return {
         capabilities = capabilities,
       }
 
+      lspconfig.rust_analyzer.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
 
       -- configure lua server (with special settings)
       lspconfig["lua_ls"].setup({
