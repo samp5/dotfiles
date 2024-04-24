@@ -1,6 +1,6 @@
 input "1:1:AT_Translated_Set_2_keyboard" {
-  repeat_delay 175
-  repeat_rate 110
+  repeat_delay 250
+  repeat_rate 50
   xkb_layout us
   xkb_options ctrl:swapcaps
 }

@@ -7,7 +7,16 @@ network=$(ip route get 1.1.1.1 | grep -Po '(?<=dev\s)\w+' | cut -f1 -d ' ')
 memtotal=$(cat /proc/meminfo | grep 'MemTotal:' | awk '{print $2}')
 memavailable=$(cat /proc/meminfo | grep 'MemAvailable:' | awk '{print $2}')
 percent=$(echo $(( 100 - (100 * $memavailable  + $memtotal / 2) / $memtotal)))
-brightness=$(brightnessctl i | grep -Po "(..%)")
+brightness=$(brightnessctl i | grep -Po "..%")
+volume=$(amixer get Master | grep -Po "..%")
+volume_status=$(amixer get Master | grep -Po "\[on\]")
+
+if [[ $volume_status = "[on]" ]];
+then
+  volume="󰕾 $volume"
+else
+  volume="󰝟 $volume"
+fi
 
 
 # player ctl is dumb and outputs on the standard error instead of standard output? 
@@ -26,21 +35,16 @@ if [[ "$media_status" = "Playing" ]];
 then
   media_icon=""
   media_info=$(playerctl metadata --format '{{trunc(album,15)}} {{trunc(title,15)}} {{trunc(artist,15)}}' 2>&1 )
+  spotify_string="   $media_icon  $media_info $shuffle_icon"
 elif [[ "$media_status" = "Paused" ]]
 then 
   media_icon=""
   media_info=$(playerctl metadata --format '{{trunc(album,15)}} {{trunc(title,15)}} {{trunc(artist,15)}}' 2>&1 )
-else
-  media_icon=""
-  media_info=""
-fi
-
-if [[ "$media_status" != "No players found" ]]
-then
   spotify_string="   $media_icon  $media_info $shuffle_icon"
 else
   spotify_string=""
 fi
+
 
 
 battery_charge=$(upower --show-info $(upower --enumerate | grep 'BAT') | egrep "percentage" | awk '{print $2}')
@@ -61,4 +65,4 @@ else
    network_active="⇆"
 fi
 
-echo "  $network_active $ping ms   $cpu_temp 󰍛 $loadavg_5min  $percent%  󰃝 $brightness  $battery_pluggedin $battery_charge$spotify_string    $date_and_week  $current_time "
+echo "  $network_active $ping ms   $cpu_temp 󰍛 $loadavg_5min  $percent%  $volume 󰃝 $brightness  $battery_pluggedin $battery_charge$spotify_string    $date_and_week  $current_time "
