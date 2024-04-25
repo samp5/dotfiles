@@ -1,12 +1,6 @@
 include ~/dotfiles/sway/input.d
 include ~/dotfiles/sway/borders.d
 
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 xwayland enable
 
@@ -27,7 +21,6 @@ set $term_float $term --class floating_shell
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
 set $menu  rofi -show run | xargs swaymsg exec --
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 set $wifi ~/dotfiles/sway/scripts/wifi_script
@@ -35,10 +28,6 @@ set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
 
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-
-
 output * {
   scale 1.5
   bg ~/Pictures/backgrounds/water.jpg fill
@@ -64,10 +53,6 @@ exec swayidle -w \
           timeout 600 'swaylock -f -C ~/dotfiles/sway/swaylock_config' \
           timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -C ~/dotfiles/sway/swaylock_config'
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Key bindings
 # Basics:
@@ -251,12 +236,7 @@ bindsym $mod+w mode "$connections"
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+i exec google-chrome
-
-# auto startup
-exec spotify
+bindsym $mod+i exec librewolf
 
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 include ~/dotfiles/sway/custom-bar.d
