@@ -3,7 +3,6 @@ local vnoreamp = require "maps".vnoremap
 return {
   'sindrets/diffview.nvim',
   config = function ()
-    
     vim.keymap.set("n", "<leader>dw", function()
         local user_input
         vim.ui.input({ prompt = "Diff to?" },

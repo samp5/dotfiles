@@ -21,6 +21,7 @@ return {
       ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
       ['<leader>c'] = { name = '[C]langd', _ = 'which_key_ignore' },
       ['<leader>p'] = { name = '[P]ick', _ = 'which_key_ignore' },
+      ['<leader>n'] = { name = '[N]eogit', _ = 'which_key_ignore' },
     }
   end,
   opts = {

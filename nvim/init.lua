@@ -96,6 +96,7 @@ nnoremap('<leader>we', '<C-w>=', 'Equalize Windows')
 nnoremap('<leader>wk', '5<C-w>>', 'Increase current window size')
 nnoremap('<leader>wj', '5<C-w><', 'Decrease current window size')
 nnoremap('<leader>ws', '<C-w>x', 'Swap windows')
+nnoremap('<leader>no', '<cmd>Neogit<CR>', 'Open Neogit')
 vim.keymap.set("x", "<leader>p", [["_dP]], { noremap = true, desc = "Paste over selection" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selection up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
@@ -107,6 +108,8 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, desc = "Yank 
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true, desc = "Jump back center" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true, desc = "Jump forward center" })
 vim.keymap.set({ "n", "i" }, "<C-s>", '<Esc>A;', { noremap = true, desc = "Add semicolon" })
+vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true, desc = "Jump back center" })
+vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true, desc = "Jump forward center" })
 
 -- -- Colorscheme
 vim.cmd [[colorscheme kanagawa]]
