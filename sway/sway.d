@@ -40,15 +40,18 @@ set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
 
 
 output * {
-  resolution 2880x1800
   scale 1.5
-  bg ~/Pictures/backgrounds/mountain.jpg fill
+  bg ~/Pictures/backgrounds/water.jpg fill
+}
+
+output "Acer Technologies V247Y 0x0000856D" {
+  mode 1920x1080@60Hz
+  scale 1.0
 }
 
 output eDP-1  {
   mode 2880x1800@90Hz
   scale 1.5
-  bg ~/Pictures/backgrounds/water.jpg fill
 }
 
 
