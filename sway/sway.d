@@ -239,4 +239,7 @@ bindsym Print exec $screenclip
 bindsym $mod+i exec librewolf
 
 # Status Bar:
-include ~/dotfiles/sway/custom-bar.d
+# include ~/dotfiles/sway/custom-bar.d
+bar {
+  swaybar_command waybar
+}
