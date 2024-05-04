@@ -1,6 +1,7 @@
 -- for remap functions
 local maps = require('maps')
 local files = require('files')
+local autocommands = require "autocmds".autocommands
 
 -- Set alias for global options, window options, and remap function
 local o = vim.o
@@ -13,7 +14,6 @@ vim.g.mapleader = ' '
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-
     'git',
     'clone',
     '--filter=blob:none',
@@ -25,9 +25,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  lazy = true,
   { import = 'plugins' },
   { import = 'plugins.lsp' },
   { import = 'plugins.dap' },
+  { import = 'plugins.colors' },
 })
 
 -- Global vim settings
@@ -49,7 +51,6 @@ o.tabstop = 2
 o.termguicolors = true
 o.splitbelow = true
 o.splitright = true
-o.fileencoding = 'UTF-8'
 
 -- Window Local
 wo.number = true
@@ -73,13 +74,6 @@ vim.api.nvim_create_autocmd({ 'BufRead' }, {
   callback = function() o.foldlevel = 99 end
 })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
 
 -- Get rid of search highlighting
 nnoremap('<leader>cl', ':nohl<CR>', 'clear search highlighting')
@@ -99,6 +93,9 @@ vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true, desc = "Jump back cent
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true, desc = "Jump forward center" })
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true, desc = "Jump back center" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true, desc = "Jump forward center" })
+
+-- autocommands
+autocommands()
 
 -- -- Colorscheme
 vim.cmd [[colorscheme kanagawa]]
