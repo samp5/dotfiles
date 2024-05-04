@@ -14,8 +14,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local opts = { buffer = ev.buf }
     local tele = require("telescope.builtin")
-
-
+    local troub_t = require "trouble.sources.telescope"
     local wk = require "which-key"
 
     wk.register({
@@ -27,7 +26,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       ['<space>D'] = { vim.lsp.buf.type_definition, "Type definition", buffer = ev.buf },
       ['gr'] = { tele.lsp_references, "Go references", buffer = ev.buf },
       ['gi'] = { tele.lsp_implementations, "Go implementations", buffer = ev.buf },
-      ['<leader>fw'] = { tele.lsp_workspace_symbols, "Telescope symbols", buffer = ev.buf },
+      ['<leader>ic'] = { tele.lsp_incoming_calls, "Incoming calls", buffer = ev.buf },
       ['<leader>sn'] = { vim.lsp.buf.rename, "Rename", buffer = ev.buf },
       ['<leader>a'] = { mode = { 'n', 'v' }, vim.lsp.buf.code_action, "Code action", buffer = ev.buf },
       ['<leader>wf'] = { function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "show workspace folders", buffer = ev.buf }

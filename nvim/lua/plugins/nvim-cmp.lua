@@ -3,10 +3,9 @@ return {
   event = "InsertEnter",
   dependencies = {
     "neovim/nvim-lspconfig",
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path",   -- source for file system paths
+    "hrsh7th/cmp-buffer",           -- source for text in buffer
+    "hrsh7th/cmp-path",             -- source for file system paths
     "hrst7th/cmp-nvim-lsp",
-    "windwp/nvim-autopairs",
     "L3MON4D3/LuaSnip",             -- snippet engine
     "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
@@ -22,7 +21,7 @@ return {
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip.loaders.from_snipmate").lazy_load({
-      paths = '~/.config/nvim/lua/plugins/snips/snippets' }
+      paths = '~/dotfiles/nvim/lua/plugins/snips/snippets/' }
     )
     cmp.setup({
       completion = {
@@ -34,11 +33,12 @@ return {
         end,
       },
 
-      mapping = cmp.mapping.preset.insert({
+      mapping = {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-l>"] = cmp.mapping.open_docs(),
-        ["<C-'>"] = cmp.mapping.complete(),
+        ["<C-c>"] = cmp.mapping.close(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<CR>"] = cmp.mapping.confirm({
           select = false,
           behavior = cmp.ConfirmBehavior.Replace
@@ -60,7 +60,7 @@ return {
             fallback()
           end
         end, { "i", "s" }),
-      }),
+      },
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -94,6 +94,10 @@ return {
           ellipsis_char = "...",
         }),
       },
+      window = {
+        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+      }
     })
   end,
 }

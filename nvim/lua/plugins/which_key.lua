@@ -12,7 +12,6 @@ return {
     )
 
     require('which-key').register {
-      ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
       ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
       ['<leader>b'] = { name = 'De[B]ug', _ = 'which_key_ignore' },
       ['<leader>e'] = { name = '[E]xplorer', _ = 'which_key_ignore' },
