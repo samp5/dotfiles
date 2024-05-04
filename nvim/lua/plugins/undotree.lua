@@ -2,7 +2,10 @@ local nnoremap = require("maps").nnoremap
 return {
   "mbbill/undotree",
   config = function()
-    nnoremap("<leader><F5>", '<cmd>UndotreeToggle<CR>', 'Undotree')
+    local wk = require 'which-key'
+    wk.register({
+      ['<leader><F5>'] = { '<cmd>UndotreeToggle<CR>', 'Undotree' },
+    })
     vim.cmd("let g:undotree_TreeNodeShape = ''")
     vim.cmd("let g:undotree_TreeVertShape = ''")
     vim.cmd("let g:undotree_TreeReturnShape = ''")

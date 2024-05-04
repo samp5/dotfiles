@@ -24,7 +24,6 @@ return {
     require("luasnip.loaders.from_snipmate").lazy_load({
       paths = '~/.config/nvim/lua/plugins/snips/snippets' }
     )
-
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,noselect,preview",

@@ -60,12 +60,15 @@ return {
     })
 
     -- set keymaps
-    local keymap = vim
-        .keymap                                                                                   -- for conciseness
+    local wk = require 'which-key'
 
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })   -- toggle file explorer
-    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>",
-      { desc = "Open file tee if it is closed and focus on explorer" })                           -- toggle file explorer on current file
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    wk.register({
+      ['<leader>e'] = {
+        name = "Fil[E] Exploxer",
+        e = { "<cmd>NvimTreeToggle<CR>", "Toggle file explorer" },
+        f = { "<cmd>NvimTreeFocus<CR>", "Focus file explorer" },
+        r = { "<cmd>NvimTreeRefresh<CR>", "Refresh file explorer" },
+      }
+    })
   end,
 }

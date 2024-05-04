@@ -6,7 +6,6 @@ local files = require('files')
 local o = vim.o
 local wo = vim.wo
 local nnoremap = maps.nnoremap
-local inoremap = maps.inoremap
 
 vim.g.mapleader = ' '
 
@@ -85,29 +84,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Get rid of search highlighting
 nnoremap('<leader>cl', ':nohl<CR>', 'clear search highlighting')
 
--- Remaps
-nnoremap('<M-\\>', '<C-w>v', 'Split Window Vertically')
-nnoremap('<M-->', '<C-w>s', 'Split Window horizontally')
-inoremap("<M-'>", '<Esc>A{<Enter>}<Esc>O', 'Brackets (the right way)')
-nnoremap("<M-'>", 'A{<Enter>}<Esc>O', 'Brackets (the right way)')
-nnoremap('<leader>o', 'o<Esc>k', 'Open line below (no insert)')
-nnoremap('<leader>O', 'O<Esc>j', 'Open line below (no insert)')
-nnoremap('<leader>we', '<C-w>=', 'Equalize Windows')
-nnoremap('<leader>wk', '5<C-w>>', 'Increase current window size')
-nnoremap('<leader>wj', '5<C-w><', 'Decrease current window size')
-nnoremap('<leader>ws', '<C-w>x', 'Swap windows')
-nnoremap('<leader>no', '<cmd>Neogit<CR>', 'Open Neogit')
-vim.keymap.set("x", "<leader>p", [["_dP]], { noremap = true, desc = "Paste over selection" })
+-- Move selection in visual mode
+vim.keymap.set('i', "<M-'>", '<Esc>A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
+vim.keymap.set('n', "<M-'>", 'A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selection up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
+
+-- Always center
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "Move up half page and center" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "Move down half page and center" })
 vim.keymap.set("n", "n", "nzzzv", { noremap = true, desc = "Next, center, open folds" })
 vim.keymap.set("n", "N", "Nzzzv", { noremap = true, desc = "Previous center, open folds" })
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { noremap = true, desc = "Yank to system" })
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true, desc = "Jump back center" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true, desc = "Jump forward center" })
-vim.keymap.set({ "n", "i" }, "<C-s>", '<Esc>A;', { noremap = true, desc = "Add semicolon" })
 vim.keymap.set("n", "<C-o>", "<C-o>zz", { noremap = true, desc = "Jump back center" })
 vim.keymap.set("n", "<C-i>", "<C-i>zz", { noremap = true, desc = "Jump forward center" })
 

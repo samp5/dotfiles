@@ -1,5 +1,5 @@
 # Window Borders
-default_border pixel 5
+default_border pixel 3
 default_floating_border normal
 smart_borders on
 gaps inner 7
