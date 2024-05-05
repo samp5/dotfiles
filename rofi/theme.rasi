@@ -29,7 +29,7 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 39, 40, 34, 0 % );
     selected-active-background:  rgba ( 20, 20, 17, 100 % );
-    font: "Fira Code 10";
+    font: "Fira Code 15";
 }
 window {
     background-color: @background;

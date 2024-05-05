@@ -17,7 +17,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term /usr/bin/wezterm
+set $term /usr/bin/wezterm start --always-new-process
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
 set $screenclip  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg
 set $term_float $term --class floating_shell
@@ -32,8 +32,7 @@ set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
 
 ### Output configuration
 output * {
-  scale 1.5
-  bg ~/Pictures/backgrounds/water.jpg fill
+  bg #252535 solid_color
 }
 
 output "Acer Technologies V247Y 0x0000856D" {
@@ -43,7 +42,7 @@ output "Acer Technologies V247Y 0x0000856D" {
 
 output eDP-1  {
   mode 2880x1800@90Hz
-  scale 1.5
+  scale 1
 }
 
 

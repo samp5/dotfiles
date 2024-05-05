@@ -1,10 +1,9 @@
 bar {
+    font Fira Code
     position top
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while ~/dotfiles/sway/scripts/sway_bar.sh; do sleep 1; done
-    
-    
 
     colors {
         background #1F1F28

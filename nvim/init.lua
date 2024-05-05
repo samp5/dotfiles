@@ -1,7 +1,7 @@
+local maps = require("./lua/maps")
+local files = require("./lua/files")
 -- for remap functions
-local maps = require('maps')
-local files = require('files')
-local autocommands = require "autocmds".autocommands
+local autocommands = require "./lua/autocmds".autocommands
 
 -- Set alias for global options, window options, and remap function
 local o = vim.o
