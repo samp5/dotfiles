@@ -1,4 +1,5 @@
 include ~/dotfiles/sway/input.d
+include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
 ### Autostart 
@@ -41,8 +42,8 @@ output "Acer Technologies V247Y 0x0000856D" {
 }
 
 output eDP-1  {
-  mode 2880x1800@90Hz
-  scale 1
+  mode 2880x1800@60Hz
+  scale 1.0
 }
 
 
@@ -238,7 +239,7 @@ bindsym $mod+w mode "$connections"
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+i exec librewolf
+bindsym $mod+i exec firefox
 
 # Status Bar:
 # include ~/dotfiles/sway/custom-bar.d
