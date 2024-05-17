@@ -16,7 +16,6 @@ return {
       ['<leader>b'] = { name = 'De[B]ug', _ = 'which_key_ignore' },
       ['<leader>e'] = { name = '[E]xplorer', _ = 'which_key_ignore' },
       ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
-      ['<leader>c'] = { name = '[C]langd', _ = 'which_key_ignore' },
       ['<leader>n'] = { name = '[N]eogit', _ = 'which_key_ignore' },
       ['<leader>y'] = { '"+y', '[Y]ank to system' },
       ['<leader>o'] = { 'o<Esc>k', 'Open line below (no insert)' },
