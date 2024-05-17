@@ -1,12 +1,9 @@
-local maps = require("./lua/maps")
-local files = require("./lua/files")
 -- for remap functions
-local autocommands = require "./lua/autocmds".autocommands
+local autocommands = require "autocmds".autocommands
 
 -- Set alias for global options, window options, and remap function
 local o = vim.o
 local wo = vim.wo
-local nnoremap = maps.nnoremap
 
 vim.g.mapleader = ' '
 
@@ -66,9 +63,6 @@ o.foldexpr = 'nvim_treesitter#foldexpr()'
 o.undofile = true
 o.undodir = vim.fn.stdpath('data') .. '/.nvim/undo-dir'
 
-if files.isdir(o.undodir) then
-  os.execute('mkdir -p ' .. o.undodir)
-end
 
 vim.api.nvim_create_autocmd({ 'BufRead' }, {
   callback = function() o.foldlevel = 99 end
@@ -76,7 +70,7 @@ vim.api.nvim_create_autocmd({ 'BufRead' }, {
 
 
 -- Get rid of search highlighting
-nnoremap('<leader>cl', ':nohl<CR>', 'clear search highlighting')
+vim.keymap.set('n', '<leader>cl', ':nohl<CR>', { desc = 'clear search highlighting' })
 
 -- Move selection in visual mode
 vim.keymap.set('i', "<M-'>", '<Esc>A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })

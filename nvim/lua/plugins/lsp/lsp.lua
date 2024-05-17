@@ -24,9 +24,7 @@ return {
       end
 
 
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      -- configure c++ server
+      local capabilities = vim.lsp.protocol.make_client_capabilities() -- configure c++ server
       lspconfig.clangd.setup {
         capabilities = capabilities,
         on_attach = lsp_on_attach,

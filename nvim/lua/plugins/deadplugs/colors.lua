@@ -1,4 +1,3 @@
-local nnoremap = require 'maps'.nnoremap
 return {
   'nvim-lua/plenary.nvim',
   'nvim-lua/popup.nvim',

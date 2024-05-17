@@ -6,8 +6,6 @@ return {
   },
 
   config = function()
-    local maps = require('maps')
-    local nnoremap = maps.nnoremap
     require('cokeline').setup({
       sidebar = {
         filetype = 'NvimTree',
@@ -61,9 +59,9 @@ return {
       },
     })
 
-    nnoremap('H', '<Plug>(cokeline-focus-prev)', 'Focus previous buffer')
-    nnoremap('L', '<Plug>(cokeline-focus-next)', 'Focus Next buffer')
-    nnoremap('X', '<Plug>(cokeline-pick-close)', 'Pick Close')
+    vim.keymap.set('n', 'H', '<Plug>(cokeline-focus-prev)', { noremap = true, desc = 'Focus previous buffer' })
+    vim.keymap.set('n', 'L', '<Plug>(cokeline-focus-next)', { noremap = true, desc = 'Focus next buffer' })
+    vim.keymap.set('n', 'X', '<Plug>(cokeline-pick-close)', { noremap = true, desc = 'Pick close' })
     vim.keymap.set("n", "<leader>p", function()
       require('cokeline.mappings').pick("focus")
     end, { desc = "Pick a buffer to focus" })

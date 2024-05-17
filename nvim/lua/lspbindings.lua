@@ -1,7 +1,6 @@
 local lsp_on_attach = function(client, bufnr)
   require 'nvim-navic'.attach(client, bufnr)
   require "lsp-format".on_attach(client)
-  require "lsp-inlayhints".on_attach(client, bufnr)
 
   vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -29,6 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       ['<leader>ic'] = { tele.lsp_incoming_calls, "Incoming calls", buffer = ev.buf },
       ['<leader>sn'] = { vim.lsp.buf.rename, "Rename", buffer = ev.buf },
       ['<leader>a'] = { mode = { 'n', 'v' }, vim.lsp.buf.code_action, "Code action", buffer = ev.buf },
+      ['<leader>ih'] = { function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, "Toggle inlay hints", buffer = ev.buf },
       ['<leader>wf'] = { function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "show workspace folders", buffer = ev.buf }
     })
   end

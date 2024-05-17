@@ -60,15 +60,6 @@ return {
     })
 
     -- set keymaps
-    local wk = require 'which-key'
 
-    wk.register({
-      ['<leader>e'] = {
-        name = "Fil[E] Exploxer",
-        e = { "<cmd>NvimTreeToggle<CR>", "Toggle file explorer" },
-        f = { "<cmd>NvimTreeFocus<CR>", "Focus file explorer" },
-        r = { "<cmd>NvimTreeRefresh<CR>", "Refresh file explorer" },
-      }
-    })
   end,
 }

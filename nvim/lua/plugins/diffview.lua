@@ -1,5 +1,3 @@
-local nnoreamp = require("maps").nnoremap
-local vnoreamp = require "maps".vnoremap
 return {
   'sindrets/diffview.nvim',
   config = function()

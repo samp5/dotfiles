@@ -1,4 +1,3 @@
-local nnoremap = require "maps".nnoremap
 
 return {
   {
