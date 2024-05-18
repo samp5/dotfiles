@@ -1,3 +1,4 @@
+
 [rust]
 symbol = "[ ](bright-yellow)"
 
@@ -30,3 +31,15 @@ modified = "󱇧$count "
 staged = "+$count "
 untracked = "󱀶$count "
 
+[username]
+style_user = 'bold green'
+format = 	'[$user]($style) '
+show_always = true
+
+[sudo]
+disabled = false
+format = '[sudo]($style)'
+
+[character]
+success_symbol = '[➜](bold blue) '
+error_symbol = '[➜](bold red) '
