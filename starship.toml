@@ -38,8 +38,8 @@ show_always = true
 
 [sudo]
 disabled = false
-format = '[sudo]($style)'
+format = '[sudo ]($style)'
 
 [character]
-success_symbol = '[➜](bold blue) '
+success_symbol = '[➜](bold blue)'
 error_symbol = '[➜](bold red) '
