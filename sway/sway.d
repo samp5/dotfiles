@@ -3,14 +3,18 @@ include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
 ### Autostart 
-exec_always autotiling -w 1 2 3 4 5 6 7 8 9
+exec_always ~/dotfiles/sway/scripts/autotiling -w 1 2 3 4 5 6 7 8 9
 exec_always systemctl --user import-environment
+exec_always --no-startup-id mako
 
 ### Variables
 xwayland enable
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
+### Notifications
+bindsym $mod+Space exec makoctl dismiss
 
 # Home row direction keys, like vim
 set $left h
@@ -23,7 +27,7 @@ set $term /usr/bin/wezterm start --always-new-process
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
 set $screenclip  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg
 set $term_float $term --class floating_shell
-
+ 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 set $menu  rofi -show run | xargs swaymsg exec --
@@ -34,7 +38,7 @@ set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
 
 ### Output configuration
 output * {
-  bg #252535 solid_color
+  bg ~/Pictures/wallpapers/water.jpg fill
 }
 
 output "Acer Technologies V247Y 0x0000856D" {
@@ -43,7 +47,7 @@ output "Acer Technologies V247Y 0x0000856D" {
 }
 
 output eDP-1  {
-  mode 2880x1800@60Hz
+  mode 2880x1800@90Hz
   scale 1.0
 }
 
@@ -144,10 +148,10 @@ exec swayidle -w \
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+n splitv
+    bindsym $mod+n splith
+    bindsym $mod+b splitv
 
-    # Switch the current container between different layout styles
+    # toggle between splits
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -156,8 +160,7 @@ exec swayidle -w \
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Ctrl+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+t layout toggle stacking split
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -181,10 +184,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 20px
-    bindsym $down resize grow height 20px
-    bindsym $up resize shrink height 20px
-    bindsym $right resize grow width 20px
+    bindsym $left resize shrink width 30px
+    bindsym $down resize grow height 30px
+    bindsym $up resize shrink height 30px
+    bindsym $right resize grow width 30px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -192,20 +195,20 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_system  (l)ock, 󰍃 l(o)gout, 󰤄 (s) suspend,  (r) reboot, ⏻ (S)hutdown 
-
-mode "$mode_system" {
-    bindsym l exec $lock, mode "default"
-    bindsym o exit
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+s mode "$mode_system" 
+#set $mode_system  (l)ock, 󰍃 l(o)gout, 󰤄 (s) suspend,  (r) reboot, ⏻ (S)hutdown 
+#
+#mode "$mode_system" {
+#    bindsym l exec $lock, mode "default"
+#    bindsym o exit
+#    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+#    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+#    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+#
+#    # Return to default mode
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
+#bindsym $mod+s mode "$mode_system" 
 
 set $media 󰐎 (p)lay-pause,  (s)huffle, 󰒭 (n)ext, 󰒮 p(r)evious  (j)  (k) 
 
@@ -240,7 +243,8 @@ bindsym $mod+w mode "$connections"
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+i exec firefox
+bindsym $mod+i exec vivaldi
+bindsym $mod+s exec spotify
 
 # Status Bar:
 # include ~/dotfiles/sway/custom-bar.d
