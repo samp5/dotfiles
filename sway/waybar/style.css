@@ -49,33 +49,33 @@ tooltip label {
   padding: 0px 8px;
     border-radius: 3px;
     background-color: #1F1F28;
-    border-top: 2px solid #9CABCA;
+    border-bottom: 2px solid #9CABCA;
 }
 
 #battery {
     padding: 0px 8px;
     border-radius: 2px;
-    border-top: 2px solid #E6C384;
+    border-bottom: 2px solid #E6C384;
     background-color: #1F1F28;
     color: #DCD7BA;
 }
 
 #battery.charging {
     border-radius: 2px;
-    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
     color: #1F1F28;
     background-color: #76946A;
 }
 
 #battery.critical:not(.charging) {
     background: #E82424;
-    border-top: 2px solid #E82424 ;
+    border-bottom: 2px solid #E82424 ;
     color: #252535;
 }
 
 #battery.warning:not(.charging) {
     background: #DCA561;
-    border-top: 2px transparent ;
+    border-bottom: 2px transparent ;
     color: #252535;
 }
 
@@ -83,7 +83,7 @@ tooltip label {
   padding: 0px 8px;
   border-radius: 2px;
   color: #DCD7BA;
-  border-top: 2px solid #A3D4D5;
+  border-bottom: 2px solid #A3D4D5;
 }
 
 #temperature {
@@ -91,32 +91,53 @@ tooltip label {
     border-radius: 2px;
     background-color: #1F1F28;
     color: #DCD7BA;
-    border-top: 2px solid #7AA89F;
+    border-bottom: 2px solid #7AA89F;
 }
 
 #network {
     padding: 0px 8px;
-    border-top: 2px solid #658594;
+    border-bottom: 2px solid #658594;
     border-radius: 2px;
 }
 #memory {
     padding: 0px 8px;
-    border-top: 2px solid #7AA89F;
+    border-bottom: 2px solid #7AA89F;
     border-radius: 2px;
 }
 
+#custom-scratchpad-indicator {
+    padding: 0px 8px;
+    border-bottom: 2px solid #7AA89F;
+    border-radius: 2px;
+}
+#custom-spotify {
+    padding: 0px 8px;
+    border-bottom: 2px solid #7AA89F;
+    border-radius: 2px;
+}
 #idle_inhibitor.deactivated {
     padding: 0px 8px;
-    border-top: 2px solid #76946D;
+    border-bottom: 2px solid #76946D;
     border-radius: 2px;
 }
 #idle_inhibitor.activated {
     padding: 0px 8px;
-    border-top: 2px solid #E6C384;
+    border-bottom: 2px solid #E6C384;
     border-radius: 2px;
 }
 #backlight{
     padding: 0px 8px;
-    border-top: 2px solid #E6C384;
+    border-bottom: 2px solid #E6C384;
+    border-radius: 2px;
+}
+
+#pulseaudio{
+    padding: 0px 10px;
+    border-bottom: 2px solid #658594;
+    border-radius: 2px;
+}
+#pulseaudio.muted{
+    padding: 0px 10px;
+    border-bottom: 2px solid #E82424;
     border-radius: 2px;
 }

@@ -1,9 +1,42 @@
 {
     "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["idle_inhibitor","memory","temperature", "cpu", "battery", "backlight","clock", "network"],
+    "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
+    "modules-right": ["custom/spotify", "idle_inhibitor","memory","temperature", "cpu", "battery","pulseaudio", "backlight","clock", "network"],
     "sway/window": {
-        "max-length": 50
+      "max-length": 50
+    },
+    "custom/spotify": {
+      "interval": 1,
+      "return-type": "json",
+      "on-click":"playerctl -p spotify play-pause",
+      "on-click-right": "killall spotify",
+      "smooth-scrolling-threshold": 10, 
+      "on-scroll-up" : "playerctl -p spotify previous",
+      "on-scroll-down" : "playerctl -p spotify next",
+      "exec": "~/dotfiles/sway/waybar/modules/spotify.sh",
+      "exec-if": "pgrep spotify",
+      "escape": true
+    },
+    "pulseaudio": {
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "headset": "",
+        "default":  ""
+      },
+      "scroll-step": 1,
+      "on-click": "pavucontrol",
+      "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "custom/scratchpad-indicator": {
+      "interval": 3,
+      "return-type": "json",
+      "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
+      "format": "{} 🗗",
+      "on-click": "exec swaymsg 'scratchpad show'",
+      "on-click-right": "exec swaymsg 'move scratchpad'"
     },
     "network":{
       "on-click": "~/dotfiles/sway/scripts/wifi_script",
@@ -49,6 +82,6 @@
     "backlight": {
       "device": "intel_backlight",
       "format": "{percent}% {icon}",
-      "format-icons": ["", ""]
+      "format-icons": ["󰃞","󰃟", "󰃝","󰃠"]
     },
 }
