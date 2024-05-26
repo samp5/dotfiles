@@ -30,6 +30,10 @@ return {
         n = { '<C-w>v', "Split vertically" },
         b = { '<C-w>s', "Split horizontally" },
       },
+      ["<M-n>"]     = { '<C-w>5<', 'Decrease size' },
+      ["<M-w>"]     = { '<C-w>5>', 'Increase size' },
+      ["<M-t>"]     = { '<C-w>+', 'Decrease size' },
+      ["<M-s>"]     = { '<C-w>-', 'Decrease size' },
       ["<leader>;"] = { '<Esc>A{<Enter>}<Esc>O', "Semicolons" },
 
     }
