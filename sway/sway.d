@@ -25,7 +25,9 @@ set $right l
 # Your preferred terminal emulator
 set $term /usr/bin/wezterm start --always-new-process
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
-set $screenclip  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg
+set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
+set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
+
 set $term_float $term --class floating_shell
  
 # Your preferred application launcher
@@ -57,10 +59,10 @@ output eDP-1  {
 #
 # Example configuration:
 
-exec swayidle -w \
-          timeout 600 'swaylock -f -C ~/dotfiles/sway/swaylock_config' \
-          timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -C ~/dotfiles/sway/swaylock_config'
+# exec swayidle -w \
+#          timeout 600 'swaylock -f -C ~/dotfiles/sway/swaylock_config' \
+#          timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -C ~/dotfiles/sway/swaylock_config'
 
 ### Key bindings
 # Basics:
@@ -106,7 +108,7 @@ exec swayidle -w \
     set $ws1   "1: "
     set $ws2   "2: "
     set $ws3   "3:󱆀 "
-    set $ws4   4
+    set $ws4   "4:󰍺"
     set $ws5   5
     set $ws6   6
     set $ws7   7
@@ -139,6 +141,12 @@ exec swayidle -w \
     bindsym $mod+Shift+1 move container to workspace $ws1
     bindsym $mod+Shift+2 move container to workspace $ws2
     bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
     bindsym $mod+Shift+0 move container to workspace $ws0
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
@@ -222,7 +230,6 @@ mode "$media" {
     bindsym j exec playerctl volume 0.05-
 
     # Return to default mode
-    bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+m mode "$media" 
@@ -235,7 +242,6 @@ mode "$connections" {
     bindsym b exec $bluetooth
 
     # Return to default mode
-    bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+w mode "$connections" 
@@ -243,6 +249,8 @@ bindsym $mod+w mode "$connections"
 
 # Shortcuts
 bindsym Print exec $screenclip
+bindsym $mod+Shift+Print exec $screenclipfocus
+bindsym $mod+Print exec $screenclipsave
 bindsym $mod+i exec vivaldi
 bindsym $mod+s exec spotify
 

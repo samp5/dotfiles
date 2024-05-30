@@ -1,4 +1,3 @@
-
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -35,7 +34,7 @@ return {
             tele.colorscheme()
           end, "Colorscheme" },
           m = { tele.man_pages, "Man pages" },
-          n = { function() tele.find_files({ cwd = "~/obsidian/SCHOOL/" }) end, "Find note" },
+          n = { function() tele.find_files({ cwd = "~/obsidian/school/" }) end, "Find note" },
           p = { tele.planets, "Planets" },
           q = { tele.quickfix, "Quickfix" },
           r = { tele.resume, "Resume search" },

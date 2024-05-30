@@ -3,7 +3,7 @@ return {
   config = function()
     vim.opt.termguicolors = true;
     require('colorizer').setup({
-      '*',
+      'css',
     })
   end
 }

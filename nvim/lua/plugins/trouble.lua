@@ -51,6 +51,19 @@ return {
             size = 0.5,
           },
         },
+        lsp_ref = {
+          mode = "lsp_references",
+          win = {
+            position = "right",
+            size = 0.5
+          },
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "bottom",
+            size = 0.5,
+          },
+        },
         diagnostics_buffer = {
           mode = "diagnostics", -- inherit from diagnostics mode
           filter = { buf = 0 }, -- filter diagnostics to the current buffer

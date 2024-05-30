@@ -24,7 +24,19 @@ return {
       end
 
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities() -- configure c++ server
+      local capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+      capabilities.workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        },
+      }
+
+      require("lspconfig").markdown_oxide.setup({
+        capabilities = capabilities, -- again, ensure that capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+        on_attach = lsp_on_attach -- configure your on attach config
+      })
+
       lspconfig.clangd.setup {
         capabilities = capabilities,
         on_attach = lsp_on_attach,

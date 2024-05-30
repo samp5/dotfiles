@@ -29,7 +29,8 @@ return {
         "pyright",
         "clangd",
         "lua_ls",
-        "rust_analyzer"
+        "rust_analyzer",
+        "markdown_oxide",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

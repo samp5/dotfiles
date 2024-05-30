@@ -77,6 +77,7 @@ vim.keymap.set('i', "<M-'>", '<Esc>A{<Enter>}<Esc>O', { noremap = true, desc = '
 vim.keymap.set('n', "<M-'>", 'A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selection up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
+vim.keymap.set("v", "<CR>", ":w !xargs xdg-open<CR>", { noremap = true, silent = true, desc = "Open links" })
 
 -- Always center
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "Move up half page and center" })

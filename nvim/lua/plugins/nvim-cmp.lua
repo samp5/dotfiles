@@ -63,12 +63,18 @@ return {
       },
       -- sources for autocompletion
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
+        {
+          name = "nvim_lsp",
+          option = {
+            markdown_oxide = {
+              keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
+            }
+          }
+        },
         { name = "luasnip" }, -- snippets
         { name = "buffer" },  -- text within current buffer
         { name = "path" },    -- file system paths
         { name = "nvim_lsp_signature_help" },
-        --{ name = "latex_symbols"},
       }),
 
       sorting = {
@@ -76,16 +82,6 @@ return {
           require('clangd_extensions.cmp_scores'),
         },
       },
-
-      -- enable latex symbol source for markdown
-      cmp.setup.filetype('markdown', {
-        sources = cmp.config.sources({
-          { name = "latex_symbols" },
-          { name = "luasnip" }, -- snippets
-          { name = "buffer" },  -- text within current buffer
-          { name = "path" },    -- file system paths
-        })
-      }),
 
       -- configure lspkind for vs-code like pictograms
       formatting = {
