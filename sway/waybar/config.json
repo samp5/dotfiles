@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
-    "modules-right": ["custom/spotify", "idle_inhibitor","memory","temperature", "cpu", "battery","pulseaudio", "backlight","clock", "network"],
+    "modules-right": ["custom/spotify", "idle_inhibitor","memory","temperature", "cpu", "pulseaudio", "backlight", "network","clock","battery"],
     "sway/window": {
       "max-length": 50
     },

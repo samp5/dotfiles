@@ -22,6 +22,11 @@ tooltip label {
   color: #DCD7BA;
 }
 
+#custom-scratchpad-indicator {
+    padding: 0px 8px;
+    border-bottom: 2px solid #7AA89F;
+    border-radius: 2px;
+}
 
 #workspaces button {
     border-radius: 3px;
@@ -45,13 +50,66 @@ tooltip label {
     padding: 0 10px;
 }
 
+#custom-spotify {
+    padding: 0px 8px;
+    border-bottom: 2px solid #98BB6C;
+    border-radius: 2px;
+}
+
+#idle_inhibitor.deactivated {
+    padding: 0px 8px;
+    border-bottom: 2px solid #76946D;
+    border-radius: 2px;
+}
+#idle_inhibitor.activated {
+    padding: 0px 8px;
+    border-bottom: 2px solid #E6C384;
+    border-radius: 2px;
+}
+#memory {
+    padding: 0px 8px;
+    border-bottom: 2px solid #7AA89F;
+    border-radius: 2px;
+}
+#cpu {
+  padding: 0px 8px;
+  border-radius: 2px;
+  color: #DCD7BA;
+  border-bottom: 2px solid #7FB4CA;
+}
+#temperature {
+    padding: 0px 8px;
+    border-radius: 2px;
+    background-color: #1F1F28;
+    color: #DCD7BA;
+    border-bottom: 2px solid #9CABCA;
+}
+#pulseaudio{
+    padding: 0px 10px;
+    border-bottom: 2px solid #7E9CD8;
+    border-radius: 2px;
+}
+#pulseaudio.muted{
+    padding: 0px 10px;
+    border-bottom: 2px solid #C0A36E;
+    border-radius: 2px;
+}
+#backlight{
+    padding: 0px 8px;
+    border-bottom: 2px solid #9CABCA;
+    border-radius: 2px;
+}
+#network {
+    padding: 0px 8px;
+    border-bottom: 2px solid #938AA9;
+    border-radius: 2px;
+}
 #clock {
   padding: 0px 8px;
     border-radius: 3px;
     background-color: #1F1F28;
-    border-bottom: 2px solid #9CABCA;
+    border-bottom: 2px solid #957FB8;
 }
-
 #battery {
     padding: 0px 8px;
     border-radius: 2px;
@@ -77,67 +135,4 @@ tooltip label {
     background: #DCA561;
     border-bottom: 2px transparent ;
     color: #252535;
-}
-
-#cpu {
-  padding: 0px 8px;
-  border-radius: 2px;
-  color: #DCD7BA;
-  border-bottom: 2px solid #A3D4D5;
-}
-
-#temperature {
-    padding: 0px 8px;
-    border-radius: 2px;
-    background-color: #1F1F28;
-    color: #DCD7BA;
-    border-bottom: 2px solid #7AA89F;
-}
-
-#network {
-    padding: 0px 8px;
-    border-bottom: 2px solid #658594;
-    border-radius: 2px;
-}
-#memory {
-    padding: 0px 8px;
-    border-bottom: 2px solid #7AA89F;
-    border-radius: 2px;
-}
-
-#custom-scratchpad-indicator {
-    padding: 0px 8px;
-    border-bottom: 2px solid #7AA89F;
-    border-radius: 2px;
-}
-#custom-spotify {
-    padding: 0px 8px;
-    border-bottom: 2px solid #7AA89F;
-    border-radius: 2px;
-}
-#idle_inhibitor.deactivated {
-    padding: 0px 8px;
-    border-bottom: 2px solid #76946D;
-    border-radius: 2px;
-}
-#idle_inhibitor.activated {
-    padding: 0px 8px;
-    border-bottom: 2px solid #E6C384;
-    border-radius: 2px;
-}
-#backlight{
-    padding: 0px 8px;
-    border-bottom: 2px solid #E6C384;
-    border-radius: 2px;
-}
-
-#pulseaudio{
-    padding: 0px 10px;
-    border-bottom: 2px solid #658594;
-    border-radius: 2px;
-}
-#pulseaudio.muted{
-    padding: 0px 10px;
-    border-bottom: 2px solid #E82424;
-    border-radius: 2px;
 }
