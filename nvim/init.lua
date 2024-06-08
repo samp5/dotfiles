@@ -39,7 +39,6 @@ o.joinspaces = true
 o.hlsearch = true
 o.ignorecase = true
 o.incsearch = true
-o.shiftwidth = 2
 o.shortmess = 'Sc'
 o.showmatch = true
 o.smartindent = true
@@ -99,3 +98,4 @@ autocommands()
 
 -- -- Colorscheme
 vim.cmd [[colorscheme kanagawa]]
+o.shiftwidth = 2

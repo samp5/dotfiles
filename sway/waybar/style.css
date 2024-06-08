@@ -96,24 +96,24 @@ tooltip label {
 }
 #backlight{
     padding: 0px 8px;
-    border-bottom: 2px solid #9CABCA;
+    border-bottom: 2px solid #658594;
     border-radius: 2px;
 }
 #network {
     padding: 0px 8px;
-    border-bottom: 2px solid #938AA9;
+    border-bottom: 2px solid #2D4F67;
     border-radius: 2px;
 }
 #clock {
   padding: 0px 8px;
     border-radius: 3px;
     background-color: #1F1F28;
-    border-bottom: 2px solid #957FB8;
+    border-bottom: 2px solid #938AA9;
 }
 #battery {
     padding: 0px 8px;
     border-radius: 2px;
-    border-bottom: 2px solid #E6C384;
+    border-bottom: 2px solid #957FB8;
     background-color: #1F1F28;
     color: #DCD7BA;
 }

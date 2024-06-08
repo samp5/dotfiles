@@ -5,11 +5,12 @@ return {
 
   config = function()
     require "oil".setup({
+      default_file_explorer = false,
       view_options = {
         show_hidden = true
       },
       float = {
-        max_height = vim.api.nvim_win_get_width(0) ,
+        max_height = vim.api.nvim_win_get_width(0),
         max_width  = vim.api.nvim_win_get_height(0),
       },
     })

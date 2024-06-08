@@ -25,9 +25,6 @@ set $right l
 # Your preferred terminal emulator
 set $term /usr/bin/wezterm start --always-new-process
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
-set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
-set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
-
 set $term_float $term --class floating_shell
  
 # Your preferred application launcher
@@ -112,12 +109,13 @@ output eDP-1  {
     set $ws5   5
     set $ws6   6
     set $ws7   7
-    set $ws8   8
+    set $ws8   "8:󱧌 "
     set $ws9   "9:󰒱"
     set $ws0   "0: "
 
     assign [class="Spotify"] $ws0 
     assign [class="Slack"] $ws9
+    assign [class="Signal"] $ws8
 
     # Relative Switching
     bindsym $mod+Ctrl+l workspace next
@@ -246,11 +244,26 @@ mode "$connections" {
 }
 bindsym $mod+w mode "$connections" 
 
+# various screenshot options
+set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
+set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
+
+set $screenshot (s)elect area (S)elect & save (f)ocused pane (p)ick color 
+mode "$screenshot" {
+
+    bindsym s exec $screenclip
+    bindsym Shift+s exec $screenclipsave
+    bindsym p exec ~/dotfiles/sway/scripts/pick_color.sh
+    bindsym f exec ~/dotfiles/sway/scripts/screenshotfocusedpane
+
+    # Return to default mode
+    bindsym Escape mode "default"
+}
+bindsym $mod+Print mode "$screenshot" 
+
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+Shift+Print exec $screenclipfocus
-bindsym $mod+Print exec $screenclipsave
 bindsym $mod+i exec vivaldi
 bindsym $mod+s exec spotify
 
