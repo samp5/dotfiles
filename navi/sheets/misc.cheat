@@ -1,0 +1,7 @@
+% pandoc
+
+# convert a .md => .pdf using pandoc
+pandoc --pdf-engine=pdfroff <markdown_file> -o <output>.pdf
+
+$ markdown_file: ls *.md --- --preview "batcat --color=always --style=numbers --line-range=:500 {}"
+
