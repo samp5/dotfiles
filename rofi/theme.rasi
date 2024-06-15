@@ -10,7 +10,7 @@
     urgent-foreground:           rgba ( 249, 38, 114, 100 % );
     alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
     active-foreground:           rgba ( 166, 226, 42, 100 % );
-    lightbg:                     @blue;
+    lightbg:                     #363646;
     selected-active-foreground:  rgba ( 166, 226, 42, 100 % );
     alternate-active-background: rgba ( 39, 40, 34, 0 % );
     background:                  #1f1f28;
@@ -20,7 +20,7 @@
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  @blue;
     border-color:                @blue;
-    spacing:                     2;
+    spacing:                     0;
     separatorcolor:              @blue;
     urgent-background:           rgba ( 39, 40, 34, 0 % );
     selected-urgent-background:  rgba ( 249, 38, 114, 100 % );
@@ -29,13 +29,13 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 39, 40, 34, 0 % );
     selected-active-background:  rgba ( 20, 20, 17, 100 % );
-    font: "Fira Code 15";
+    font: "Fira Code 16";
 }
 window {
     background-color: @background;
-    border:           1;
-    padding:          5;
-    border-radius: 10px;
+    padding:          1;
+    width: 750;
+    height: 750;
 }
 mainbox {
     border:  0;
@@ -51,7 +51,6 @@ textbox {
 }
 listview {
     fixed-height: 0;
-    border:       2px 0px 0px ;
     border-color: @blue;
     spacing:      2px ;
     scrollbar:    false;
@@ -117,10 +116,10 @@ button.selected {
     text-color:       @selected-normal-foreground;
 }
 inputbar {
-    spacing:    0;
+    spacing:    2;
+    padding:    5px ;
     text-color: @normal-foreground;
-    padding:    1px ;
-    border-radius:  15px 15px 0px 0px;
+    background-color: @lightbg;
 
 }
 case-indicator {
@@ -136,11 +135,11 @@ prompt {
     text-color: @normal-foreground;
 }
 inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children:   [textbox-prompt-colon,entry,case-indicator ];
 }
 textbox-prompt-colon {
     expand:     false;
-    str:        " => ";
+    str:        " ➜ ";
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
 }

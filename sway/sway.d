@@ -6,6 +6,7 @@ include ~/dotfiles/sway/borders.d
 exec_always ~/dotfiles/sway/scripts/autotiling -w 1 2 3 4 5 6 7 8 9
 exec_always systemctl --user import-environment
 exec_always --no-startup-id mako
+exec_always --no-startup-id wl-gammarelay-rs
 
 ### Variables
 xwayland enable
@@ -32,7 +33,7 @@ set $term_float $term --class floating_shell
 set $menu  rofi -show run | xargs swaymsg exec --
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 set $wifi ~/dotfiles/sway/scripts/wifi_script
-set $bluetooth ~/dotfiles/sway/scripts/bluetooth_script
+set $bluetooth ~/dotfiles/sway/scripts/rofi-bluetooth/rofi-bluetooth
 
 
 ### Output configuration
