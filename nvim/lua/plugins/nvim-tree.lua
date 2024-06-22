@@ -66,16 +66,16 @@ return {
       ['<leader>e'] = {
         name = "Fil[E] Exploxer",
         e = { t.tree.toggle, "Open file explorer" },
-        f = { t.tree.toggle, "Float file explorer" },
+        f = { t.tree.focus, "Float file explorer" },
         r = { t.tree.reload, "Reload file explorer" },
       }
     })
 
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-      pattern = { "*NvimTree*" },
-      callback = function(buf)
-        vim.api.nvim_buf_set_keymap(buf, "n", "q", ":lua require'nvim-tree.api'.tree.toggle()", {})
-      end
-    })
+    -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    --   pattern = { "*NvimTree*" },
+    --   callback = function(buf)
+    --     vim.api.nvim_buf_set_keymap(buf, "n", "q", ":lua require'nvim-tree.api'.tree.toggle()", {})
+    --   end
+    -- })
   end,
 }

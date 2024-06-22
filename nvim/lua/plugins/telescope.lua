@@ -8,7 +8,11 @@ return {
       require('telescope').setup({
         defaults = {
           mappings = {
-            i = { ["<c-t>"] = open_with_trouble },
+            i = {
+              ["<c-t>"] = open_with_trouble,
+              ["<C-j>"] = require('telescope.actions').move_selection_next,
+              ["<C-k>"] = require('telescope.actions').move_selection_previous,
+            },
             n = { ["<c-t>"] = open_with_trouble },
           }
         }
