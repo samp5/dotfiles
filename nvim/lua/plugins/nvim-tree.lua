@@ -19,6 +19,7 @@ return {
     nvimtree.setup({
       view = {
         relativenumber = false,
+        side = "right",
         float = {
           -- can't decide if I like this?
           enable = false,
@@ -65,7 +66,7 @@ return {
     wk.register({
       ['<leader>e'] = {
         name = "Fil[E] Exploxer",
-        e = { t.tree.toggle, "Open file explorer" },
+        d = { t.tree.toggle, "Open file explorer" },
         f = { t.tree.focus, "Float file explorer" },
         r = { t.tree.reload, "Reload file explorer" },
       }
