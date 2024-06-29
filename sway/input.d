@@ -16,7 +16,7 @@ input "1739:52914:SYNA8017:00_06CB:CEB2_Touchpad" {
 input "1133:4133:Logitech_M510" {
   pointer_accel 1
   accel_profile adaptive
-  scroll_factor 10
+  scroll_factor 1.5
 }
 
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+

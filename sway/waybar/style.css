@@ -99,6 +99,11 @@ tooltip label {
     border-bottom: 2px solid #658594;
     border-radius: 2px;
 }
+#custom-wl-gammarelay-temperature{
+    padding: 0px 8px;
+    border-bottom: 2px solid #658594;
+    border-radius: 2px;
+}
 #network {
     padding: 0px 8px;
     border-bottom: 2px solid #2D4F67;

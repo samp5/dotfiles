@@ -6,7 +6,7 @@ include ~/dotfiles/sway/borders.d
 exec_always ~/dotfiles/sway/scripts/autotiling -w 1 2 3 4 5 6 7 8 9
 exec_always systemctl --user import-environment
 exec_always --no-startup-id mako
-exec_always --no-startup-id wl-gammarelay-rs
+exec_always /home/sam/.cargo/bin/wl-gammarelay-rs
 
 ### Variables
 xwayland enable
@@ -67,6 +67,7 @@ output eDP-1  {
 
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Ctrl+k exec /usr/bin/wezterm start keep --always-new-process
 
     # Kill focused window
     bindsym $mod+End kill
@@ -104,7 +105,7 @@ output eDP-1  {
 
     # workspaces
     set $ws1   "1: "
-    set $ws2   "2: "
+    set $ws2   "2:󰖟 "
     set $ws3   "3:󱆀 "
     set $ws4   "4:󰍺"
     set $ws5   5
