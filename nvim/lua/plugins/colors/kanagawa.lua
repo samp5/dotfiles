@@ -56,6 +56,7 @@ return {
             NeogitPopupOptionKey         = { fg = theme.diag.hint },
             NeogitPopupOptionKeyEnabled  = { fg = theme.diag.ok },
             NeogitPopupOptionKeyDisabled = { fg = theme.diag.warning },
+            CursorLineNr                 = { fg = theme.ui.fg }
           }
         end,
 
