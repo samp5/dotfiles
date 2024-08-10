@@ -19,5 +19,6 @@ config.show_tabs_in_tab_bar = false;
 config.show_new_tab_button_in_tab_bar = false;
 config.window_decorations = "RESIZE"
 config.color_scheme = 'Kanagawa (Gogh)';
+-- config.color_scheme = 'Catppuccin Macchiato'
 
 return config
