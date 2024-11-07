@@ -24,9 +24,6 @@ return {
       paths = '~/dotfiles/nvim/lua/plugins/snips/snippets/' }
     )
     cmp.setup({
-      completion = {
-        completeopt = "menu,menuone,noselect,preview",
-      },
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -40,7 +37,7 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<CR>"] = cmp.mapping.confirm({
-          select = false,
+          select = true,
           behavior = cmp.ConfirmBehavior.Replace
         }),
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -99,17 +96,22 @@ return {
         }),
 
         -- configure lspkind for vs-code like pictograms
-        formatting = {
-          format = lspkind.cmp_format({
-            maxwidth = 50,
-            ellipsis_char = "...",
-          }),
-        },
-        window = {
-          documentation = cmp.config.window.bordered(),
-          completion = cmp.config.window.bordered(),
-        }
-      })
+      }),
+      formatting = {
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+          local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+          local strings = vim.split(kind.kind, "%s", { trimempty = true })
+          kind.kind = " " .. (strings[1] or "") .. " "
+          kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+          return kind
+        end,
+      },
+      window = {
+        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+      }
     })
   end,
 }

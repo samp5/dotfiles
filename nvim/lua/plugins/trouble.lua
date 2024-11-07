@@ -82,7 +82,10 @@ return {
         P = { function() tr.toggle({ mode = "split_preview" }) end, "Diagnostics Preview" },
         l = { function() tr.toggle({ mode = "lsp" }) end, "LSP" },
         s = { function() tr.toggle({ mode = "symbols" }) end, "Symbols" },
-        q = { function() tr.toggle({ mode = "qflist" }) end, "QuickFix" },
+        q = { function()
+          vim.cmd('close')
+          tr.toggle({ mode = "qflist" })
+        end, "QuickFix" },
         c = { function() tr.toggle({ mode = "cascade" }) end, "Diagnostics cascade" },
       }
 
