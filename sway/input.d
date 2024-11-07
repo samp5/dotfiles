@@ -4,6 +4,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_layout us
   xkb_options ctrl:swapcaps
 }
+input "SYNA8017:00 06CB:CEB2 Mouse" {
+  pointer_accel -0.6
+}
 
 input "1739:52914:SYNA8017:00_06CB:CEB2_Touchpad" {
   dwt enabled

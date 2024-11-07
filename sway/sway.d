@@ -2,11 +2,14 @@ include ~/dotfiles/sway/input.d
 include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
+font pango:Atkinson-Hyperlegible-Bold-102 12
+mouse_warping output
+
 ### Autostart 
-exec_always ~/dotfiles/sway/scripts/autotiling -w 1 2 3 4 5 6 7 8 9
-exec_always systemctl --user import-environment
-exec_always --no-startup-id mako
-exec_always /home/sam/.cargo/bin/wl-gammarelay-rs
+exec ~/dotfiles/sway/scripts/autotiling -w 1 2 3 4 5 6 7 8 9
+exec systemctl --user import-environment
+exec --no-startup-id mako
+exec /home/sam/.cargo/bin/wl-gammarelay-rs
 
 ### Variables
 xwayland enable
@@ -23,7 +26,6 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
 set $term /usr/bin/wezterm start --always-new-process
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
 set $term_float $term --class floating_shell
@@ -31,14 +33,19 @@ set $term_float $term --class floating_shell
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 set $menu  rofi -show run | xargs swaymsg exec --
+
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 set $wifi ~/dotfiles/sway/scripts/wifi_script
 set $bluetooth ~/dotfiles/sway/scripts/rofi-bluetooth/rofi-bluetooth
 
 
+# Misc Options
+popup_during_fullscreen leave_fullscreen
+
 ### Output configuration
 output * {
   bg ~/Pictures/wallpapers/water.jpg fill
+  render_bit_depth 8
 }
 
 output "Acer Technologies V247Y 0x0000856D" {
@@ -93,27 +100,28 @@ output eDP-1  {
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
+    bindsym $mod+u focus next
+    
+
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-#
 
 # Workspaces:
 
-
     # workspaces
-    set $ws1   "1: "
-    set $ws2   "2:󰖟 "
-    set $ws3   "3:󱆀 "
-    set $ws4   "4:󰍺 "
-    set $ws5   5
+    set $ws1   " "
+    set $ws2   "󰖟"
+    set $ws3   "󰎚"
+    set $ws4   "󰍺 "
+    set $ws5   "󰅫"
     set $ws6   6
     set $ws7   7
-    set $ws8   "8:󱧌 "
-    set $ws9   "9:󰒱"
-    set $ws0   "0: "
+    set $ws8   "󱧌 "
+    set $ws9   "󰒱"
+    set $ws0   " "
 
     assign [class="Spotify"] $ws0 
     assign [class="Slack"] $ws9
@@ -148,8 +156,8 @@ output eDP-1  {
     bindsym $mod+Shift+8 move container to workspace $ws8
     bindsym $mod+Shift+9 move container to workspace $ws9
     bindsym $mod+Shift+0 move container to workspace $ws0
+
     # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
 #
 # Layout stuff:
 #
@@ -171,7 +179,7 @@ output eDP-1  {
     bindsym $mod+t layout toggle stacking split
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    # bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -266,7 +274,7 @@ bindsym $mod+Print mode "$screenshot"
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+i exec vivaldi
+bindsym $mod+i exec firefox
 bindsym $mod+s exec spotify
 
 # Status Bar:

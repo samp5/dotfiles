@@ -1,4 +1,4 @@
-font=monospace 13
+font=Atkinson-Hyperlegible-Regular-102 12
 # anchor=bottom-right
 width=400
 padding=20
@@ -13,3 +13,6 @@ text-color=#DCD7BA
 [urgency=high]
 border-color=#ee2e24
 ignore-timeout=1
+
+[app-name="Spotify"]
+invisible=1
