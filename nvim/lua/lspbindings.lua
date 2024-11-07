@@ -19,7 +19,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     wk.register({
       ["K"] = { vim.lsp.buf.hover, "Hover", buffer = ev.buf },
       ["<C-h>"] = { mode = 'i', vim.lsp.buf.signature_help, "Signature help", buffer = ev.buf },
-      ["<leader>sh"] = { vim.lsp.buf.signature_help, "Signature help", buffer = ev.buf },
       ['gd'] = { vim.lsp.buf.definition, "Go to definition", buffer = ev.buf },
       ['gD'] = { vim.lsp.buf.declaration, "Go to declaration", buffer = ev.buf },
       ['<space>D'] = { vim.lsp.buf.type_definition, "Type definition", buffer = ev.buf },
