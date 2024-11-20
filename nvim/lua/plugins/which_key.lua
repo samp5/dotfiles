@@ -1,5 +1,6 @@
 return {
   "folke/which-key.nvim",
+  dependencies = "echasnovski/mini.icons",
   priority = 1000,
   config = function()
     vim.o.timeout = true
@@ -11,32 +12,41 @@ return {
     }
     )
 
-    require('which-key').register {
-      ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-      ['<leader>b'] = { name = 'De[B]ug', _ = 'which_key_ignore' },
-      ['<leader>e'] = { name = '[E]xplorer', _ = 'which_key_ignore' },
-      ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
-      ['<leader>n'] = { name = '[N]eogit', _ = 'which_key_ignore' },
-      ['<leader>y'] = { '"+y', '[Y]ank to system' },
-      ['<leader>o'] = { 'o<Esc>k', 'Open line below (no insert)' },
-      ['<leader>O'] = { 'O<Esc>k', 'Open line above (no insert)' },
-      ['<leader>p'] = { mode = 'x', '"_dP', 'Past over selection' },
-      ["<leader>w"] = {
-        name = "[W]indow",
-        e = { "<C-w>=", "Equalize Windows" },
-        s = { "<C-w>x", "Swap Windows" },
-        k = { '10<C-w>>', "Increase window size" },
-        j = { '10<C-w><', "Decrease window size" },
-        n = { '<C-w>v', "Split vertically" },
-        b = { '<C-w>s', "Split horizontally" },
-      },
-      ["<M-n>"]     = { '<C-w>5<', 'Decrease size' },
-      ["<M-w>"]     = { '<C-w>5>', 'Increase size' },
-      ["<M-t>"]     = { '<C-w>+', 'Decrease size' },
-      ["<M-s>"]     = { '<C-w>-', 'Decrease size' },
-      ["<leader>;"] = { '<Esc>A{<Enter>}<Esc>O', "Semicolons" },
+    require "which-key".add({
+      { "<M-n>",      "<C-w>5<",         desc = "Decrease size" },
+      { "<M-s>",      "<C-w>-",          desc = "Decrease size" },
+      { "<M-t>",      "<C-w>+",          desc = "Decrease size" },
+      { "<M-w>",      "<C-w>5>",         desc = "Increase size" },
 
-    }
+      { "<leader>cl", "<cmd>nohl<CR>",   desc = "Clear search highlighting" },
+
+      { "<leader>O",  "O<Esc>k",         desc = "Open line above (no insert)" },
+      { "<leader>o",  "o<Esc>k",         desc = "Open line below (no insert)" },
+      { "<leader>w",  group = "[W]indow" },
+      { "<leader>wb", "<C-w>s",          desc = "Split horizontally" },
+      { "<leader>wq", "<cmd>close<CR>",  desc = "Close split" },
+      { "<leader>we", "<C-w>=",          desc = "Equalize Windows" },
+      { "<leader>wn", "<C-w>v",          desc = "Split vertically" },
+      { "<leader>ws", "<C-w>x",          desc = "Swap Windows" },
+      { "<leader>p",  '"_dP',            desc = "Past over selection",           mode = "x" },
+      { "<leader>y",  '"+y',             desc = "[Y]ank to system" },
+      { "<C-u>",      "<C-u>zz",         desc = "Move up half page and center" },
+      { "<C-d>",      "<C-d>zz",         desc = "Move down half page and center" },
+      { "n",          "nzzzv",           desc = "Next, center, open folds" },
+      { "N",          "Nzzzv",           desc = "Previous center, open folds" },
+      { "<C-o>",      "<C-o>zz",         desc = "Jump back center" },
+      { "<C-i>",      "<C-i>zz",         desc = "Jump forward center" },
+      { "<C-o>",      "<C-o>zz",         desc = "Jump back center" },
+      { "<C-i>",      "<C-i>zz",         desc = "Jump forward center" },
+      { "<leader>d",  '"_d',             mode = { "n", "v" },                    desc = "Delete" },
+      { "Q",          "<nop>" },
+
+    })
+    -- vim.keymap.set('i', "<M-'>", '<Esc>A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
+    -- vim.keymap.set('n', "<M-'>", 'A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
+    -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selection up" })
+    -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
+    -- vim.keymap.set("v", "<CR>", ":w !xargs xdg-open<CR>", { noremap = true, silent = true, desc = "Open links" })
   end,
   opts = {
     window = {

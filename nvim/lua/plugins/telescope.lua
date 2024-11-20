@@ -7,48 +7,132 @@ return {
       local open_with_trouble = require 'trouble.sources.telescope'.open
       require('telescope').setup({
         defaults = {
+          layout_strategy = "flex",
           mappings = {
             i = {
               ["<c-t>"] = open_with_trouble,
               ["<C-j>"] = require('telescope.actions').move_selection_next,
               ["<C-k>"] = require('telescope.actions').move_selection_previous,
+              ["<C-d>"] = require('telescope.actions').preview_scrolling_down,
+              ["<C-u>"] = require('telescope.actions').preview_scrolling_up,
             },
             n = { ["<c-t>"] = open_with_trouble },
-          }
+          },
         }
       })
 
       local tele = require 'telescope.builtin'
-      local tele_u = require 'telescope.utils'
-      local wk = require 'which-key'
-      wk.register({
-        ["<leader>f"] = {
-          name = "[F]ind",
-          c = { tele.current_buffer_fuzzy_find, "FF Current Buffer" },
-          d = { tele.diagnostics, "Diagnostics" },
-          f = { tele.find_files, "Find files" },
-          g = {
-            name = '[G]it',
-            b = { tele.git_bcommits, "Buffer commits" },
-            s = { tele.git_stash, "Stash" },
-            c = { tele.git_commits, "Commits" },
-          },
-          h = { tele.help_tags, "Help tags" },
-          l = { function()
-            tele.colorscheme()
-          end, "Colorscheme" },
-          m = { tele.man_pages, "Man pages" },
-          n = { function() tele.find_files({ cwd = "~/obsidian/school/" }) end, "Find note" },
-          p = { tele.planets, "Planets" },
-          q = { tele.quickfix, "Quickfix" },
-          r = { tele.resume, "Resume search" },
-          s = { function() tele.live_grep({ cwd = tele_u.buffer_dir() }) end, "Live Grep" },
-          u = {
-            name = '[U]nder cursor',
-            s = { function() tele.grep_string() end, "Grep" }
-          },
-          w = { tele.treesitter, "Workspace symbols" },
-        }
+      local wk = require('which-key')
+      local ic = require('mini.icons')
+      wk.add({
+        {
+          "<leader>f",
+          group = "[F]ind",
+          icon = { icon = "", color = "blue" }
+        },
+        {
+          "<leader>fc",
+          tele.current_buffer_fuzzy_find,
+          desc = "FF Current Buffer",
+          icon = { icon = "󰮗", color = "red" }
+        },
+        {
+          "<leader>fd",
+          tele.diagnostics,
+          desc = "Diagnostics",
+          icon = { icon = "", color = "red" }
+        },
+        {
+          "<leader>ff",
+          tele.find_files,
+          desc = "Find files",
+          icon = { icon = '󰈞', color = "blue" }
+
+        },
+        {
+          "<leader>fh",
+          tele.help_tags,
+          desc = "Help tags",
+          icon = { icon = '', color = "blue" }
+        },
+        {
+          "<leader>fl",
+          tele.colorscheme,
+          desc = "Colorscheme",
+          icon = { icon = ic.get('lsp', 'color'), color = "blue" }
+        },
+        {
+          "<leader>fm",
+          tele.man_pages,
+          desc = "Man pages",
+          icon = { icon = ic.get('filetype', 'help'), color = "blue" }
+        },
+        {
+          "<leader>fr",
+          tele.resume,
+          desc = "Resume search",
+          icon = { icon = "", color = "blue" }
+        },
+        {
+          "<leader>fs",
+          tele.live_grep,
+          desc = "Live Grep",
+          icon = { icon = "", color = "blue" }
+
+        },
+        {
+          "<leader>fw",
+          tele.treesitter,
+          desc = "Workspace Symbols",
+          icon = { icon = ic.get('lsp', 'class'), color = "blue" }
+        },
+        {
+          "<leader>fb",
+          expand = function()
+            return require("which-key.extras").expand.buf()
+          end,
+          desc = "Buffers",
+          icon = { icon = "", color = "blue" }
+        },
+
+        { "<leader>fg", group = "[G]it", icon = { icon = "", color = "blue" } },
+        {
+          "<leader>fgb",
+          tele.git_bcommits,
+          desc = "Buffer commits",
+          icon = { icon = "", color = "blue" }
+        },
+        {
+          "<leader>fgc",
+          tele.git_commits,
+          desc = "Commits",
+          icon = { icon = "", color = "blue" }
+        },
+        {
+          "<leader>fgs",
+          tele.git_stash,
+          desc = "Stash",
+          icon = { icon = "", color = "blue" }
+        },
+        {
+          '<leader>fgo',
+          function()
+            local git_icons = {
+              added = "",
+              changed = "󰜥",
+              copied = "",
+              deleted = "",
+              renamed = "󱀱",
+              unmerged = "‡",
+              untracked = "",
+            }
+            tele.git_status({
+              git_icons = git_icons,
+            })
+          end,
+          desc = "Status",
+          icon = { icon = "󱖫", color = "green" }
+        },
       })
     end
   },

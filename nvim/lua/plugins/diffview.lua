@@ -1,31 +1,36 @@
 return {
   'sindrets/diffview.nvim',
   config = function()
-    vim.keymap.set("n", "<leader>dw", function()
-        local user_input
-        vim.ui.input({ prompt = "Diff to?" },
-          function(input)
-            user_input = input
-            if user_input then
-              vim.cmd { cmd = "DiffviewOpen", args = { user_input } }
-            end
-          end)
-      end,
-      { noremap = true, silent = true, desc = "Select Diff to" }
-    )
     local wk = require('which-key')
-
-    wk.register({
-      ['<leader>d'] = {
-        name = "[D]iffview",
-        o = { '<cmd>DiffviewOpen<CR>', "Open Diffview" },
-        c = { '<cmd>DiffviewClose<CR>', 'Close Diffview' },
-        f = { '<cmd>DiffviewFocusFiles<CR>', 'Focus files' },
-        h = { '<cmd>DiffviewFileHistory<CR>', 'File history' },
-        s = { '<cmd>DiffviewFileHistory -g --range=stash<CR>', 'Stash Diffs' },
+    wk.add({
+      { '<leader>d',  group = '[D]iffview' },
+      { '<leader>do', '<cmd>DiffviewOpen<CR>',  desc = "Open Diffview" },
+      { '<leader>dc', '<cmd>DiffviewClose<CR>', desc = "Close Diffview" },
+      {
+        '<leader>dh',
+        function()
+          local path = vim.fn.expand('%')
+          vim.cmd { cmd = "DiffviewFileHistory", args = { path } }
+        end,
+        desc = "Current buffer file history "
+      },
+      { '<leader>df', '<cmd>DiffviewFocusFiles<CR>', desc = 'Focus files' },
+      {
+        "<leader>db",
+        function()
+          local user_input
+          local path = vim.fn.expand('%')
+          vim.ui.input({ prompt = "Diff what" },
+            function(input)
+              user_input = input
+              if user_input then
+                vim.cmd { cmd = "DiffviewOpen", args = { user_input, "--", path } }
+              end
+            end)
+        end,
+        desc = "Select DiffTo"
       }
     })
-
     vim.opt.fillchars:append { diff = "/" }
   end
 }

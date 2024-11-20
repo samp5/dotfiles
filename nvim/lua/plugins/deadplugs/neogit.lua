@@ -1,6 +1,6 @@
 return {
   "NeogitOrg/neogit",
-  branch = "nightly",
+  branch = "master",
   dependencies = {
     "nvim-lua/plenary.nvim",  -- required
     "sindrets/diffview.nvim", -- optional - Diff integration
@@ -10,13 +10,6 @@ return {
   },
   config = function()
     local wk = require("which-key")
-    wk.register({
-
-      ["<leader>n"] = {
-        name = "[N]eogit",
-        o = { "<cmd>Neogit<CR>", "Open Neogit" }
-      }
-    })
     require("neogit").setup({
       graph_style = "unicode",
       signs = {

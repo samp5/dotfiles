@@ -36,23 +36,9 @@ return {
         indent_markers = {
           enable = true,
         },
-        icons = {
-          glyphs = {
-          },
-        },
       },
       filters = {
         git_ignored = false,
-      },
-      -- disable window_picker for
-      -- explorer to work well with
-      -- window splits
-      actions = {
-        open_file = {
-          window_picker = {
-            enable = false,
-          },
-        }
       },
       git = {
         ignore = true,
@@ -63,20 +49,12 @@ return {
     local t = require "nvim-tree.api"
     local wk = require "which-key"
 
-    wk.register({
-      ['<leader>e'] = {
-        name = "Fil[E] Exploxer",
-        d = { t.tree.toggle, "Open file explorer" },
-        f = { t.tree.focus, "Float file explorer" },
-        r = { t.tree.reload, "Reload file explorer" },
-      }
+    wk.add({
+      { "<leader>e",  group = "Fil[E] Exploxer" },
+      { "<leader>ed", t.tree.toggle,            desc = "Open file explorer" },
+      { "<leader>ef", t.tree.focus,             desc = "Float file explorer" },
+      { "<leader>er", t.tree.reload,            desc = "Reload file explorer" },
+      { "<leader>eb", t.tree.find_file,         desc = "Focus the current buffer" },
     })
-
-    -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    --   pattern = { "*NvimTree*" },
-    --   callback = function(buf)
-    --     vim.api.nvim_buf_set_keymap(buf, "n", "q", ":lua require'nvim-tree.api'.tree.toggle()", {})
-    --   end
-    -- })
   end,
 }

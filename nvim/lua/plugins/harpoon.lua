@@ -8,11 +8,15 @@ return {
     local mark = require("harpoon.mark")
     local ui = require("harpoon.ui")
 
-    vim.keymap.set("n", "<leader>em", mark.add_file, { desc = 'Harpoon mark file', noremap = true })
-    vim.keymap.set("n", "<leader>eh", ui.toggle_quick_menu, { desc = 'Harpoon Menu', noremap = true })
 
-    vim.keymap.set("n", "<C-b>", function() ui.nav_file(1) end, { noremap = true })
-    vim.keymap.set("n", "<C-n>", function() ui.nav_file(2) end, { noremap = true })
-    vim.keymap.set("n", "<C-m>", function() ui.nav_file(3) end, { noremap = true })
+    local wk = require "which-key"
+
+    wk.add({
+      { "<M-o>", ui.toggle_quick_menu },
+      { "<M-o>", ui.add_file },
+      { "<C-b>", function() ui.nav_file(1) end },
+      { "<C-n>", function() ui.nav_file(2) end },
+      { "<C-m>", function() ui.nav_file(3) end },
+    })
   end,
 }

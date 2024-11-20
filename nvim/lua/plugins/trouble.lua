@@ -1,7 +1,6 @@
 return {
   "folke/trouble.nvim",
   event = { "BufEnter" },
-  branch = "dev",
   config = function()
     require 'trouble'.setup({
       modes = {
@@ -73,22 +72,42 @@ return {
 
     local wk = require 'which-key'
     local tr = require 'trouble'
-    wk.register({
-      ['<leader>x'] = {
-        name = "Trouble",
-        x = { function() tr.toggle({ mode = "diagnostics_buffer" }) end, "Buffer Diagnostics" },
-        X = { function() tr.toggle({ mode = "diagnostics" }) end, "Diagnostics" },
-        p = { function() tr.toggle({ mode = "buffer_split_preview" }) end, "Buffer Diagnostics Preview" },
-        P = { function() tr.toggle({ mode = "split_preview" }) end, "Diagnostics Preview" },
-        l = { function() tr.toggle({ mode = "lsp" }) end, "LSP" },
-        s = { function() tr.toggle({ mode = "symbols" }) end, "Symbols" },
-        q = { function()
+    wk.add({
+      { "<leader>x", group = "Trouble" },
+      {
+        "<leader>xl",
+        function() tr.toggle({ mode = "lsp" }) end
+        ,
+        desc = "LSP"
+      },
+      {
+        "<leader>xp",
+        function() tr.toggle({ mode = "buffer_split_preview" }) end
+        ,
+        desc = "Buffer Diagnostics Preview"
+      },
+
+      {
+        "<leader>xq",
+        function()
           vim.cmd('close')
           tr.toggle({ mode = "qflist" })
-        end, "QuickFix" },
-        c = { function() tr.toggle({ mode = "cascade" }) end, "Diagnostics cascade" },
-      }
-
+        end
+        ,
+        desc = "QuickFix"
+      },
+      {
+        "<leader>xs",
+        function() tr.toggle({ mode = "symbols" }) end
+        ,
+        desc = "Symbols"
+      },
+      {
+        "<leader>xx",
+        function() tr.toggle({ mode = "diagnostics" }) end
+        ,
+        desc = "Buffer Diagnostics"
+      },
     })
   end
 }

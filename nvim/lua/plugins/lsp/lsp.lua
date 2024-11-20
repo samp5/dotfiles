@@ -23,7 +23,6 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-
       local border = {
         { "╭", "FloatBorder" },
 
@@ -85,6 +84,11 @@ return {
       }
 
       lspconfig.rust_analyzer.setup {
+        on_attach = lsp_on_attach,
+        capabilities = capabilities,
+      }
+
+      lspconfig.ts_ls.setup {
         on_attach = lsp_on_attach,
         capabilities = capabilities,
       }

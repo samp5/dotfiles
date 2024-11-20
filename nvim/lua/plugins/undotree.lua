@@ -2,8 +2,8 @@ return {
   "mbbill/undotree",
   config = function()
     local wk = require 'which-key'
-    wk.register({
-      ['<leader><F5>'] = { '<cmd>UndotreeToggle<CR>', 'Undotree' },
+    wk.add({
+      { '<leader><F5>', '<cmd>UndotreeToggle<CR>', desc = 'Undotree' },
     })
     vim.cmd("let g:undotree_TreeNodeShape = ''")
     vim.cmd("let g:undotree_TreeVertShape = ''")

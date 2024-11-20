@@ -8,6 +8,20 @@ return {
     local function map(mode, l, r, desc)
       vim.keymap.set(mode, l, r, { desc = desc, noremap = true })
     end
+    local wk = require "which-key";
+    local gs = require "gitsigns"
+    wk.add({
+      {
+        "<leader>hf",
+        function()
+          gs.setqflist({
+            target = "all"
+          })
+        end
+        ,
+        desc = "Populate quickfix with hunks"
+      }
+    })
 
     -- Navigation
     map("n", "]h", gs.next_hunk, "Next Hunk")

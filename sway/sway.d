@@ -2,14 +2,14 @@ include ~/dotfiles/sway/input.d
 include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
-font pango:Atkinson-Hyperlegible-Bold-102 12
+font pango:Atkinson-Hyperlegible-Bold-102 16
 mouse_warping output
 
 ### Autostart 
-exec ~/dotfiles/sway/scripts/autotiling -w 1 2 3 4 5 6 7 8 9
 exec systemctl --user import-environment
 exec --no-startup-id mako
 exec /home/sam/.cargo/bin/wl-gammarelay-rs
+exec layman
 
 ### Variables
 xwayland enable
@@ -104,10 +104,10 @@ output eDP-1  {
     
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindsym $mod+Shift+$left nop layman move left
+    bindsym $mod+Shift+$down nop layman move down
+    bindsym $mod+Shift+$up nop layman move up
+    bindsym $mod+Shift+$right nop layman move right
 
 # Workspaces:
 
@@ -115,8 +115,8 @@ output eDP-1  {
     set $ws1   " "
     set $ws2   "󰖟"
     set $ws3   "󰎚"
-    set $ws4   "󰍺 "
-    set $ws5   "󰅫"
+    set $ws4   "󰅫"
+    set $ws5   "󰍺 "
     set $ws6   6
     set $ws7   7
     set $ws8   "󱧌 "
