@@ -36,9 +36,6 @@ return {
       { "N",          "Nzzzv",           desc = "Previous center, open folds" },
       { "<C-o>",      "<C-o>zz",         desc = "Jump back center" },
       { "<C-i>",      "<C-i>zz",         desc = "Jump forward center" },
-      { "<C-o>",      "<C-o>zz",         desc = "Jump back center" },
-      { "<C-i>",      "<C-i>zz",         desc = "Jump forward center" },
-      { "<leader>d",  '"_d',             mode = { "n", "v" },                    desc = "Delete" },
       { "Q",          "<nop>" },
 
     })
@@ -49,8 +46,10 @@ return {
     -- vim.keymap.set("v", "<CR>", ":w !xargs xdg-open<CR>", { noremap = true, silent = true, desc = "Open links" })
   end,
   opts = {
-    window = {
-      border = "single",
+    preset = "modern",
+    notify = false,
+    win = {
+      title = false,
     }
   },
 }

@@ -12,8 +12,8 @@ return {
     local wk = require "which-key"
 
     wk.add({
-      { "<M-o>", ui.toggle_quick_menu },
-      { "<M-o>", ui.add_file },
+      { "<M-o>", ui.toggle_quick_menu,         desc = " Toggle Harpoon Menu" },
+      { "<M-p>", mark.add_file,                desc = "Add file to harpoon" },
       { "<C-b>", function() ui.nav_file(1) end },
       { "<C-n>", function() ui.nav_file(2) end },
       { "<C-m>", function() ui.nav_file(3) end },
