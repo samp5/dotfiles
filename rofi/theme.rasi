@@ -1,25 +1,24 @@
 
 * {
-    selected-normal-foreground:  #303030;
-    foreground:                  #C8C093;
+    selected-normal-foreground:  @foreground;
+    foreground:                  #DCD7BA;
     normal-foreground:           @foreground;
-    alternate-normal-background: #30303000;
+    alternate-normal-background: @background;
     red:                         #C34043;
     selected-urgent-foreground:  rgba ( 248, 248, 242, 100 % );
     blue:                        #7E9CD8;
-    urgent-foreground:           rgba ( 249, 38, 114, 100 % );
-    alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
-    active-foreground:           rgba ( 166, 226, 42, 100 % );
+    urgent-foreground:           #ffffff;
+    active-foreground:           @foreground;
     lightbg:                     #363646;
-    selected-active-foreground:  rgba ( 166, 226, 42, 100 % );
+    selected-active-foreground:  @foreground;
     alternate-active-background: rgba ( 39, 40, 34, 0 % );
     background:                  #1f1f28;
-    bordercolor:                 @blue;
+    bordercolor:                 @red;
     alternate-normal-foreground: @foreground;
     normal-background:           rgba ( 39, 40, 34, 0 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  @blue;
-    border-color:                @blue;
+    selected-normal-background:  @active-background;
+    border-color:                #54546D;
     spacing:                     0;
     separatorcolor:              @blue;
     urgent-background:           rgba ( 39, 40, 34, 0 % );
@@ -27,19 +26,16 @@
     alternate-urgent-foreground: @urgent-foreground;
     background-color:            rgba ( 0, 0, 0, 0 % );
     alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 39, 40, 34, 0 % );
-    selected-active-background:  rgba ( 20, 20, 17, 100 % );
+    active-background:           #2A2A37;
+    selected-active-background:  #2A2A37;
     font: "Atkinson-Hyperlegible-Regular-102 16";
 }
 window {
     background-color: @background;
-    padding:          1;
-    width: 750;
-    height: 750;
-}
-mainbox {
-    border:  0;
-    padding: 0;
+    padding:          0;
+    border: 2;
+    border-radius: 5;
+    width: var( width, 25%);
 }
 message {
     border:       2px 0px 0px ;
@@ -48,18 +44,19 @@ message {
 }
 textbox {
     text-color: @foreground;
+    border: 1;
 }
 listview {
     fixed-height: 0;
+    dynamic: 1;
     border-color: @blue;
     spacing:      2px ;
     scrollbar:    false;
-    padding:      8px;
-    border-radius: 0px 0px 15px 15px;
+    padding:      10px;
 }
 element {
     border:  0;
-    padding: 1px ;
+    padding: 10px ;
 }
 element-text {
     background-color: inherit;
@@ -81,57 +78,24 @@ element.selected.normal {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
 }
-element.selected.urgent {
-    background-color: @selected-urgent-background;
-    text-color:       @selected-urgent-foreground;
-}
-element.selected.active {
-    background-color: @selected-active-background;
-    text-color:       @selected-active-foreground;
-}
 element.alternate.normal {
     background-color: @alternate-normal-background;
     text-color:       @alternate-normal-foreground;
-}
-element.alternate.urgent {
-    background-color: @alternate-urgent-background;
-    text-color:       @alternate-urgent-foreground;
 }
 element.alternate.active {
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
 }
-scrollbar {
-    width:        4px ;
-    border:       0;
-    handle-width: 8px ;
-    padding:      0;
-}
-mode-switcher {
-    border:       2px 0px 0px ;
-    border-color: @separatorcolor;
-}
-button.selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
-}
 inputbar {
     spacing:    2;
-    padding:    5px ;
+    padding:    10px ;
     text-color: @normal-foreground;
     background-color: @lightbg;
-
-}
-case-indicator {
-    spacing:    0;
-    text-color: @normal-foreground;
 }
 entry {
-    spacing:    0;
     text-color: @normal-foreground;
 }
 prompt {
-    spacing:    0;
     text-color: @normal-foreground;
 }
 inputbar {
@@ -139,7 +103,6 @@ inputbar {
 }
 textbox-prompt-colon {
     expand:     false;
-    str:        " ➜ ";
-    margin:     0px 0.3em 0em 0em ;
+    str:        " ";
     text-color: @normal-foreground;
 }

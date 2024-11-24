@@ -36,8 +36,16 @@ set $menu  rofi -show run | xargs swaymsg exec --
 
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 set $wifi ~/dotfiles/sway/scripts/wifi_script
+set $window_picker ~/dotfiles/sway/scripts/tree-switcher.sh
 set $bluetooth ~/dotfiles/sway/scripts/rofi-bluetooth/rofi-bluetooth
+set $window_picker ~/dotfiles/sway/scripts/tree-switcher.sh
+set $mark ~/dotfiles/sway/scripts/mark.sh
+set $pick_mark ~/dotfiles/sway/scripts/mark-switch.sh
 
+
+bindsym $mod+w exec $window_picker
+bindsym $mod+m exec $mark
+bindsym $mod+u exec $pick_mark
 
 # Misc Options
 popup_during_fullscreen leave_fullscreen
@@ -100,7 +108,6 @@ output eDP-1  {
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
-    bindsym $mod+u focus next
     
 
     # Move the focused window with the same, but add Shift
@@ -226,21 +233,21 @@ bindsym $mod+r mode "resize"
 #}
 #bindsym $mod+s mode "$mode_system" 
 
-set $media 󰐎 (p)lay-pause,  (s)huffle, 󰒭 (n)ext, 󰒮 p(r)evious  (j)  (k) 
-
-mode "$media" {
-
-    bindsym p exec playerctl play-pause
-    bindsym s exec playerctl shuffle Toggle
-    bindsym n exec playerctl next
-    bindsym r exec playerctl previous
-    bindsym k exec playerctl volume 0.05+
-    bindsym j exec playerctl volume 0.05-
-
-    # Return to default mode
-    bindsym Escape mode "default"
-}
-bindsym $mod+m mode "$media" 
+# set $media 󰐎 (p)lay-pause,  (s)huffle, 󰒭 (n)ext, 󰒮 p(r)evious  (j)  (k) 
+# 
+# mode "$media" {
+# 
+#     bindsym p exec playerctl play-pause
+#     bindsym s exec playerctl shuffle Toggle
+#     bindsym n exec playerctl next
+#     bindsym r exec playerctl previous
+#     bindsym k exec playerctl volume 0.05+
+#     bindsym j exec playerctl volume 0.05-
+# 
+#     # Return to default mode
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+m mode "$media" 
 
 set $connections  (w)ifi  (b)luetooth
 
@@ -252,7 +259,7 @@ mode "$connections" {
     # Return to default mode
     bindsym Escape mode "default"
 }
-bindsym $mod+w mode "$connections" 
+bindsym $mod+Shift+w mode "$connections" 
 
 # various screenshot options
 set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"

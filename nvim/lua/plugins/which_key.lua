@@ -6,11 +6,12 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300
     require('which-key').setup({
-      window = {
-        border = "single",
+      preset = "modern",
+      notify = false,
+      win = {
+        title = false,
       }
-    }
-    )
+    })
 
     require "which-key".add({
       { "<M-n>",      "<C-w>5<",         desc = "Decrease size" },
@@ -45,11 +46,4 @@ return {
     -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
     -- vim.keymap.set("v", "<CR>", ":w !xargs xdg-open<CR>", { noremap = true, silent = true, desc = "Open links" })
   end,
-  opts = {
-    preset = "modern",
-    notify = false,
-    win = {
-      title = false,
-    }
-  },
 }

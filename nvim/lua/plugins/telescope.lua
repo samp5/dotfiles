@@ -8,6 +8,8 @@ return {
       require('telescope').setup({
         defaults = {
           layout_strategy = "flex",
+          selection_caret = ' ',
+          prompt_prefix = ' ',
           mappings = {
             i = {
               ["<c-t>"] = open_with_trouble,
@@ -24,6 +26,7 @@ return {
       local tele = require 'telescope.builtin'
       local wk = require('which-key')
       local ic = require('mini.icons')
+      local theme = require 'telescope.themes'
       wk.add({
         {
           "<leader>f",
@@ -34,7 +37,7 @@ return {
           "<leader>fc",
           tele.current_buffer_fuzzy_find,
           desc = "FF Current Buffer",
-          icon = { icon = "󰮗", color = "red" }
+          icon = { icon = "󰮗", color = "blue" }
         },
         {
           "<leader>fd",
@@ -44,7 +47,13 @@ return {
         },
         {
           "<leader>ff",
-          tele.find_files,
+          function()
+            tele.find_files(
+              theme.get_dropdown {
+                previewer = false,
+              }
+            )
+          end,
           desc = "Find files",
           icon = { icon = '󰈞', color = "blue" }
 
@@ -59,11 +68,13 @@ return {
           "<leader>fl",
           tele.colorscheme,
           desc = "Colorscheme",
-          icon = { icon = ic.get('lsp', 'color'), color = "blue" }
+          icon = { icon = ic.get('lsp', 'color'), color = "yellow" }
         },
         {
           "<leader>fm",
-          tele.man_pages,
+          function()
+            tele.man_pages({ sections = { "1", "2" } })
+          end,
           desc = "Man pages",
           icon = { icon = ic.get('filetype', 'help'), color = "blue" }
         },
