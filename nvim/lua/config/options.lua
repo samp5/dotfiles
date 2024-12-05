@@ -3,12 +3,13 @@ local o = vim.o
 local wo = vim.wo
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- Global vim settings
 o.autoindent = true
 o.autoread = true
 o.autowrite = true
-
+o.jumpoptions = "stack,view"
 o.backspace = 'indent,eol,start'
 o.expandtab = true
 o.hlsearch = true

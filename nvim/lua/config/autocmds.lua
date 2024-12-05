@@ -1,9 +1,4 @@
 local api = vim.api
-api.nvim_create_autocmd({ "InsertEnter" }, {
-  callback = function()
-    vim.cmd("normal zz")
-  end
-})
 
 api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -33,8 +28,11 @@ api.nvim_create_autocmd("FileType", {
     "lspinfo",
   },
   callback = function(event)
+    local wk = require 'which-key'
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
+    wk.add({
+      { "q", "<cmd>close<CR>", buffer = event.buf }
+    })
   end,
 }
 )
