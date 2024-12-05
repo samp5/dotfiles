@@ -1,5 +1,6 @@
 return {
   "mbbill/undotree",
+  lazy = true,
   config = function()
     local wk = require 'which-key'
     wk.add({

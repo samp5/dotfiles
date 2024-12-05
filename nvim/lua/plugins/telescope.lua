@@ -2,9 +2,9 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { "nvim-telescope/telescope-ui-select.nvim", "nvim-lua/plenary.nvim" },
-
     config = function()
       local open_with_trouble = require 'trouble.sources.telescope'.open
+      local actions = require 'telescope.actions'
       require('telescope').setup({
         defaults = {
           layout_strategy = "flex",
@@ -13,10 +13,10 @@ return {
           mappings = {
             i = {
               ["<c-t>"] = open_with_trouble,
-              ["<C-j>"] = require('telescope.actions').move_selection_next,
-              ["<C-k>"] = require('telescope.actions').move_selection_previous,
-              ["<C-d>"] = require('telescope.actions').preview_scrolling_down,
-              ["<C-u>"] = require('telescope.actions').preview_scrolling_up,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-d>"] = actions.preview_scrolling_down,
+              ["<C-u>"] = actions.preview_scrolling_up,
             },
             n = { ["<c-t>"] = open_with_trouble },
           },
@@ -24,8 +24,8 @@ return {
       })
 
       local tele = require 'telescope.builtin'
-      local wk = require('which-key')
-      local ic = require('mini.icons')
+      local wk = require 'which-key'
+      local ic = require 'mini.icons'
       local theme = require 'telescope.themes'
       wk.add({
         {
@@ -99,8 +99,12 @@ return {
         },
         {
           "<leader>fb",
-          expand = function()
-            return require("which-key.extras").expand.buf()
+          function()
+            tele.buffers(
+              theme.get_dropdown {
+                previewer = false,
+              }
+            )
           end,
           desc = "Buffers",
           icon = { icon = "", color = "blue" }

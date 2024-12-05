@@ -1,30 +1,24 @@
 return {
-  "williamboman/mason.nvim",
-  dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-  },
-  config = function()
-    -- import mason
-    local mason = require("mason")
-
-    -- import mason-lspconfig
-    local mason_lspconfig = require("mason-lspconfig")
-
-    local mason_tool_installer = require("mason-tool-installer")
-
-    -- enable mason and configure icons
-    mason.setup({
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    opts = {
       ui = {
         icons = {
           package_installed = "✓",
           package_pending = "➜",
           package_uninstalled = "✗",
-        },
-      },
-    })
-    mason_lspconfig.setup({
-      -- list of servers for mason to install
+        }
+      }
+    }
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = true,
+    dependencies = "williamboman/mason.nvim",
+    opts = {
+      automatic_installation = true, -- not the same as ensure_installed
       ensure_installed = {
         "pyright",
         "clangd",
@@ -32,14 +26,18 @@ return {
         "rust_analyzer",
         "markdown_oxide",
       },
-      -- auto-install configured servers (with lspconfig)
-      automatic_installation = true, -- not the same as ensure_installed
-    })
+    }
+  },
 
-    mason_tool_installer.setup({
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    lazy = true,
+    dependencies = "williamboman/mason.nvim",
+    opts = {
       ensure_installed = {
         "stylua",
       },
-    })
-  end,
+    }
+  }
+
 }

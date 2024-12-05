@@ -41,12 +41,11 @@ return {
         { "│", "FloatBorder" },
 
       }
-      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-        opts = opts or {}
-        opts.border = opts.border or border
-        return orig_util_open_floating_preview(contents, syntax, opts, ...)
-      end
+      -- Set up handler to include my border characters
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+      }
 
       local capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -58,12 +57,14 @@ return {
 
       require("lspconfig").markdown_oxide.setup({
         capabilities = capabilities, -- again, ensure that capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-        on_attach = lsp_on_attach    -- configure your on attach config
+        on_attach = lsp_on_attach,   -- configure your on attach config
+        handlers = handlers,
       })
 
       lspconfig.clangd.setup {
         capabilities = capabilities,
         on_attach = lsp_on_attach,
+        handlers = handlers,
         cmd = {
           "clangd",
           "--completion-style=detailed",
@@ -75,27 +76,32 @@ return {
       -- configure python server
       lspconfig.pyright.setup {
         on_attach = lsp_on_attach,
+        handlers = handlers,
         capabilities = capabilities,
       }
 
       lspconfig.hls.setup {
         on_attach = lsp_on_attach,
+        handlers = handlers,
         capabilities = capabilities,
       }
 
       lspconfig.rust_analyzer.setup {
         on_attach = lsp_on_attach,
+        handlers = handlers,
         capabilities = capabilities,
       }
 
       lspconfig.ts_ls.setup {
         on_attach = lsp_on_attach,
+        handlers = handlers,
         capabilities = capabilities,
       }
 
       -- configure lua server (with special settings)
       lspconfig["lua_ls"].setup({
         on_attach = lsp_on_attach,
+        handlers = handlers,
         settings = { -- custom settings for lua
           Lua = {
             -- make the language server recognize "vim" global

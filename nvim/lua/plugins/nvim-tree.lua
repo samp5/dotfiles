@@ -8,10 +8,6 @@ return {
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
-    -- change color for arrows in tree to light blue
-    -- vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#3FC5FF ]])
-    -- vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#3FC5FF ]])
-
     -- change color to mauve
     vim.cmd([[ highlight NvimTreeOpenedHL guifg=#A0A07A ]])
 
@@ -20,15 +16,6 @@ return {
       view = {
         relativenumber = false,
         side = "right",
-        float = {
-          -- can't decide if I like this?
-          enable = false,
-          open_win_config = {
-            relative = "editor",
-            col = math.floor((vim.o.columns - 30) / 2),
-            row = math.floor((vim.o.lines - 30) / 2),
-          }
-        },
       },
       -- change folder arrow icons
       renderer = {
@@ -54,7 +41,15 @@ return {
       { "<leader>ed", t.tree.toggle,            desc = "Open file explorer" },
       { "<leader>ef", t.tree.focus,             desc = "Float file explorer" },
       { "<leader>er", t.tree.reload,            desc = "Reload file explorer" },
-      { "<leader>eb", t.tree.find_file,         desc = "Focus the current buffer" },
+      {
+        "<leader>eb",
+        function()
+          t.tree.find_file({
+            update_root = "!", open = true, focus = true
+          })
+        end,
+        desc = "Focus the current buffer"
+      },
     })
   end,
 }

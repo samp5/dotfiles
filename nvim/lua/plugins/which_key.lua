@@ -1,18 +1,18 @@
 return {
   "folke/which-key.nvim",
+  lazy = true,
+  event = "BufEnter",
   dependencies = "echasnovski/mini.icons",
-  priority = 1000,
+  opts = {
+    preset = "modern",
+    notify = false,
+    win = {
+      title = false,
+    }
+  },
   config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
-    require('which-key').setup({
-      preset = "modern",
-      notify = false,
-      win = {
-        title = false,
-      }
-    })
-
     require "which-key".add({
       { "<M-n>",      "<C-w>5<",         desc = "Decrease size" },
       { "<M-s>",      "<C-w>-",          desc = "Decrease size" },
@@ -40,10 +40,5 @@ return {
       { "Q",          "<nop>" },
 
     })
-    -- vim.keymap.set('i', "<M-'>", '<Esc>A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
-    -- vim.keymap.set('n', "<M-'>", 'A{<Enter>}<Esc>O', { noremap = true, desc = 'Brackets (the right way)' })
-    -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selection up" })
-    -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selection down" })
-    -- vim.keymap.set("v", "<CR>", ":w !xargs xdg-open<CR>", { noremap = true, silent = true, desc = "Open links" })
   end,
 }
