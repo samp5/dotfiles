@@ -6,7 +6,7 @@ return {
     "rebelot/kanagawa.nvim",
     config = function()
       require('kanagawa').setup({
-        transparent = true,
+        transparent = false,
         commentStyle = { italic = false },
         keywordStyle = { italic = false },
         statementStyle = { bold = true },
@@ -22,10 +22,10 @@ return {
           return {
             NormalFloat = { bg = "none" },
             FloatBorder = { fg = theme.ui.bg_p2, bg = "none" },
-            FloatTitle  = { bg = "none", fg = "none" },
-            PmenuSel    = { fg = "NONE", bg = theme.ui.bg_p2 },
-            PmenuSbar   = { bg = theme.ui.bg_m1 },
-            PmenuThumb  = { bg = theme.ui.bg_p2 },
+            -- FloatTitle  = { bg = "none", fg = "none" },
+            -- PmenuSel    = { fg = "NONE", bg = theme.ui.bg_p2 },
+            -- PmenuSbar   = { bg = theme.ui.bg_m1 },
+            -- PmenuThumb  = { bg = theme.ui.bg_p2 },
           }
         end,
 

@@ -1,2 +1,2 @@
 local ol = vim.opt_local
-ol.sw = 4
+ol.sw = 2
