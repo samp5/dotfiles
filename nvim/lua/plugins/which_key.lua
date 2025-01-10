@@ -30,7 +30,7 @@ return {
       { "<leader>wn", "<C-w>v",          desc = "Split vertically" },
       { "<leader>ws", "<C-w>x",          desc = "Swap Windows" },
       { "<leader>p",  '"_dP',            desc = "Past over selection",           mode = "x" },
-      { "<leader>y",  '"+y',             desc = "[Y]ank to system" },
+      { "<leader>y",  '"+y',             desc = "[Y]ank to system",              mode = { "v", "x" } },
       { "<C-u>",      "<C-u>zz",         desc = "Move up half page and center" },
       { "<C-d>",      "<C-d>zz",         desc = "Move down half page and center" },
       { "n",          "nzzzv",           desc = "Next, center, open folds" },

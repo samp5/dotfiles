@@ -1,4 +1,5 @@
 local lsp_on_attach = require 'lspbindings'.lsp_on_attach
+local java_on_attach = require 'lspbindings'.java_on_attach
 
 return {
   {
@@ -93,6 +94,11 @@ return {
       }
 
       lspconfig.ts_ls.setup {
+        on_attach = lsp_on_attach,
+        handlers = handlers,
+        capabilities = capabilities,
+      }
+      lspconfig.fsautocomplete.setup {
         on_attach = lsp_on_attach,
         handlers = handlers,
         capabilities = capabilities,

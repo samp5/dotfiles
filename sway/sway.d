@@ -26,7 +26,7 @@ set $down j
 set $up k
 set $right l
 
-set $term /usr/bin/wezterm start --always-new-process
+set $term /usr/bin/ghostty 
 set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
 set $term_float $term --class floating_shell
  
