@@ -1,10 +1,12 @@
 font-family = "Fira Code"
-font-size = 18
+font-size = 17
 command = fish
 window-decoration = false
-theme = "Kanagawa Wave"
+theme = "catppuccin-latte"
 window-padding-x = 5
 window-padding-y = 5
 shell-integration = fish
 class = term.ghostty
 resize-overlay = never
+cursor-color = dc8a78
+cursor-style = block

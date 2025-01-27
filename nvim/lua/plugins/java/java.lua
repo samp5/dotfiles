@@ -134,7 +134,6 @@ local function enable_debugger(bufnr)
 end
 
 local function jdtls_on_attach(client, bufnr)
-  --vim.lsp.inlay_hint(bufnr, true)
   if features.debugger then
     enable_debugger(bufnr)
   end
@@ -143,8 +142,8 @@ local function jdtls_on_attach(client, bufnr)
     enable_codelens(bufnr)
   end
 
-  -- The following mappings are based on the suggested usage of nvim-jdtls
-  -- https://github.com/mfussenegger/nvim-jdtls#usage
+  -- formatting
+  require "lsp-format".on_attach(client, bufnr)
 
   local wk = require 'which-key'
   local jdtls = require 'jdtls'
@@ -249,9 +248,6 @@ local function jdtls_setup(event)
       },
       format = {
         enabled = true,
-        settings = {
-          url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
-        },
       }
     },
     signatureHelp = {

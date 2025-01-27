@@ -108,3 +108,30 @@ set $surimiOrange   #FFA066
 
 # Deprecated
 set $katanaGray     #717C7C
+
+set $Rosewater 	#dc8a78
+set $Flamingo 	#dd7878
+set $Pink 	#ea76cb
+set $Mauve 	#8839ef
+set $Red 	#d20f39
+set $Maroon 	#e64553
+set $Peach 	#fe640b
+set $Yellow 	#df8e1d
+set $Green 	#40a02b
+set $Teal 	#179299
+set $Sky 	#04a5e5
+set $Sapphire 	#209fb5
+set $Blue 	#1e66f5
+set $Lavender 	#7287fd
+set $Text 	#4c4f69
+set $Subtext1 	#5c5f77
+set $Subtext0 	#6c6f85
+set $Overlay2 	#7c7f93
+set $Overlay1 	#8c8fa1
+set $Overlay0 	#9ca0b0
+set $Surface2 	#acb0be
+set $Surface1 	#bcc0cc
+set $Surface0 	#ccd0da
+set $Base 	#eff1f5
+set $Mantle 	#e6e9ef
+set $Crust 	#dce0e8

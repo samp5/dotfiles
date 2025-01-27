@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
-    "modules-right": ["custom/spotify", "idle_inhibitor","memory","temperature", "cpu", "pulseaudio","custom/wl-gammarelay-temperature", "backlight", "network","clock","battery"],
+    "modules-right": ["custom/spotify","custom/weather","cpu", "memory","temperature",  "pulseaudio","custom/wl-gammarelay-temperature", "backlight", "network","clock","battery"],
     "sway/window": {
       "max-length": 50
     },
@@ -17,14 +17,21 @@
       "exec-if": "pgrep spotify",
       "escape": true
     },
+    "custom/weather": {
+      "format": "{}°",
+      "tooltip": true,
+      "interval": 3600,
+      "exec": "wttrbar --location Chicago --nerd --hide-conditions --fahrenheit",
+      "return-type": "json"
+    },
     "pulseaudio": {
       "format": "{volume}% {icon}",
       "format-bluetooth": "{volume}% {icon}",
       "format-muted": "",
       "format-icons": {
-        "headphone": "",
-        "headset": "",
-        "default":  ""
+        "headphone": " ",
+        "headset": "󰋎 ",
+        "default":  " "
       },
       "scroll-step": 1,
       "on-click": "pavucontrol",
@@ -43,13 +50,6 @@
       "format": " {ifname}",
       "tooltip-format": "Network: {essid} ({signalStrength})\n󱀣 {netmask}\n󰺆 {gwaddr}\n󰲐 {ipaddr}",
       "format-disconnected": "",
-    },
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": "",
-        "deactivated": ""
-      },
     },
     "cpu": {
       "on-click": "wezterm start gotop",

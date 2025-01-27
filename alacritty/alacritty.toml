@@ -1,0 +1,14 @@
+[general]
+import = [
+  "~/dotfiles/alacritty/catpuccin.toml",
+]
+
+[window]
+padding.x = 5
+padding.y = 5
+[font]
+normal.family = "Fira Code"
+size = 16
+
+[terminal]
+shell.program = "/usr/bin/fish"

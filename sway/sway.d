@@ -26,9 +26,7 @@ set $down j
 set $up k
 set $right l
 
-set $term /usr/bin/ghostty 
-set $term_cwd --directory "$swaycwd 2>/dev/null | echo $HOME"
-set $term_float $term --class floating_shell
+set $term /usr/bin/wezterm
  
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -52,7 +50,7 @@ popup_during_fullscreen leave_fullscreen
 
 ### Output configuration
 output * {
-  bg ~/Pictures/wallpapers/water.jpg fill
+  bg ~/Pictures/wallpapers/cloud_mountains.jpg fill
   render_bit_depth 8
 }
 

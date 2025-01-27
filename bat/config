@@ -1,4 +1,4 @@
---theme="Visual Studio Dark+"
+--theme="ansi"
 --italic-text=always
 --style="numbers,changes,header"
 

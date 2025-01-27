@@ -60,18 +60,12 @@ return {
       },
       -- sources for autocompletion
       sources = cmp.config.sources({
-        {
-          name = "nvim_lsp",
-          option = {
-            markdown_oxide = {
-              keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
-            }
-          }
-        },
+        { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" },  -- text within current buffer
         { name = "path" },    -- file system paths
         { name = "nvim_lsp_signature_help" },
+        { name = "vim-dadbod-completion" },
       }),
 
       sorting = {
@@ -79,24 +73,6 @@ return {
           require('clangd_extensions.cmp_scores'),
         },
       },
-
-      cmp.setup.filetype('markdown', {
-        sources = cmp.config.sources({
-          {
-            name = "nvim_lsp",
-            option = {
-              markdown_oxide = {
-                keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
-              }
-            }
-          },
-          { name = "luasnip" }, -- snippets
-          { name = "buffer" },  -- text within current buffer
-          { name = "path" },    -- file system paths
-        }),
-
-        -- configure lspkind for vs-code like pictograms
-      }),
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)

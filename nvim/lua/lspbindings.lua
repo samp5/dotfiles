@@ -1,4 +1,5 @@
 local lsp_on_attach = function(client, bufnr)
+  vim.notify("on attach called", vim.log.levels.INFO)
   require 'nvim-navic'.attach(client, bufnr)
   require "lsp-format".on_attach(client)
 end
@@ -44,5 +45,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 return {
   lsp_on_attach = lsp_on_attach,
-  java_on_attach = java_on_attach
 }

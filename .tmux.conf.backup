@@ -87,7 +87,8 @@ unbind C-o
 bind C-o rotate-window -D
 
 # Capture pane status
-set -g @resurrect-capture-pane-contents 'on'
+# set -g @resurrect-capture-pane-contents 'on'
+set -g @continuum-restore 'on'
 set -g @resurrect-strategy-nvim 'session'
 set -g @sessionx-x-path '~/dotfiles'
 
@@ -99,30 +100,15 @@ set -g status-right-length 150
 
 
 # yellow is FFE400
-set -g @K_LIGHT_BG '#7287fd'  
-
-# background inactive win
-set -g @WINDOW_INACTIVE '#CCD0DA' 
-
+set -g @K_LIGHT_BG '#363646'  
+set -g @WINDOW_INACTIVE '#16161D' 
 set -g @TMUX_DATE_TIME_BACKGROUND '#303030'
-
-# background for the whole bar
-set -g @TMUX_OFFWHITE '#E6E9EF'
-
-# text inactive win
-set -g @TMUX_INACTIVE_FONT '#EFF1F5'
-
-# text active win
-set -g @TMUX_WHITE '#EFF1F5'
-
-set -g mode-style "bg=#BCC0CC"
-
-# active win and session
-set -g @TMUX_STATUS_ACTIVE_WINDOW '#1E66F5'
-
+set -g @TMUX_GRAY '#2A2A37'
+set -g @TMUX_INACTIVE_FONT '#7C7C7C'
+set -g @TMUX_DARK_GRAY '#303030'
+set -g @TMUX_TAN '#BEB78D'
+set -g @TMUX_STATUS_ACTIVE_WINDOW '#7E9CD8'
 set -g @TMUX_DATE_TIME_FONT '#B9B999'
-
-# color change for prefix
 set -g @TMUX_STATUS_PREFIX '#87AF5F'
 
 set -g @online_icon 
@@ -131,23 +117,26 @@ set -g @offline_icon 󰤫
 set-option -g status "on"
 
 # Default statusbar color
-set-option -g status-style bg="#{@TMUX_OFFWHITE}"
+set-option -g status-style bg="#{@TMUX_GRAY}"
 
 # Set active pane border color
 set-option -g pane-active-border-style fg="#{@K_LIGHT_BG}"
 # Set inactive pane border color
-set-option -g pane-border-style fg="#{@TMUX_OFFWHITE}"
+set-option -g pane-border-style fg="#{@TMUX_GRAY}"
 # Set pane lines
 set-option -g pane-border-lines heavy
 
+set-option -g message-command-style fg="#{@TMUX_TAN}"
+set-option -g menu-selected-style fg="#{@TMUX_TAN}"
+
 
 set-option -g status-left "\
-#[fg=#{@TMUX_WHITE},\
+#[fg=#{@TMUX_DARK_GRAY},\
 bg=#{@TMUX_STATUS_ACTIVE_WINDOW}]\
 #{?client_prefix,#[bg=#{@TMUX_STATUS_PREFIX}],}\
   #S \
 #[fg=#{@TMUX_STATUS_ACTIVE_WINDOW},\
-bg=#{@TMUX_OFFWHITE}]\
+bg=#{@TMUX_GRAY}]\
 #{?client_prefix,#[fg=#{@TMUX_STATUS_PREFIX}],}\
 \
 #{?window_zoomed_flag,  ,}\
@@ -156,7 +145,7 @@ bg=#{@TMUX_OFFWHITE}]\
 
 set-option -g status-right " "
 # "\
-# #[fg=#{@TMUX_STATUS_ACTIVE_WINDOW}, bg=#{@TMUX_OFFWHITE}] \
+# #[fg=#{@TMUX_STATUS_ACTIVE_WINDOW}, bg=#{@TMUX_GRAY}] \
 # #[fg=#{@WINDOW_INACTIVE}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}]  \
 # #[fg=#{@TMUX_STATUS_ACTIVE_WINDOW},bg=#{@WINDOW_INACTIVE},noitalics] 󰓅 #{cpu_percentage} #{online_status} \
 # #[fg=#{@TMUX_DATE_TIME_BACKGROUND}, bg=#{@WINDOW_INACTIVE}]\
@@ -166,16 +155,16 @@ set-option -g status-right " "
 
 
 set-window-option -g window-status-current-format "\
-#[fg=#{@TMUX_OFFWHITE}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}]\
-#[fg=#{@TMUX_WHITE}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}] #I \
-#[fg=#{@TMUX_WHITE}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}, bold] #W \
-#[fg=#{@TMUX_STATUS_ACTIVE_WINDOW}, bg=#{@TMUX_OFFWHITE}]"
+#[fg=#{@TMUX_GRAY}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}]\
+#[fg=#{@TMUX_DARK_GRAY}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}] #I \
+#[fg=#{@TMUX_DARK_GRAY}, bg=#{@TMUX_STATUS_ACTIVE_WINDOW}, bold] #W \
+#[fg=#{@TMUX_STATUS_ACTIVE_WINDOW}, bg=#{@TMUX_DARK_GRAY}]"
 
 set-window-option -g window-status-format "\
-#[fg=#{@TMUX_OFFWHITE},bg=#{@WINDOW_INACTIVE},noitalics]\
+#[fg=#{@TMUX_DARK_GRAY},bg=#{@WINDOW_INACTIVE},noitalics]\
 #[fg=#{@TMUX_INACTIVE_FONT},bg=#{@WINDOW_INACTIVE}] #I \
 #[fg=#{@TMUX_INACTIVE_FONT}, bg=#{@WINDOW_INACTIVE}] #W \
-#[fg=#{@WINDOW_INACTIVE}, bg=#{@TMUX_OFFWHITE}]"
+#[fg=#{@WINDOW_INACTIVE}, bg=#{@TMUX_DARK_GRAY}]"
 
 # Set the history limit so we get lots of scrollback.
 setw -g history-limit 50000

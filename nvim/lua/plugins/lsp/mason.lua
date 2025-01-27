@@ -25,6 +25,7 @@ return {
         "lua_ls",
         "rust_analyzer",
         "markdown_oxide",
+        "arduino_language_server",
       },
     }
   },
