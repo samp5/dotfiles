@@ -1,12 +1,7 @@
 #! /usr/bin/env bash
+color=$(printf "  - light\n  - dark" | rofi -dmenu -l 2 | awk '{print $3}') 
 
-color=""
-
-if [ "$1" = "light" ]; then
-  color="light"
-elif [ "$1" = "dark" ]; then
-  color="dark"
-else
+if [ "$color" = "" ]; then
   exit
 fi
 
@@ -25,5 +20,17 @@ cat "/home/sam/dotfiles/rofi/theme.${color}.rasi" > "/home/sam/dotfiles/rofi/the
 #wezterm 
 cat "/home/sam/dotfiles/${color}.wezterm.lua" > "/home/sam/dotfiles/.wezterm.lua"
 
+# tmux
+cat "/home/sam/dotfiles/${color}.tmux.conf" > "/home/sam/dotfiles/.tmux.conf"
+
+tmux source-file  /home/sam/dotfiles/.tmux.conf
+
 # mako
+killall wl-gammarelay-rs
+
+# obsidian
+cat "/home/sam/obsidian/school/.obsidian/${color}_apperance.json" > "/home/sam/obsidian/school/.obsidian/appearance.json"
+
 swaymsg reload
+
+swaymsg "output * background ~/Pictures/wallpapers/${color}.jpg fill"

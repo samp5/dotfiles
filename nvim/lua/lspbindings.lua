@@ -14,8 +14,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     wk.add(
       {
-        { "<C-h>",      vim.lsp.buf.signature_help, buffer = ev.buf, desc = "Signature help", mode = "i",          group = "LSP" },
-        { "<leader>a",  vim.lsp.buf.code_action,    buffer = ev.buf, desc = "Code action",    mode = { "n", "v" }, group = "LSP" },
+        { "<C-h>",      vim.lsp.buf.signature_help, buffer = ev.buf, desc = "Signature help", mode = "i" },
+        { "<leader>a",  vim.lsp.buf.code_action,    buffer = ev.buf, desc = "Code action",    mode = { "n", "v" } },
         { "<leader>ic", vim.lsp.buf.incoming_calls, buffer = ev.buf, desc = "Incoming calls" },
         {
           "<leader>ih",
@@ -24,21 +24,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
           end,
           buffer = ev.buf,
           desc = "Toggle inlay hints"
-          ,
-          group = "LSP"
         },
-        { "]d",         vim.diagnostic.goto_next,                                                group = "LSP" },
-        { "[d",         vim.diagnostic.goto_prev,                                                group = "LSP" },
-        { "<leader>sn", vim.lsp.buf.rename,                                                      buffer = ev.buf, desc = "Rename",                 group = "LSP" },
-        { "<leader>vd", vim.diagnostic.open_float,                                               buffer = ev.buf, desc = "Open diagnostic float",  group = "LSP" },
-        { "<leader>wf", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, buffer = ev.buf, desc = "show workspace folders", group = "LSP" },
-        { "<space>D",   vim.lsp.buf.type_definition,                                             buffer = ev.buf, desc = "Type definition",        group = "LSP" },
-        { "K",          vim.lsp.buf.hover,                                                       buffer = ev.buf, desc = "Hover",                  group = "LSP" },
-        { "gD",         vim.lsp.buf.declaration,                                                 buffer = ev.buf, desc = "Go to declaration",      group = "LSP" },
-        { "gd",         vim.lsp.buf.definition,                                                  buffer = ev.buf, desc = "Go to definition",       group = "LSP" },
-        { "gi",         tele.lsp_implementations,                                                buffer = ev.buf, desc = "Go implementations",     group = "LSP" },
-        { "gr",         tele.lsp_references,                                                     buffer = ev.buf, desc = "Go references",          group = "LSP" },
-        { "<leader>bf", vim.lsp.buf.format,                                                      buffer = ev.buf, desc = "Buffer Format",          group = "LSP" },
+        { "]d",         vim.diagnostic.goto_next },
+        { "[d",         vim.diagnostic.goto_prev },
+        { "<leader>sn", vim.lsp.buf.rename,                                                      buffer = ev.buf, desc = "Rename" },
+        { "<leader>vd", vim.diagnostic.open_float,                                               buffer = ev.buf, desc = "Open diagnostic float" },
+        { "<leader>wf", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, buffer = ev.buf, desc = "show workspace folders" },
+        { "<space>D",   vim.lsp.buf.type_definition,                                             buffer = ev.buf, desc = "Type definition" },
+        { "K",          vim.lsp.buf.hover,                                                       buffer = ev.buf, desc = "Hover" },
+        { "gD",         vim.lsp.buf.declaration,                                                 buffer = ev.buf, desc = "Go to declaration" },
+        { "gd",         vim.lsp.buf.definition,                                                  buffer = ev.buf, desc = "Go to definition" },
+        { "gi",         tele.lsp_implementations,                                                buffer = ev.buf, desc = "Go implementations" },
+        { "gr",         tele.lsp_references,                                                     buffer = ev.buf, desc = "Go references" },
+        { "<leader>bf", vim.lsp.buf.format,                                                      buffer = ev.buf, desc = "Buffer Format" },
       })
   end
 })

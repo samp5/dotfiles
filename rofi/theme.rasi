@@ -1,7 +1,7 @@
 
 * {
     selected-normal-foreground:  @foreground;
-    foreground:                  #4c4f69;
+    foreground:                  #DCD7BA;
     normal-foreground:           @foreground;
     alternate-normal-background: @background;
     red:                         #C34043;
@@ -9,10 +9,10 @@
     blue:                        #7E9CD8;
     urgent-foreground:           #ffffff;
     active-foreground:           @foreground;
-    lightbg:                     #ccd0da;
+    lightbg:                     #363646;
     selected-active-foreground:  @foreground;
     alternate-active-background: rgba ( 39, 40, 34, 0 % );
-    background:                  #eff1f5;
+    background:                  #1f1f28;
     bordercolor:                 @red;
     alternate-normal-foreground: @foreground;
     normal-background:           rgba ( 39, 40, 34, 0 % );
@@ -26,8 +26,8 @@
     alternate-urgent-foreground: @urgent-foreground;
     background-color:            rgba ( 0, 0, 0, 0 % );
     alternate-active-foreground: @active-foreground;
-    active-background:           #9ca0b0;
-    selected-active-background:  #9ca0b1;
+    active-background:           #2A2A37;
+    selected-active-background:  #2A2A37;
     font: "Atkinson-Hyperlegible-Regular-102 16";
 }
 window {

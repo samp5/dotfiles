@@ -9,7 +9,7 @@ gaps outer 0
 
 # Border colors
 # class                     border         backgnd   text       indicator    child_border
-client.focused              $springViolet1 $Base $Text $Blue $Lavender
-client.unfocused            $sumiInk4      $Crust $Subtext1  $Blue $Surface0
-client.focused_tab_title    $springViolet2 $Base     $Text 
-client.focused_inactive     $sumiInk4      $Crust    $Subtext1 
+client.focused              $springViolet1 $sumiInk2 $fujiWhite $crystalBlue $sumiInk4
+client.unfocused            $sumiInk4      $sumiInk1 $fujiGray  $crystalBlue $sumiInk1
+client.focused_tab_title    $springViolet2 $sumiInk2 $fujiWhite 
+client.focused_inactive     $sumiInk4      $sumiInk0 $fujiGray 

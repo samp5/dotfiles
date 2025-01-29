@@ -8,7 +8,7 @@ mouse_warping output
 ### Autostart 
 exec systemctl --user import-environment
 exec --no-startup-id mako
-exec /home/sam/.cargo/bin/wl-gammarelay-rs
+exec_always /home/sam/.cargo/bin/wl-gammarelay-rs
 exec layman
 
 ### Variables
@@ -39,11 +39,13 @@ set $bluetooth ~/dotfiles/sway/scripts/rofi-bluetooth/rofi-bluetooth
 set $window_picker ~/dotfiles/sway/scripts/tree-switcher.sh
 set $mark ~/dotfiles/sway/scripts/mark.sh
 set $pick_mark ~/dotfiles/sway/scripts/mark-switch.sh
+set $color_switcher ~/dotfiles/color.sh
 
 
 bindsym $mod+w exec $window_picker
 bindsym $mod+m exec $mark
 bindsym $mod+u exec $pick_mark
+bindsym $mod+Shift+p exec $color_switcher
 
 # Misc Options
 popup_during_fullscreen leave_fullscreen

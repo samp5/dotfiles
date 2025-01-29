@@ -7,14 +7,19 @@
 }
 
 window#waybar {
-    background: #e6e9ef;
-    border-bottom: 3px solid #dce0e8;
-    color: #4c4f69;
+    background: #1F1F28;
+    border-bottom: 3px solid #16161D;
+    color: #DCD7BA;
 }
 
 tooltip {
-  border-radius: 5px;
-  border: 2px solid #dce0e8;
+  border-radius: 8px;
+  background: #2A2A37;
+  border: 2px solid #16161D;
+}
+
+tooltip label {
+  color: #DCD7BA;
 }
 
 #custom-scratchpad-indicator {
@@ -26,6 +31,7 @@ tooltip {
 #workspaces button {
     border-radius: 3px;
     background: transparent;
+    color: #DCD7BA;
     border-bottom: 2px solid transparent;
     padding: 0 5px;
 }
@@ -33,22 +39,31 @@ tooltip {
 #workspaces button.focused {
     color: #252535;
     border-radius: 3px;
-    background: #7287fd;
+    background: #7E9CD3;
 }
+
+
 #mode {
     border-radius: 3px;
-    border-bottom: 2px solid #dc8a78;
+    background: #363646;
+    border-bottom: 2px solid #7E9CD3;
     padding: 0 10px;
 }
 
-#custom-weather {
+#custom-spotify {
     padding: 0px 8px;
     border-bottom: 2px solid #98BB6C;
     border-radius: 2px;
 }
-#custom-spotify {
+
+#idle_inhibitor.deactivated {
     padding: 0px 8px;
-    border-bottom: 2px solid #98BB6C;
+    border-bottom: 2px solid #76946D;
+    border-radius: 2px;
+}
+#idle_inhibitor.activated {
+    padding: 0px 8px;
+    border-bottom: 2px solid #E6C384;
     border-radius: 2px;
 }
 #memory {
@@ -59,11 +74,14 @@ tooltip {
 #cpu {
   padding: 0px 8px;
   border-radius: 2px;
+  color: #DCD7BA;
   border-bottom: 2px solid #7FB4CA;
 }
 #temperature {
     padding: 0px 8px;
     border-radius: 2px;
+    background-color: #1F1F28;
+    color: #DCD7BA;
     border-bottom: 2px solid #9CABCA;
 }
 #pulseaudio{
@@ -93,25 +111,33 @@ tooltip {
 }
 #clock {
   padding: 0px 8px;
-  border-radius: 3px;
-  border-bottom: 2px solid #938AA9;
+    border-radius: 3px;
+    background-color: #1F1F28;
+    border-bottom: 2px solid #938AA9;
 }
 #battery {
     padding: 0px 8px;
     border-radius: 2px;
     border-bottom: 2px solid #957FB8;
+    background-color: #1F1F28;
+    color: #DCD7BA;
 }
 
 #battery.charging {
     border-radius: 2px;
     border-bottom: 2px solid transparent;
-    background-color: #40a02b;
+    color: #1F1F28;
+    background-color: #76946A;
 }
 
 #battery.critical:not(.charging) {
-    background: #d20f39;
+    background: #E82424;
+    border-bottom: 2px solid #E82424 ;
+    color: #252535;
 }
 
 #battery.warning:not(.charging) {
-    background: #df8e1d;
+    background: #DCA561;
+    border-bottom: 2px transparent ;
+    color: #252535;
 }
