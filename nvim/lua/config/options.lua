@@ -34,7 +34,7 @@ wo.wrap = true
 wo.linebreak = true
 
 o.foldmethod = 'expr'
-o.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 
 -- persistent undos
 o.undofile = true

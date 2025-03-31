@@ -1,13 +1,11 @@
 local lsp_on_attach = require 'lspbindings'.lsp_on_attach
-local java_on_attach = require 'lspbindings'.java_on_attach
-
 local function get_arduino_cmd()
   local cmds = {
-    "arduino-language-server",
-    "-cli", "/usr/bin/arduino-cli",
-    "-cli-config", "/home/sam/.arduino15/arduino-cli.yaml",
-    "-fqbn", "arduino:renesas_uno:unor4wifi",
-    "-clangd", "/home/sam/.local/share/nvim/mason/bin/clangd"
+    "arduino-language-server",                                --
+    "-cli", "/usr/bin/arduino-cli",                           -- path to arduino-cli
+    "-cli-config", "/home/sam/.arduino15/arduino-cli.yaml",   -- path to your arduino-cli config (should be auto generated)
+    "-fqbn", "arduino:renesas_uno:unor4wifi",                 -- fully qualified name of your board ( can get with `arduino-cli board list ` at termnial when board is attached)
+    "-clangd", "/home/sam/.local/share/nvim/mason/bin/clangd" -- path to clangd
   }
   return cmds
 end

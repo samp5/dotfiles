@@ -45,7 +45,7 @@ set $color_switcher ~/dotfiles/color.sh
 bindsym $mod+w exec $window_picker
 bindsym $mod+m exec $mark
 bindsym $mod+u exec $pick_mark
-bindsym $mod+Shift+p exec $color_switcher
+bindsym $mod+u exec $color_switcher
 
 # Misc Options
 popup_during_fullscreen leave_fullscreen

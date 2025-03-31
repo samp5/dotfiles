@@ -195,11 +195,9 @@ local function jdtls_setup(event)
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
 
-    -- 💀
     '-jar',
     path.launcher_jar,
 
-    -- 💀
     '-configuration',
     path.platform_config,
 

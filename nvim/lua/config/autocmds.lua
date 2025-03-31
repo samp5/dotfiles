@@ -51,3 +51,12 @@ api.nvim_create_autocmd("FileType", {
 api.nvim_create_autocmd({ 'BufRead' }, {
   callback = function() vim.o.foldlevel = 99 end
 })
+
+-- Autoclose imports
+api.nvim_create_autocmd('LspNotify', {
+  callback = function(args)
+    if args.data.method == 'textDocument/didOpen' then
+      vim.lsp.foldclose('imports', vim.fn.bufwinid(args.buf))
+    end
+  end,
+})

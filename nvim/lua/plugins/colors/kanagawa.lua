@@ -22,10 +22,6 @@ return {
           return {
             NormalFloat = { bg = "none" },
             FloatBorder = { fg = theme.ui.bg_p2, bg = "none" },
-            -- FloatTitle  = { bg = "none", fg = "none" },
-            -- PmenuSel    = { fg = "NONE", bg = theme.ui.bg_p2 },
-            -- PmenuSbar   = { bg = theme.ui.bg_m1 },
-            -- PmenuThumb  = { bg = theme.ui.bg_p2 },
           }
         end,
 

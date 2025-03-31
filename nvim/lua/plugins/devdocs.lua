@@ -1,5 +1,6 @@
 return {
   "samp5/nvim-devdocs",
+  ft = "rust",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",

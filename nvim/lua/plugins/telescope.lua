@@ -73,7 +73,7 @@ return {
         {
           "<leader>fm",
           function()
-            tele.man_pages({ sections = { "1", "2" } })
+            tele.man_pages({ sections = { "1", "2", "3", "7" } })
           end,
           desc = "Man pages",
           icon = { icon = ic.get('filetype', 'help'), color = "blue" }

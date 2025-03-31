@@ -46,13 +46,26 @@ return {
     wk.add({
       { 'H', '<Plug>(cokeline-focus-prev)', desc = 'Focus previous buffer' },
       { 'L', '<Plug>(cokeline-focus-next)', desc = 'Focus next buffer' },
-      { 'X', '<Plug>(cokeline-pick-close)', desc = 'Pick close' },
       {
-        "<leader>p",
+        "<leader>pf",
         function()
           require('cokeline.mappings').pick("focus")
         end,
         desc = "Pick a buffer to focus"
+      },
+      {
+        "<leader>pa",
+        function()
+          vim.cmd('%bd|e#|bd#')
+        end,
+        desc = "Pick a buffer to close"
+      },
+      {
+        "<leader>pc",
+        function()
+          require('cokeline.mappings').pick("close")
+        end,
+        desc = "Pick a buffer to close"
       },
     })
   end

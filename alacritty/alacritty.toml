@@ -2,6 +2,7 @@
 import = [
   "~/dotfiles/alacritty/catpuccin.toml",
 ]
+[t
 
 [window]
 padding.x = 5

@@ -1,7 +1,21 @@
 local lsp_on_attach = function(client, bufnr)
-  vim.notify("on attach called", vim.log.levels.INFO)
   require 'nvim-navic'.attach(client, bufnr)
   require "lsp-format".on_attach(client)
+
+  -- This is to prevent the annoying rust analyzer issue that neovim doesn't handle well
+  -- Sometimes (usually when typing fast) the rust-analyzer repeatedly sends a
+  -- -32802 server cancelled request error (probably some debounce thing) which just
+  -- spams my notifier with big red X-s ...
+  -- https://github.com/neovim/neovim/issues/30985 this issue is tracking it
+  for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+    local default_diagnostic_handler = vim.lsp.handlers[method]
+    vim.lsp.handlers[method] = function(err, result, context, config)
+      if err ~= nil and err.code == -32802 then
+        return
+      end
+      return default_diagnostic_handler(err, result, context, config)
+    end
+  end
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
