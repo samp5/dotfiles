@@ -23,8 +23,8 @@ return {
         "pyright",
         "clangd",
         "lua_ls",
+        "gopls",
         "rust_analyzer",
-        "markdown_oxide",
         "arduino_language_server",
       },
     }

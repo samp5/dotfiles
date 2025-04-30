@@ -8,10 +8,6 @@ return {
   config = function()
     require "cokeline".setup({
       components = {
-        -- {
-        --   text = function(buffer) return ' ' .. buffer.index .. ' ' end,
-        --   bold = true,
-        -- },
         {
           text = function(buffer)
             if buffer.pick_letter ~= string.sub(buffer.filename, 0, 1) then
@@ -58,7 +54,7 @@ return {
         function()
           vim.cmd('%bd|e#|bd#')
         end,
-        desc = "Pick a buffer to close"
+        desc = "Close all but this buffer"
       },
       {
         "<leader>pc",

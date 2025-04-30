@@ -33,6 +33,7 @@ wo.relativenumber = true
 wo.wrap = true
 wo.linebreak = true
 
+-- set the fold expression to defer to the LSP
 o.foldmethod = 'expr'
 o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 

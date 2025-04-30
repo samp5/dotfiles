@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
-    "modules-right": ["custom/spotify","custom/weather","cpu", "memory","temperature",  "pulseaudio","custom/wl-gammarelay-temperature", "backlight", "network","clock","battery"],
+    "modules-right": ["custom/spotify","cpu", "memory","temperature",  "pulseaudio","custom/wl-gammarelay-temperature", "backlight", "network","clock","battery"],
     "sway/window": {
       "max-length": 50
     },
@@ -16,13 +16,6 @@
       "exec": "~/dotfiles/sway/waybar/modules/spotify.sh",
       "exec-if": "pgrep spotify",
       "escape": true
-    },
-    "custom/weather": {
-      "format": "{}°",
-      "tooltip": true,
-      "interval": 3600,
-      "exec": "wttrbar --location Chicago --nerd --hide-conditions --fahrenheit",
-      "return-type": "json"
     },
     "pulseaudio": {
       "format": "{volume}% {icon}",
@@ -65,9 +58,29 @@
         "tooltip-format": "{timeTo}\n",
     },
     "clock": {
-        "interval": 60,
-        "format": "{:%I:%M}",
-        "format-alt": "{:%a, %d. %b  %I:%M}"
+      "interval": 60,
+      "format": "{:%I:%M}",
+      "format-alt": "{:%a, %d. %b  %I:%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode"          : "month",
+        "mode-mon-col"  : 3,
+        "weeks-pos"     : "left",
+        "format": {
+          "months":     "<span color='#658594'><b>{}</b></span>",
+          "days":       "<span color='#dcd7ba'><b>{}</b></span>",
+          "weeks":      "<span color='#ff9e3b'><b>W{}</b></span>",
+          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+          "today":      "<span color='#7aa89f'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions":  {
+        "on-click-right": "mode",
+        "on-scroll-up": "tz_up",
+        "on-scroll-down": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
     },
     "memory": {
       "on-click": "wezterm start gotop",

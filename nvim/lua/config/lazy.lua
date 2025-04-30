@@ -21,5 +21,6 @@ require('lazy').setup({
     { import = 'plugins.dap' },
     { import = 'plugins.colors' },
     { import = 'plugins.java' },
+    { import = 'plugins.go' },
   }
 })

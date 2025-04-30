@@ -1,23 +1,3 @@
-local lsp_on_attach = function(client, bufnr)
-  require 'nvim-navic'.attach(client, bufnr)
-  require "lsp-format".on_attach(client)
-
-  -- This is to prevent the annoying rust analyzer issue that neovim doesn't handle well
-  -- Sometimes (usually when typing fast) the rust-analyzer repeatedly sends a
-  -- -32802 server cancelled request error (probably some debounce thing) which just
-  -- spams my notifier with big red X-s ...
-  -- https://github.com/neovim/neovim/issues/30985 this issue is tracking it
-  for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
-    local default_diagnostic_handler = vim.lsp.handlers[method]
-    vim.lsp.handlers[method] = function(err, result, context, config)
-      if err ~= nil and err.code == -32802 then
-        return
-      end
-      return default_diagnostic_handler(err, result, context, config)
-    end
-  end
-end
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -25,6 +5,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local tele = require("telescope.builtin")
     local troub_t = require "trouble.sources.telescope"
     local wk = require "which-key"
+
+    local client_id = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    require 'nvim-navic'.attach(client_id, ev.buf)
+    require "lsp-format".on_attach(client_id)
+
+    -- This is to prevent the annoying rust analyzer issue that neovim doesn't handle well
+    -- Sometimes (usually when typing fast) the rust-analyzer repeatedly sends a
+    -- -32802 server cancelled request error (probably some debounce thing) which just
+    -- spams my notifier with big red X-s ...
+    -- https://github.com/neovim/neovim/issues/30985 this issue is tracking it
+    for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+      local default_diagnostic_handler = vim.lsp.handlers[method]
+      vim.lsp.handlers[method] = function(err, result, context, config)
+        if err ~= nil and err.code == -32802 then
+          return
+        end
+        return default_diagnostic_handler(err, result, context, config)
+      end
+    end
 
     wk.add(
       {
@@ -39,8 +39,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
           buffer = ev.buf,
           desc = "Toggle inlay hints"
         },
-        { "]d",         vim.diagnostic.goto_next },
-        { "[d",         vim.diagnostic.goto_prev },
+        { "]d",         function() vim.diagnostic.jump({ count = 1, float = true }) end },
+        { "[d",         function() vim.diagnostic.jump({ count = -1, float = true }) end },
         { "<leader>sn", vim.lsp.buf.rename,                                                      buffer = ev.buf, desc = "Rename" },
         { "<leader>vd", vim.diagnostic.open_float,                                               buffer = ev.buf, desc = "Open diagnostic float" },
         { "<leader>wf", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, buffer = ev.buf, desc = "show workspace folders" },
@@ -54,7 +54,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
   end
 })
-
-return {
-  lsp_on_attach = lsp_on_attach,
-}

@@ -1,5 +1,6 @@
 local api = vim.api
 
+-- Highlight text on yank
 api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -8,6 +9,7 @@ api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Enable spell check on text and markdown files
 api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   {
@@ -18,18 +20,20 @@ api.nvim_create_autocmd(
   }
 )
 
+-- Map escape to normal mode on all terminal
 api.nvim_create_autocmd(
   { "TermOpen" },
   {
     callback = function(event)
       local wk = require 'which-key'
       wk.add({
-        { "<Esc>", "<C-\\><C-n>", mode = { "t" } }
+        { "<Esc>", "<C-\\><C-n>", mode = { "t" }, buffer = { event.buf } }
       })
     end
   }
 )
 
+-- Be able to close the following with 'q'
 api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
   pattern = {
@@ -48,15 +52,3 @@ api.nvim_create_autocmd("FileType", {
   end,
 }
 )
-api.nvim_create_autocmd({ 'BufRead' }, {
-  callback = function() vim.o.foldlevel = 99 end
-})
-
--- Autoclose imports
-api.nvim_create_autocmd('LspNotify', {
-  callback = function(args)
-    if args.data.method == 'textDocument/didOpen' then
-      vim.lsp.foldclose('imports', vim.fn.bufwinid(args.buf))
-    end
-  end,
-})

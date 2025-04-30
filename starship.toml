@@ -1,7 +1,8 @@
-
 [rust]
 symbol = "[ ](bright-yellow)"
 
+[java]
+style = "white dimmed"
 
 [git_branch]
 format = "[$symbol $branch(:$remote_branch)]($style) "

@@ -26,7 +26,7 @@ set $down j
 set $up k
 set $right l
 
-set $term /usr/bin/wezterm
+set $term /usr/bin/alacritty
  
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -40,12 +40,14 @@ set $window_picker ~/dotfiles/sway/scripts/tree-switcher.sh
 set $mark ~/dotfiles/sway/scripts/mark.sh
 set $pick_mark ~/dotfiles/sway/scripts/mark-switch.sh
 set $color_switcher ~/dotfiles/color.sh
+set $pdf_pick ~/dotfiles/sway/scripts/open_pdf.sh
 
 
 bindsym $mod+w exec $window_picker
 bindsym $mod+m exec $mark
 bindsym $mod+u exec $pick_mark
-bindsym $mod+u exec $color_switcher
+bindsym $mod+Shift+o exec $pdf_pick
+bindsym $mod+Shift+p exec $color_switcher
 
 # Misc Options
 popup_during_fullscreen leave_fullscreen
@@ -264,14 +266,17 @@ bindsym $mod+Shift+w mode "$connections"
 # various screenshot options
 set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
 set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
+set $stop_recording killall wf-recorder
 
-set $screenshot (s)elect area (S)elect & save (f)ocused pane (p)ick color 
+set $screenshot (s)elect area (S)elect & save (f)ocused pane (p)ick color (F)ocused pane record (e)nd recording
 mode "$screenshot" {
 
     bindsym s exec $screenclip
     bindsym Shift+s exec $screenclipsave
     bindsym p exec ~/dotfiles/sway/scripts/pick_color.sh
     bindsym f exec ~/dotfiles/sway/scripts/screenshotfocusedpane
+    bindsym Shift+f exec ~/dotfiles/sway/scripts/screen_cap_focused_pane.sh
+    bindsym e exec $stop_recording
 
     # Return to default mode
     bindsym Escape mode "default"
@@ -281,7 +286,7 @@ bindsym $mod+Print mode "$screenshot"
 
 # Shortcuts
 bindsym Print exec $screenclip
-bindsym $mod+i exec firefox
+bindsym $mod+i exec /usr/bin/zen
 bindsym $mod+s exec spotify
 
 # Status Bar:
