@@ -60,8 +60,8 @@ for ((i=0; i<"${#windows[@]}"; i=i+3)); do
     str="$str$building_string\n" 
 done
 
-# Show rofi menu and get selection
-selection=$(printf "$str" | rofi -p "Switch to a window" -dmenu)
+# Show  menu and get selection
+selection=$(printf "$str" | wofi -p "Switch to a window" --dmenu)
 [[ -z $selection ]] && exit
 
 # Extract window ID from selection (now accounting for workspace symbol)

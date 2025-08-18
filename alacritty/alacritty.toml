@@ -4,12 +4,16 @@ import = [
 ]
 
 [window]
-padding.x = 5
-padding.y = 5
+opacity=0.92
+padding.x = 2
+
+[scrolling]
+history = 100000
 
 [font]
-normal.family = "Fira Code"
-size = 16
+normal.family = "Iosevka Term"
+normal.style = "semibold"
+size = 12
 
 [terminal]
 shell.program = "/usr/bin/fish"
@@ -18,5 +22,5 @@ shell.program = "/usr/bin/fish"
 term = "xterm-256color"
 
 [cursor]
-style.shape = "Beam"
-style.blinking = "On"
+style.shape = "Underline"
+style.blinking = "Always"

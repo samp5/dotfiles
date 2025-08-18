@@ -29,7 +29,21 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      vim.lsp.enable({ 'clangd', 'pyright', 'hls', 'rust_analyzer', 'gopls', 'fsautocomplete', 'sqlls', 'lua_ls' })
+      vim.lsp.enable({
+        'clangd',
+        'cssls',
+        'fsautocomplete',
+        'gopls',
+        'hls',
+        'html',
+        'lua_ls',
+        'pyright',
+        'ruff',
+        'sqlls',
+        'tinymist',
+        'ts_ls',
+      })
+
       vim.lsp.config('lua_ls', {
 
         settings = { -- custom settings for lua
@@ -48,7 +62,6 @@ return {
           },
         },
       })
-
     end,
   }
 }

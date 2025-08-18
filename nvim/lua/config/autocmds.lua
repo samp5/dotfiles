@@ -1,19 +1,23 @@
 local api = vim.api
+local on_attach = require"lspbindings".on_attach
 
 -- Highlight text on yank
 api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  desc = 'Highlight when yanking text',
+  group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank({ higroup = "NeogitDiffAdd" })
+    vim.hl.on_yank({ higroup = "Visual" })
   end,
 })
 
--- Enable spell check on text and markdown files
+-- Enable spell check for:
+-- 1. Markdown
+-- 2. Text 
+-- 3. Typst 
 api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   {
-    pattern = { "*.txt", "*.md" },
+    pattern = { "*.txt", "*.md", "*.typ" },
     callback = function()
       vim.opt.spell = true
     end
@@ -52,3 +56,8 @@ api.nvim_create_autocmd("FileType", {
   end,
 }
 )
+
+api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = on_attach
+})

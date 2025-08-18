@@ -147,6 +147,8 @@ local function jdtls_on_attach(client, bufnr)
 
   local wk = require 'which-key'
   local jdtls = require 'jdtls'
+  local tele = require"telescope.builtin"
+
   wk.add({
     { "<A-o>", jdtls.organize_imports,                      desc = "Organize Imports", buffer = bufnr },
     { "crv",   jdtls.extract_variable,                      desc = "Extract variable", buffer = bufnr },
@@ -155,7 +157,31 @@ local function jdtls_on_attach(client, bufnr)
     { "crc",   function() jdtls.extract_constant(true) end, mode = "x",                desc = "Extrat constant",  buffer = bufnr },
     { "crm",   function() jdtls.extract_method(true) end,   mode = "x",                desc = "Extract method",   buffer = bufnr },
   })
-  -- vim.keymap.set('n', '<leader>pjp', "<cmd>lua require('jdtls').javap()<cr>", opts)
+  wk.add(
+    {
+      { "<C-h>",      vim.lsp.buf.signature_help, buffer = bufnr, desc = "Signature help", mode = "i" },
+      { "<leader>a",  vim.lsp.buf.code_action,    buffer = bufnr, desc = "Code action",    mode = { "n", "v" } },
+      { "<leader>ic", vim.lsp.buf.incoming_calls, buffer = bufnr, desc = "Incoming calls" },
+      {
+        "<leader>ih",
+        function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+        end,
+        buffer = bufnr,
+        desc = "Toggle inlay hints"
+      },
+      { "]d",         function() vim.diagnostic.jump({ count = 1, float = true }) end },
+      { "[d",         function() vim.diagnostic.jump({ count = -1, float = true }) end },
+      { "<leader>sn", vim.lsp.buf.rename,                                                      buffer = bufnr, desc = "Rename" },
+      { "<leader>vd", vim.diagnostic.open_float,                                               buffer = bufnr, desc = "Open diagnostic float" },
+      { "<leader>wf", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, buffer = bufnr, desc = "show workspace folders" },
+      { "<space>D",   vim.lsp.buf.type_definition,                                             buffer = bufnr, desc = "Type definition" },
+      { "K",          vim.lsp.buf.hover,                                                       buffer = bufnr, desc = "Hover" },
+      { "gD",         vim.lsp.buf.declaration,                                                 buffer = bufnr, desc = "Go to declaration" },
+      { "gd",         vim.lsp.buf.definition,                                                  buffer = bufnr, desc = "Go to definition" },
+      { "gi",         tele.lsp_implementations,                                                buffer = bufnr, desc = "Go implementations" },
+      { "gr",         tele.lsp_references,                                                     buffer = bufnr, desc = "Go references" },
+    })
 end
 
 local function jdtls_setup(event)

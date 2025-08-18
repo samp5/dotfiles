@@ -1,0 +1,12 @@
+width=25%
+print_command=true
+allow_images=false
+allow_markup=false
+term=alacritty
+matching=fuzzy
+insensitive=true
+key_down=Ctrl-j
+key_up=Ctrl-k
+key_right=Ctrl-h
+key_left=Ctrl-l
+key_expand=Ctrl-f

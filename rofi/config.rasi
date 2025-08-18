@@ -3,7 +3,7 @@ modi: "window,run,ssh,combi";
 fixed-num-lines: true;
 show-icons: false;
 combi-modi: "window,run,drun";
-max-history-size: 50;
+max-history-size: 25;
 window-thumbnail: true;
 kb-remove-to-eol: "";
 kb-accept-entry: "Return,KP_Enter";

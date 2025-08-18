@@ -1,9 +1,3 @@
-[rust]
-symbol = "[ ](bright-yellow)"
-
-[java]
-style = "white dimmed"
-
 [git_branch]
 format = "[$symbol $branch(:$remote_branch)]($style) "
 symbol = ""
@@ -18,29 +12,10 @@ disabled = false
 [git_state]
 style = "yellow"
 
-[git_status]
-# format = '([\[ $all_status$ahead_behind\]]($style) )'
-# style = "red"
-# ahead = "⇡$count "
-# behind = "⇣$count "
-# up_to_date = ""
-# diverged = "⇕$count "
-# conflicted = "=$count "
-# deleted = "✘$count "
-# renamed = "»$count "
-# modified = "󱇧$count "
-# staged = "+$count "
-# untracked = "󱀶$count "
-
-[username]
-style_user = 'bold green'
-format = 	'[$user]($style) '
-show_always = true
-
 [sudo]
 disabled = false
 format = '[sudo ]($style)'
 
 [character]
-success_symbol = '[➜](bold blue)'
-error_symbol = '[➜](bold red) '
+success_symbol = '[](bold blue)'
+error_symbol = '[](bold red) '

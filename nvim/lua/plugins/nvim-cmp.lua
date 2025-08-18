@@ -66,6 +66,7 @@ return {
         { name = "path" },    -- file system paths
         { name = "nvim_lsp_signature_help" },
         { name = "vim-dadbod-completion" },
+        { name = "neorg"},
       }),
 
       sorting = {

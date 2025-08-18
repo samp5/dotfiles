@@ -20,7 +20,6 @@ return {
     opts = {
       automatic_installation = true, -- not the same as ensure_installed
       ensure_installed = {
-        "pyright",
         "clangd",
         "lua_ls",
         "gopls",

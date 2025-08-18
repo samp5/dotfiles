@@ -1,0 +1,70 @@
+(defsrc
+  esc  f1  f2  f3  f4   f5  f6  f7  f8  f9 f10 f11 f12  home end ins del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+   lctl lmet lalt           spc            ralt prtsc rctl pgup ▲ pgdn
+                                                             ◀    ▼    ▶ 
+)
+
+
+
+(defvar
+  ;; Note: consider using different time values for your different fingers.
+  ;; For example, your pinkies might be slower to release keys and index
+  ;; fingers faster.
+  tap-time 200
+  hold-time 200 
+  hold-time-slow 300 
+)
+
+(defalias 
+  l_base (layer-toggle base)
+  l_sway (layer-toggle sway)
+  l_num (layer-toggle num)
+  l_sway2 (layer-toggle sway2)
+  a (tap-hold $tap-time $hold-time a C-a)
+  s (tap-hold $tap-time $hold-time s @l_sway)
+  d (tap-hold $tap-time $hold-time d @l_sway2)
+  e (tap-hold $tap-time $hold-time-slow e @l_num)
+)
+
+(deflayer base
+  esc  f1  f2  f3  f4   f5  f6  f7  f8  f9 f10 f11 f12  home end ins del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    @e    r    t    y    u    i    o    p    [    ]    \
+  lctl @a    @s    @d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+   caps lmet lalt           spc            ralt prtsc rctl pgup ▲ pgdn
+                                                             ◀    ▼    ▶ 
+)
+
+(deflayer sway
+  XX  XX  f2  f3  f4   f5  f6  f7  f8  f9 f10 f11 f12  home M-end ins del
+  XX M-1  M-2  M-3  M-4  M-5  M-6   M-7  M-8   M-9  M-0   M--    M-S--    XX
+  XX  XX  XX  XX  XX    XX    XX    XX    XX    M-o    M-p    [    ]    \
+  XX  XX  XX    XX   M-f    g    M-h   M-j    M-k   M-l     ;    '    M-ret
+  XX  XX    x    c    v    M-1  M-2  M-3    ,    .    /    rsft
+   XX  lmet lalt           spc            ralt M-prtsc rctl pgup ▲ pgdn
+                                                             ◀    ▼    ▶ 
+)
+(deflayer sway2
+  XX  XX  f2  f3  f4   f5  f6  f7  f8  f9 f10 f11 f12  home M-end ins del
+  XX  XX  XX  XX  XX    XX    XX    XX    XX    XX    XX    M--    M-S--    XX
+  XX  XX  XX  XX  XX    XX    XX    XX    XX    M-S-o    M-p    [    ]    \
+  XX  XX  XX    XX   M-f    g    M-h   M-j    M-k   M-l     ;    '    M-ret
+  XX  XX    x    c    v    M-1  M-2  M-3    ,    .    /    rsft
+   XX  lmet lalt           spc            ralt M-prtsc rctl pgup ▲ pgdn
+                                                             ◀    ▼    ▶ 
+)
+
+(deflayer num
+  XX  XX  XX  XX  XX   XX  XX  XX  XX  XX XX XX XX  XX XX XX XX 
+  XX  XX  XX  XX  XX    XX    XX    XX    XX    XX    XX    XX    XX    bspc
+  XX  XX  XX  XX  XX    XX    XX    7    8    9    0    XX    XX    XX
+  XX  XX  XX  XX  XX    XX    XX    4    5    6    .    XX   XX 
+  XX  XX  XX  XX     XX    XX   1    2    3  XX  XX XX
+   XX  XX XX           XX            XX  XX XX XX XX XX 
+                                          XX    XX    XX 
+)

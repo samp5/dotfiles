@@ -1,10 +1,10 @@
 #! /usr/bin/env bash
 
-class=$(playerctl metadata --player=spotify --format '{{lc(status)}}')
-icon=""
+class=$(playerctl metadata --player=cider --format '{{lc(status)}}')
+icon="󰝚 "
 
 if [[ $class == "playing" ]]; then
-  info=$(playerctl metadata --player=spotify --format '{{artist}} - {{title}}')
+  info=$(playerctl metadata --player=cider --format '{{artist}} - {{title}}')
   if [[ ${#info} > 40 ]]; then
     info=$(echo $info | cut -c1-40)"..."
   fi

@@ -28,7 +28,7 @@
     alternate-active-foreground: @active-foreground;
     active-background:           #2A2A37;
     selected-active-background:  #2A2A37;
-    font: "Atkinson-Hyperlegible-Regular-102 16";
+    font: "Atkinson-Hyperlegible-Regular-102 12";
 }
 window {
     background-color: @background;

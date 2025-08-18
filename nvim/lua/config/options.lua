@@ -33,10 +33,12 @@ wo.relativenumber = true
 wo.wrap = true
 wo.linebreak = true
 
--- set the fold expression to defer to the LSP
-o.foldmethod = 'expr'
-o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+-- -- set the fold expression to defer to the LSP
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 9999
 
 -- persistent undos
 o.undofile = true
 o.undodir = vim.fn.stdpath('data') .. '/.nvim/undo-dir'
+

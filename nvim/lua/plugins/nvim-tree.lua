@@ -15,7 +15,16 @@ return {
     nvimtree.setup({
       view = {
         relativenumber = false,
-        side = "right",
+        float = {
+          -- can't decide if I like this?
+          enable = true,
+          open_win_config = {
+            relative = "win",
+            title = "󱏒",
+            width = 60,
+            height = 30,
+          }
+        },
       },
       -- change folder arrow icons
       renderer = {

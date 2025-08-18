@@ -3,5 +3,5 @@ require "config.options"
 require "config.lazy"
 require "config.autocmds"
 
--- -- Colorscheme
+-- -- colorscheme
 require "config.color"

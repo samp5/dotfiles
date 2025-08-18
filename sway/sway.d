@@ -2,14 +2,16 @@ include ~/dotfiles/sway/input.d
 include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
-font pango:Atkinson-Hyperlegible-Bold-102 16
+font pango:Atkinson-Hyperlegible-Bold-102 10
 mouse_warping output
 
 ### Autostart 
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec systemctl --user import-environment
 exec --no-startup-id mako
 exec_always /home/sam/.cargo/bin/wl-gammarelay-rs
 exec layman
+exec_always wl-paste --watch cliphist store
 
 ### Variables
 xwayland enable
@@ -30,7 +32,7 @@ set $term /usr/bin/alacritty
  
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
-set $menu  rofi -show run | xargs swaymsg exec --
+set $menu  wofi --show drun | xargs swaymsg exec --
 
 set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 set $wifi ~/dotfiles/sway/scripts/wifi_script
@@ -41,6 +43,9 @@ set $mark ~/dotfiles/sway/scripts/mark.sh
 set $pick_mark ~/dotfiles/sway/scripts/mark-switch.sh
 set $color_switcher ~/dotfiles/color.sh
 set $pdf_pick ~/dotfiles/sway/scripts/open_pdf.sh
+set $clip_board rofi -modi clipboard:~/dotfiles/sway/scripts/cliphist_rofi -show clipboard -show-icons
+set $password_search alacritty -e ~/dotfiles/sway/scripts/get_password.sh
+bindsym $mod+a exec $password_search
 
 
 bindsym $mod+w exec $window_picker
@@ -48,25 +53,26 @@ bindsym $mod+m exec $mark
 bindsym $mod+u exec $pick_mark
 bindsym $mod+Shift+o exec $pdf_pick
 bindsym $mod+Shift+p exec $color_switcher
+bindsym $mod+c exec $clip_board
 
 # Misc Options
 popup_during_fullscreen leave_fullscreen
 
 ### Output configuration
 output * {
-  bg ~/Pictures/wallpapers/cloud_mountains.jpg fill
+  bg ~/Pictures/wallpapers/water.jpg fill
   render_bit_depth 8
 }
 
-output "Acer Technologies V247Y 0x0000856D" {
-  mode 1920x1080@60Hz
-  scale 1.0
-}
 
 output eDP-1  {
   mode 2880x1800@90Hz
-  scale 1.0
+  scale 1.5
 }
+
+output HDMI-A-1 {
+}
+
 
 
 
@@ -121,18 +127,19 @@ output eDP-1  {
 # Workspaces:
 
     # workspaces
-    set $ws1   " "
-    set $ws2   "󰖟"
-    set $ws3   "󰎚"
-    set $ws4   "󰅫"
-    set $ws5   "󰍺 "
+    set $ws1   "1: "
+    set $ws2   "2:󰖟"
+    set $ws3   "3:󰎚"
+    set $ws4   "4:󰅫"
+    set $ws5   "5:󰍺 "
+    workspace $ws5 output HDMI-A-1
     set $ws6   6
     set $ws7   7
-    set $ws8   "󱧌 "
-    set $ws9   "󰒱"
-    set $ws0   " "
+    set $ws8   "8:󱧌 "
+    set $ws9   "9:󰒱"
+    set $ws0   "10: 󰝚 "
 
-    assign [class="Spotify"] $ws0 
+    assign [class="Cider"] $ws0 
     assign [class="Slack"] $ws9
     assign [class="Signal"] $ws8
 
@@ -204,7 +211,8 @@ output eDP-1  {
 #
 # Resizing containers:
 #
-mode "resize" {
+set $resize "󰩨 : [h] [j] [k] [l]"
+mode $resize  {
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
@@ -218,75 +226,33 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
-
-#set $mode_system  (l)ock, 󰍃 l(o)gout, 󰤄 (s) suspend,  (r) reboot, ⏻ (S)hutdown 
-#
-#mode "$mode_system" {
-#    bindsym l exec $lock, mode "default"
-#    bindsym o exit
-#    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-#    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-#    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-#
-#    # Return to default mode
-#    bindsym Return mode "default"
-#    bindsym Escape mode "default"
-#}
-#bindsym $mod+s mode "$mode_system" 
-
-# set $media 󰐎 (p)lay-pause,  (s)huffle, 󰒭 (n)ext, 󰒮 p(r)evious  (j)  (k) 
-# 
-# mode "$media" {
-# 
-#     bindsym p exec playerctl play-pause
-#     bindsym s exec playerctl shuffle Toggle
-#     bindsym n exec playerctl next
-#     bindsym r exec playerctl previous
-#     bindsym k exec playerctl volume 0.05+
-#     bindsym j exec playerctl volume 0.05-
-# 
-#     # Return to default mode
-#     bindsym Escape mode "default"
-# }
-# bindsym $mod+m mode "$media" 
-
-set $connections  (w)ifi  (b)luetooth
-
-mode "$connections" {
-
-    bindsym w exec $wifi
-    bindsym b exec $bluetooth
-
-    # Return to default mode
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+w mode "$connections" 
+bindsym $mod+r mode $resize
 
 # various screenshot options
 set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
 set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
 set $stop_recording killall wf-recorder
 
-set $screenshot (s)elect area (S)elect & save (f)ocused pane (p)ick color (F)ocused pane record (e)nd recording
-mode "$screenshot" {
+set $screenshot  "[s]elect [S]ave [f]ocused [p]ick color [r]ecord  [e]nd record"
+mode $screenshot {
 
     bindsym s exec $screenclip
     bindsym Shift+s exec $screenclipsave
     bindsym p exec ~/dotfiles/sway/scripts/pick_color.sh
     bindsym f exec ~/dotfiles/sway/scripts/screenshotfocusedpane
-    bindsym Shift+f exec ~/dotfiles/sway/scripts/screen_cap_focused_pane.sh
+    bindsym r exec ~/dotfiles/sway/scripts/screen_cap_focused_pane.sh
     bindsym e exec $stop_recording
 
     # Return to default mode
     bindsym Escape mode "default"
 }
-bindsym $mod+Print mode "$screenshot" 
+bindsym $mod+Print mode $screenshot
 
 
 # Shortcuts
 bindsym Print exec $screenclip
 bindsym $mod+i exec /usr/bin/zen
+bindsym $mod+Shift+i exec flatpak run engineer.atlas.Nyxt
 bindsym $mod+s exec spotify
 
 # Status Bar:

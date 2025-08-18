@@ -1,7 +1,11 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { "nvim-telescope/telescope-ui-select.nvim", "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-lua/plenary.nvim",
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    },
     config = function()
       local open_with_trouble = require 'trouble.sources.telescope'.open
       local actions = require 'telescope.actions'
@@ -10,6 +14,7 @@ return {
           layout_strategy = "flex",
           selection_caret = ' ',
           prompt_prefix = ' ',
+          multi_icon = ' ',
           mappings = {
             i = {
               ["<c-t>"] = open_with_trouble,
@@ -20,8 +25,17 @@ return {
             },
             n = { ["<c-t>"] = open_with_trouble },
           },
-        }
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+          }
+        },
       })
+
 
       local tele = require 'telescope.builtin'
       local wk = require 'which-key'
@@ -109,6 +123,19 @@ return {
           desc = "Buffers",
           icon = { icon = "", color = "blue" }
         },
+        {
+          "<leader>fj",
+          function()
+            tele.jumplist(
+              theme.get_dropdown {
+                previewer = true,
+              }
+            )
+          end,
+          desc = "Jumplist",
+          icon = { icon = "", color = "blue" }
+        },
+
 
         { "<leader>fg", group = "[G]it", icon = { icon = "", color = "blue" } },
         {
@@ -127,7 +154,7 @@ return {
           "<leader>fgs",
           tele.git_stash,
           desc = "Stash",
-          icon = { icon = "", color = "blue" }
+          icon = { icon = "", color = "yellow" }
         },
         {
           '<leader>fgo',

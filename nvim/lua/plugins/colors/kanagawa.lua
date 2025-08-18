@@ -6,17 +6,13 @@ return {
     "rebelot/kanagawa.nvim",
     config = function()
       require('kanagawa').setup({
-        transparent = false,
+        transparent = true,
         commentStyle = { italic = false },
         keywordStyle = { italic = false },
         statementStyle = { bold = true },
         dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
 
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
-        colors = {
-          -- add/modify theme and palette colors
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
         overrides = function(colors)
           local theme = colors.theme
           return {
@@ -29,7 +25,6 @@ return {
         background = {
           -- map the value of 'background' option to a theme
           dark = "wave", -- try "dragon" !
-          light = "lotus"
         },
       })
     end

@@ -20,7 +20,7 @@ require('lazy').setup({
     { import = 'plugins.lsp' },
     { import = 'plugins.dap' },
     { import = 'plugins.colors' },
-    { import = 'plugins.java' },
     { import = 'plugins.go' },
+    { import = 'plugins.java' },
   }
 })
