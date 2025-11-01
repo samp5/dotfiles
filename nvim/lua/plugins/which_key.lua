@@ -1,3 +1,7 @@
+local d2_diagram = function()
+  vim.cmd([['<,'>!d2 - --ascii-mode standard --stdout-format txt 2> /dev/null]])
+end
+
 return {
   "folke/which-key.nvim",
   lazy = true,
@@ -12,7 +16,6 @@ return {
     }
   },
   config = function()
-
     require "which-key".add({
       -- Pane sizing
       { "<M-n>", "<C-w>5<", desc = "Decrease size" },
@@ -43,6 +46,8 @@ return {
       { "<C-o>", "<C-o>zz", desc = "Jump back center" },
       { "<C-i>", "<C-i>zz", desc = "Jump forward center" },
       { "Q", "<nop>" },
+
+      { "<leader>dm", d2_diagram, mode = "v", desc = "Diagram Make" },
 
     })
   end,

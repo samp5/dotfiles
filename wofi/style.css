@@ -118,44 +118,42 @@
 }
 
 #window {
-  border-radius: 5px;
   background-color: transparent;
 }
 
 #input {
   color: @fujiWhite;
-  border-radius: 5px;
   border: 2px solid @sumiInk4;
   background-color: @sumiInk2;
+  border-radius: 0px;
 }
 
 #inner-box {
-  border-radius: 5px;
   background-color: @sumiInk2;
 }
 
 #outer-box {
   background-color: transparent;
-  border-radius: 5px;
 }
 
 #scroll {
   margin-top: 10px;
   background-color: @sumiInk2;
-  border-radius: 5px;
   border: 2px solid @sumiInk4;
 }
 
 #text {
   color: @fujiWhite;
-  background-color: @sumiInk2;
 } 
 #entry {
   margin: 5px;
 }
 #entry:selected {
-  border: 3px solid @autumnGreen;
-  border-radius: 5px;
-  background-color: @sumiInk2;
+  background-color: @autumnGreen;
+  border: 0px solid @sumiInk4;
 }
+
+#text:selected {
+  color: @sumiInk0;
+} 
 

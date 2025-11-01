@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
-    "modules-center": ["clock",   ],
-    "modules-right": ["cpu", "memory","network", "battery", "temperature","pulseaudio","custom/wl-gammarelay-temperature", "backlight"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory","temperature","custom/wl-gammarelay-temperature", "backlight","network","pulseaudio", "battery"],
     "sway/workspaces": {
       "format": "{name}"
     },

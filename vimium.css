@@ -1,0 +1,133 @@
+/* #omni */ /* do not delete this line */
+
+:root {
+    --font-family: "Iosevka Term";
+    --bg-color: #16161D;
+    --input-text-color: #dcd7ba;
+    --input-bg-color: #2a2a37;
+    --li-url-color: #7e9cd8;
+    --select-color: #7e9cd8;
+    --hover-color: #7e9cd8;
+}
+
+
+.R .UI {
+    border-radius: 0 !important;
+
+}
+
+body, body:after {
+    color: var(--bg-color);
+    border: none;
+    z-index: 1;
+    box-shadow: none;
+    text-align: left;
+    font-family: var(--font-family);
+    border-radius: 0;
+    margin: 0;
+    opacity: 1 !important;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+#toolbar {
+    position: relative;
+    background-color: var(--bg-color);
+    border-radius: 0;
+    margin: auto 0;
+}
+
+#bar {
+    padding-bottom: none;
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 0;
+    box-shadow: 0;
+}
+
+#bar input {
+    color: var(--input-text-color);
+    padding-left: 10px;
+    font-size: 14px;
+    height: 30px;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: var(--font-family);
+    background-color: var(--input-bg-color);
+    border: 0px;
+}
+
+#list {
+    background-color: var(--bg-color);
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+}
+
+#list .item {
+    padding: 0px 15px 0px 15px;
+    border-bottom: 0;
+    border-radius: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: 38px;
+}
+
+.bottom a {
+    font-family: var(--font-family);
+    border-radius: 0;
+    white-space: nowrap;
+    color: var(--li-url-color);
+}
+
+.title {
+    font-family: var(--font-family);
+    font-size: 10pt;
+    color: var(--li-title-color);
+    margin-left: 10px;
+    border-radius: 0;
+    font-weight: normal;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.top match {
+    color: var(--li-title-color);
+    font-weight: bold;
+    border-radius: 0;
+    text-decoration: none;
+}
+
+.top .label {padding-left: 10px;}
+
+.top .icon {
+    overflow: visible;
+    display: block;
+    padding-right: 28px;
+    border-radius: 0;
+    margin: auto;
+}
+
+.bottom {
+    margin-left: 20px;
+    border-radius: 0;
+}
+
+.bottom match {
+    color: var(--li-url-color) !important;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+.item.s,  {
+  background-color: var(--select-color);
+}

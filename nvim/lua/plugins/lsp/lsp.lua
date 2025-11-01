@@ -1,14 +1,3 @@
-local function get_arduino_cmd()
-  local cmds = {
-    "arduino-language-server",                                --
-    "-cli", "/usr/bin/arduino-cli",                           -- path to arduino-cli
-    "-cli-config", "/home/sam/.arduino15/arduino-cli.yaml",   -- path to your arduino-cli config (should be auto generated)
-    "-fqbn", "arduino:renesas_uno:unor4wifi",                 -- fully qualified name of your board ( can get with `arduino-cli board list ` at termnial when board is attached)
-    "-clangd", "/home/sam/.local/share/nvim/mason/bin/clangd" -- path to clangd
-  }
-  return cmds
-end
-
 return {
   {
     "neovim/nvim-lspconfig",
@@ -40,8 +29,64 @@ return {
         'pyright',
         'ruff',
         'sqlls',
-        'tinymist',
         'ts_ls',
+        'tinymist',
+        'jdtls',
+        'asm_lsp',
+      })
+      vim.lsp.config("ts_ls", {
+        root_dir = vim.fs.dirname(vim.fs.find({'tsconfig.json', 'package.json'}, { upward = true })[1]),
+      })
+      vim.lsp.config("jdtls", {
+        settings = {
+          java = {
+            maven = {
+              downloadSources = true,
+            },
+            implementationsCodeLens = {
+              enabled = true,
+            },
+            referencesCodeLens = {
+              enabled = true,
+            },
+            references = {
+              includeDecompiledSources = true,
+            },
+            inlayHints = {
+              enabled = true,
+              parameterNames = {
+                enabled = 'all' -- literals, all, none
+              }
+            },
+            format = {
+              enabled = true,
+            }
+          },
+          signatureHelp = {
+            enabled = true,
+          },
+          contentProvider = {
+            preferred = 'fernflower',
+          },
+          extendedClientCapabilities = require'jdtls'.extendedClientCapabilities,
+          sources = {
+            organizeImports = {
+              starThreshold = 9999,
+              staticStarThreshold = 9999,
+            }
+          },
+          codeGeneration = {
+            toString = {
+              template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+            },
+            useBlocks = true,
+          }
+        },
+      })
+      vim.lsp.config("tinymist", {
+        settings = {
+          formatterMode = "typstyle"
+        }
       })
 
       vim.lsp.config('lua_ls', {
@@ -63,5 +108,5 @@ return {
         },
       })
     end,
-  }
+  },
 }

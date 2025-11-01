@@ -38,6 +38,9 @@ vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 9999
 
+-- fix java shiftwidth garbage
+vim.g.editorconfig = false;
+
 -- persistent undos
 o.undofile = true
 o.undodir = vim.fn.stdpath('data') .. '/.nvim/undo-dir'

@@ -25,6 +25,7 @@ return {
         "gopls",
         "rust_analyzer",
         "arduino_language_server",
+        "ts_ls",
       },
     }
   },

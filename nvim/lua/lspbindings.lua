@@ -17,6 +17,14 @@ local on_attach = function(ev)
     end
   end
 
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    buffer = ev.buf,
+    desc = 'refresh codelens',
+    callback = function()
+      pcall(vim.lsp.codelens.refresh)
+    end,
+  })
+
   local tele = require "telescope.builtin"
   local wk = require "which-key"
 

@@ -243,6 +243,7 @@ tooltip label {
 #battery.critical:not(.charging) {
     background: @samuraiRed;
     color: @sumiInk0;
+    border-bottom: 2px transparent ;
 }
 
 #battery.warning:not(.charging) {

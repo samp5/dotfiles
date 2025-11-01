@@ -4,6 +4,7 @@ return {
   opts = {
     keywords = {
       TEST = { icon = "󰙨", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+      QST = { icon = "", color = "info" },
     }
   },
 

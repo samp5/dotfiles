@@ -11,6 +11,16 @@ return {
       local actions = require 'telescope.actions'
       require('telescope').setup({
         defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--multiline",
+          },
           layout_strategy = "flex",
           selection_caret = ' ',
           prompt_prefix = ' ',

@@ -48,11 +48,11 @@ set $password_search alacritty -e ~/dotfiles/sway/scripts/get_password.sh
 bindsym $mod+a exec $password_search
 
 
+bindsym $mod+Shift+n exec ~/dotfiles/sway/scripts/obsidian.sh
 bindsym $mod+w exec $window_picker
 bindsym $mod+m exec $mark
 bindsym $mod+u exec $pick_mark
 bindsym $mod+Shift+o exec $pdf_pick
-bindsym $mod+Shift+p exec $color_switcher
 bindsym $mod+c exec $clip_board
 
 # Misc Options
@@ -140,6 +140,7 @@ output HDMI-A-1 {
     set $ws0   "10: 󰝚 "
 
     assign [class="Cider"] $ws0 
+    assign [class="obsidian"] $ws3 
     assign [class="Slack"] $ws9
     assign [class="Signal"] $ws8
 
@@ -228,6 +229,24 @@ mode $resize  {
 }
 bindsym $mod+r mode $resize
 
+set $wl-present ~/dotfiles/sway/scripts/wl-present
+set $present "[m]irror [o]utput [r]egion [S-r]egion unset [s]caling [f]reeze"
+mode $present {
+    # command starts mirroring
+    bindsym m mode "default"; exec $wl-present mirror
+    # these commands modify an already running mirroring window
+    bindsym o mode "default"; exec $wl-present set-output
+    bindsym r mode "default"; exec $wl-present set-region
+    bindsym Shift+r mode "default"; exec $wl-present unset-region
+    bindsym s mode "default"; exec $wl-present set-scaling
+    bindsym f mode "default"; exec $wl-present toggle-freeze
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+p mode $present
+
 # various screenshot options
 set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
 set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
@@ -252,7 +271,7 @@ bindsym $mod+Print mode $screenshot
 # Shortcuts
 bindsym Print exec $screenclip
 bindsym $mod+i exec /usr/bin/zen
-bindsym $mod+Shift+i exec flatpak run engineer.atlas.Nyxt
+bindsym $mod+Shift+i exec /usr/bin/glide
 bindsym $mod+s exec spotify
 
 # Status Bar:
