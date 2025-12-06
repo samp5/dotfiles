@@ -18,26 +18,23 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
 
-      vim.lsp.enable({
-        'clangd',
-        'cssls',
-        'fsautocomplete',
-        'gopls',
-        'hls',
-        'html',
-        'lua_ls',
-        'pyright',
-        'ruff',
-        'sqlls',
-        'ts_ls',
-        'tinymist',
-        'jdtls',
-        'asm_lsp',
-      })
       vim.lsp.config("ts_ls", {
-        root_dir = vim.fs.dirname(vim.fs.find({'tsconfig.json', 'package.json'}, { upward = true })[1]),
+        root_dir = vim.fs.dirname(vim.fs.find({ 'tsconfig.json', 'package.json' }, { upward = true })[1]),
       })
+
+      vim.lsp.config("nil", {
+        cmd ={'nil'},
+        filetypes = {'nix'},
+        root_markers = {'flake.nix', '.git'}
+      })
+
+      local bundles = {
+        vim.fn.glob("~/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin-*.jar", true)
+      }
       vim.lsp.config("jdtls", {
+        init_options = {
+          bundles = bundles
+        },
         settings = {
           java = {
             maven = {
@@ -68,7 +65,7 @@ return {
           contentProvider = {
             preferred = 'fernflower',
           },
-          extendedClientCapabilities = require'jdtls'.extendedClientCapabilities,
+          extendedClientCapabilities = require 'jdtls'.extendedClientCapabilities,
           sources = {
             organizeImports = {
               starThreshold = 9999,
@@ -106,6 +103,23 @@ return {
             },
           },
         },
+      })
+      vim.lsp.enable({
+        'clangd',
+        'cssls',
+        'fsautocomplete',
+        'gopls',
+        'hls',
+        "nil",
+        'html',
+        'lua_ls',
+        'pyright',
+        'ruff',
+        'sqlls',
+        'ts_ls',
+        'tinymist',
+        'jdtls',
+        'asm_lsp',
       })
     end,
   },

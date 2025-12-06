@@ -188,6 +188,18 @@ tooltip label {
     color: @waveAqua1;
     border-bottom: 2px solid @waveAqua1;
 }
+#bluetooth{
+    margin:0px 2px 0px 2px;
+    padding: 0px 10px;
+    border-bottom: 2px solid @sumiInk1;
+
+}
+#bluetooth.connected{
+    margin: 0px 2px 0px 2px;
+    padding: 0px 10px;
+    color: @dragonBlue;
+    border-bottom: 2px solid @dragonBlue;
+}
 #pulseaudio{
     margin:0px 2px 0px 2px;
     padding: 0px 10px;

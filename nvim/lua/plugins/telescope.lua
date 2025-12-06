@@ -11,6 +11,7 @@ return {
       local actions = require 'telescope.actions'
       require('telescope').setup({
         defaults = {
+          path_display = { "smart" },
           vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -127,6 +128,7 @@ return {
             tele.buffers(
               theme.get_dropdown {
                 previewer = false,
+                layout_strategy = "flex"
               }
             )
           end,

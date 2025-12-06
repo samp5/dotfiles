@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+$@ > /dev/null & 
+# subscribe to window events from sway IPC
+# process events with JQ, searching for a container using that PID and output its container ID
+# take only the first intance of the container
+# enable floating mode on it
+swaymsg -mt subscribe '[ "window" ]' \
+  | jq --unbuffered --argjson pid "$!" 'select(.container.pid == $pid) | .container.id' \
+  | head -n1 \
+  | swaymsg "[ con_id=$(cat) ] floating enable"

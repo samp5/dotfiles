@@ -3,7 +3,7 @@ include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
 font pango:Atkinson-Hyperlegible-Bold-102 10
-mouse_warping output
+mouse_warping container
 
 ### Autostart 
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
@@ -28,7 +28,12 @@ set $down j
 set $up k
 set $right l
 
-set $term /usr/bin/alacritty
+for_window [app_id="showmethekey-gtk" title="Floating Window - Show Me The Key"] {
+  floating enable
+  sticky enable
+}
+
+set $term "/usr/bin/alacritty"
  
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -60,14 +65,31 @@ popup_during_fullscreen leave_fullscreen
 
 ### Output configuration
 output * {
-  bg ~/Pictures/wallpapers/water.jpg fill
-  render_bit_depth 8
+  bg ~/pictures/wallpapers/water.jpg fill
 }
 
 
 output eDP-1  {
   mode 2880x1800@90Hz
   scale 1.5
+  # never move cursor between my laptop and a monitor
+  pos 1920 1080
+}
+
+
+set $front_monitor "Dell Inc. DELL P2722HE 7N78BH3"   
+# in front of you
+output $front_monitor {
+  mode 1920x1080@60Hz
+  scale 1
+  pos 1920 0 
+}
+
+set $left_monitor "Dell Inc. DELL U2415 CFV9N92Q1NKU" 
+# left of you 
+output $left_monitor {
+  mode 1920x1080@60Hz
+  pos 0 0
 }
 
 output HDMI-A-1 {
@@ -90,7 +112,6 @@ output HDMI-A-1 {
 
     # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Ctrl+k exec /usr/bin/wezterm start keep --always-new-process
 
     # Kill focused window
     bindsym $mod+End kill
@@ -119,10 +140,10 @@ output HDMI-A-1 {
     
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left nop layman move left
-    bindsym $mod+Shift+$down nop layman move down
-    bindsym $mod+Shift+$up nop layman move up
-    bindsym $mod+Shift+$right nop layman move right
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down  move down
+    bindsym $mod+Shift+$up  move up
+    bindsym $mod+Shift+$right  move right
 
 # Workspaces:
 
@@ -143,10 +164,6 @@ output HDMI-A-1 {
     assign [class="obsidian"] $ws3 
     assign [class="Slack"] $ws9
     assign [class="Signal"] $ws8
-
-    # Relative Switching
-    bindsym $mod+Ctrl+l workspace next
-    bindsym $mod+Ctrl+h workspace prev
 
     bindsym $mod+p workspace back_and_forth
 
@@ -229,6 +246,19 @@ mode $resize  {
 }
 bindsym $mod+r mode $resize
 
+#
+# Moving between outputs:
+#
+
+bindsym $mod+Ctrl+$left move container to output left, focus output left
+bindsym $mod+Ctrl+Shift+$left move workspace to output left, focus output left
+bindsym $mod+Ctrl+$down move container to output down, focus output down
+bindsym $mod+Ctrl+Shift+$down move workspace to output down, focus output down
+bindsym $mod+Ctrl+$up move container to output up, focus output up
+bindsym $mod+Ctrl+Shift+$up move workspace to output up, focus output up
+bindsym $mod+Ctrl+$right move container to output right, focus output right
+bindsym $mod+Ctrl+Shift+$right move workspace to output right, focus output right
+
 set $wl-present ~/dotfiles/sway/scripts/wl-present
 set $present "[m]irror [o]utput [r]egion [S-r]egion unset [s]caling [f]reeze"
 mode $present {
@@ -248,7 +278,7 @@ mode $present {
 bindsym $mod+Shift+p mode $present
 
 # various screenshot options
-set $screenclipsave  grim -g "$(slurp)" ~/Pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
+set $screenclipsave  grim -g "$(slurp)" ~/pictures/Screenshots/clip-$(date +"%Y-%m-%d-%H-%M-%S").jpeg && notify-send "Screenshot saved as clip-$(date +"%Y-%m-%d-%H-%M-%S")"
 set $screenclip grim -g "$(slurp)" - | wl-copy -t image/png && notify-send "Screenshot saved to clipboard"
 set $stop_recording killall wf-recorder
 

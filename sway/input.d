@@ -9,7 +9,7 @@ input "SYNA8017:00 06CB:CEB2 Mouse" {
 }
 
 input "1739:52914:SYNA8017:00_06CB:CEB2_Touchpad" {
-  dwt enabled
+  dwt disabled
   tap enabled
   scroll_factor 1
   natural_scroll enabled

@@ -1,12 +1,30 @@
-font-family = "Fira Code"
-font-size = 17
-command = fish
+
+font-family = "Iosevka Term"
+font-size = 12
+
+command = fish -i
+
+async-backend = epoll
+
 window-decoration = false
-theme = "catppuccin-latte"
+
+theme = Kanagawa Wave
 window-padding-x = 5
 window-padding-y = 5
+
 shell-integration = fish
-class = term.ghostty
+shell-integration-features = true
+
 resize-overlay = never
-cursor-color = dc8a78
+
 cursor-style = block
+cursor-opacity = 1
+
+quit-after-last-window-closed = true
+quit-after-last-window-closed-delay = 5m
+
+background-opacity = 0.85
+link-url= true
+link-previews = true
+
+window-inherit-working-directory = true
