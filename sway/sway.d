@@ -69,13 +69,16 @@ output * {
 }
 
 
-output eDP-1  {
+set $laptop "eDP-1"   
+output $laptop  {
   mode 2880x1800@90Hz
   scale 1.5
   # never move cursor between my laptop and a monitor
   pos 1920 1080
 }
 
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 set $front_monitor "Dell Inc. DELL P2722HE 7N78BH3"   
 # in front of you

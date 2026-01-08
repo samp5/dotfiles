@@ -1,6 +1,5 @@
 {
     "layer": "top",
-    "output": "eDP-1",
     "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory","temperature","custom/wl-gammarelay-temperature", "backlight","network","bluetooth","pulseaudio", "battery"],
