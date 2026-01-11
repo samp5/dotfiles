@@ -24,19 +24,6 @@ api.nvim_create_autocmd(
   }
 )
 
--- Map escape to normal mode on all terminal
-api.nvim_create_autocmd(
-  { "TermOpen" },
-  {
-    callback = function(event)
-      local wk = require 'which-key'
-      wk.add({
-        { "<Esc>", "<C-\\><C-n>", mode = { "t" }, buffer = { event.buf } }
-      })
-    end
-  }
-)
-
 -- Be able to close the following with 'q'
 api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),

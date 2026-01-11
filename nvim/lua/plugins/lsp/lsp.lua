@@ -28,58 +28,6 @@ return {
         root_markers = {'flake.nix', '.git'}
       })
 
-      local bundles = {
-        vim.fn.glob("~/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin-*.jar", true)
-      }
-      vim.lsp.config("jdtls", {
-        init_options = {
-          bundles = bundles
-        },
-        settings = {
-          java = {
-            maven = {
-              downloadSources = true,
-            },
-            implementationsCodeLens = {
-              enabled = true,
-            },
-            referencesCodeLens = {
-              enabled = true,
-            },
-            references = {
-              includeDecompiledSources = true,
-            },
-            inlayHints = {
-              enabled = true,
-              parameterNames = {
-                enabled = 'all' -- literals, all, none
-              }
-            },
-            format = {
-              enabled = true,
-            }
-          },
-          signatureHelp = {
-            enabled = true,
-          },
-          contentProvider = {
-            preferred = 'fernflower',
-          },
-          extendedClientCapabilities = require 'jdtls'.extendedClientCapabilities,
-          sources = {
-            organizeImports = {
-              starThreshold = 9999,
-              staticStarThreshold = 9999,
-            }
-          },
-          codeGeneration = {
-            toString = {
-              template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
-            },
-            useBlocks = true,
-          }
-        },
-      })
       vim.lsp.config("tinymist", {
         settings = {
           formatterMode = "typstyle"
@@ -118,7 +66,6 @@ return {
         'sqlls',
         'ts_ls',
         'tinymist',
-        'jdtls',
         'asm_lsp',
       })
     end,

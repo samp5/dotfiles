@@ -1,6 +1,11 @@
 local on_attach = function(ev)
   local client_id = vim.lsp.get_client_by_id(ev.data.client_id)
-  require 'nvim-navic'.attach(client_id, ev.buf)
+  local navic  = require 'nvim-navic'
+
+  if navic.is_available(ev.buf) then
+    navic.attach(client_id, ev.buf)
+  end
+
 
   -- This is to prevent the annoying rust analyzer issue that neovim doesn't handle well
   -- Sometimes (usually when typing fast) the rust-analyzer repeatedly sends a

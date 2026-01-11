@@ -107,14 +107,5 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
-
-    dap.configurations.java = {
-      {
-        type = 'java',
-        request = 'launch',
-        name = 'Launch Java Program'
-      }
-
-    }
   end,
 }
