@@ -2,7 +2,7 @@ include ~/dotfiles/sway/input.d
 include /etc/sway/config.d/*
 include ~/dotfiles/sway/borders.d
 
-font pango:Atkinson-Hyperlegible-Bold-102 10
+font pango:Iosevka Term 10
 mouse_warping container
 
 ### Autostart 
@@ -10,7 +10,6 @@ exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec systemctl --user import-environment
 exec --no-startup-id mako
 exec_always /home/sam/.cargo/bin/wl-gammarelay-rs
-exec layman
 exec_always wl-paste --watch cliphist store
 
 ### Variables
@@ -39,14 +38,11 @@ set $term "/usr/bin/alacritty"
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 set $menu  wofi --show drun | xargs swaymsg exec --
 
-set $lock swaylock --config ~/dotfiles/sway/swaylock_config
 set $wifi ~/dotfiles/sway/scripts/wifi_script
 set $window_picker ~/dotfiles/sway/scripts/tree-switcher.sh
-set $bluetooth ~/dotfiles/sway/scripts/rofi-bluetooth/rofi-bluetooth
 set $window_picker ~/dotfiles/sway/scripts/tree-switcher.sh
 set $mark ~/dotfiles/sway/scripts/mark.sh
 set $pick_mark ~/dotfiles/sway/scripts/mark-switch.sh
-set $color_switcher ~/dotfiles/color.sh
 set $pdf_pick ~/dotfiles/sway/scripts/open_pdf.sh
 set $clip_board rofi -modi clipboard:~/dotfiles/sway/scripts/cliphist_rofi -show clipboard -show-icons
 set $password_search alacritty -e ~/dotfiles/sway/scripts/get_password.sh
@@ -69,7 +65,7 @@ output * {
 }
 
 
-set $laptop "eDP-1"   
+set $laptop "eDP-1"
 output $laptop  {
   mode 2880x1800@90Hz
   scale 1.5

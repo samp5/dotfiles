@@ -4,6 +4,12 @@ input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_layout us
   xkb_options ctrl:swapcaps
 }
+
+input "7504:24926:Adv360_Pro_Keyboard" {
+  repeat_delay 250
+  repeat_rate 50
+}
+
 input "SYNA8017:00 06CB:CEB2 Mouse" {
   pointer_accel -0.6
 }

@@ -1,14 +1,12 @@
 {
     "layer": "top",
-    "modules-left": ["custom/scratchpad-indicator","sway/workspaces", "sway/mode"],
+    "margin-left": 6,
+    "margin-right": 6,
+    "reload_style_on_change": true,
+    "margin-top": 2,
+    "modules-left": ["niri/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory","temperature","custom/wl-gammarelay-temperature", "backlight","network","bluetooth","pulseaudio", "battery"],
-    "sway/workspaces": {
-      "format": "{name}"
-    },
-    "sway/mode": {
-      "format": "󰌌  {}"
-    },
     "custom/cider": {
       "interval": 1,
       "return-type": "json",
@@ -20,6 +18,16 @@
       "exec": "~/dotfiles/sway/waybar/modules/cider.sh",
       "exec-if": "pgrep Cider",
       "escape": true
+    },
+    "niri/workspaces": {
+      "format": "{index} {icon}",
+    	"format-icons": {
+        "a_code": " ",
+        "b_browser": "󰖟 ",
+        "active": " ",
+        "default": " "
+      },
+      "all-outputs": false,
     },
     "pulseaudio": {
       "format": "{volume}% {icon}",
@@ -34,33 +42,24 @@
       "on-click": "pavucontrol",
       "ignored-sinks": ["Easy Effects Sink"]
     },
-    "custom/scratchpad-indicator": {
-      "interval": 3,
-      "return-type": "json",
-      "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
-      "format": "{} 🗗",
-      "on-click": "exec swaymsg 'scratchpad show'",
-      "on-click-right": "exec swaymsg 'move scratchpad'"
-    },
     "network":{
-      "on-click": "~/dotfiles/sway/scripts/wifi_script",
       "format": " {ifname}",
       "tooltip-format": "Network: {essid} ({signalStrength})\n󱀣 {netmask}\n󰺆 {gwaddr}\n󰲐 {ipaddr}",
-      "format-disconnected": " ",
+      "format-disconnected": " "
     },
     "cpu": {
       "on-click": "alacritty -e btop",
        "interval": 1,
        "format": "󰍛 : {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
        "format-icons": [
-            "<span color='#76946a'>▁</span>", // wintergreen
-            "<span color='#76946a'>▂</span>", // autumngreen
-            "<span color='#76946a'>▃</span>", // 
-            "<span color='#DCA561'>▄</span>", // white
-            "<span color='#DCA561'>▅</span>", // yellow
-            "<span color='#DCA561'>▆</span>", // yellow
-            "<span color='#C34043'>▇</span>", // orange
-            "<span color='#C34043'>█</span>"  // red
+            "<span color='#76946a'>▁</span>",
+            "<span color='#76946a'>▂</span>",
+            "<span color='#76946a'>▃</span>",
+            "<span color='#DCA561'>▄</span>",
+            "<span color='#DCA561'>▅</span>",
+            "<span color='#DCA561'>▆</span>",
+            "<span color='#C34043'>▇</span>",
+            "<span color='#C34043'>█</span>" 
        ]
     },
     "battery": {
@@ -74,7 +73,7 @@
         "tooltip-format": "{timeTo}\nDrawing {power}W",
     },
     "bluetooth": {
-      "on-click": "~/dotfiles/sway/scripts/floatthatmf \"alacritty -e bluetui\"",
+      "on-click": "\"alacritty -e bluetui\"",
       "format": " {status}",
       "format-connected": " {device_alias}",
       "format-connected-battery": " {device_alias} {device_battery_percentage}%",
@@ -104,23 +103,19 @@
       "actions":  {
         "on-click-right": "mode",
         "on-scroll-up": "tz_up",
-        "on-scroll-down": "tz_down",
-        "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down"
+        "on-scroll-down": "tz_down"
       }
     },
     "memory": {
-      "on-click": "alacritty -e btop",
       "interval": 3,
       
       "format": "  {used} GB",
-      "tooltip-format": "{used:0.1f}G/{total:0.1f}G {percentage}%\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
+      "tooltip-format": "{used:0.1f}G/{total:0.1f}G {percentage}%\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G"
     },
     "temperature": {
-      "on-click": "wezterm start gotop",
       "format": "{temperatureC}°C",
       "critical-threshold": 70,
-      "format-critical": "󰠨 {temperatureC}°C" ,
+      "format-critical": "󰠨 {temperatureC}°C" 
     },
      "custom/wl-gammarelay-temperature": {
         "format": "{} ",
@@ -132,5 +127,5 @@
       "device": "intel_backlight",
       "format": "{percent}% {icon}",
       "format-icons": ["󰃞","󰃟", "󰃝","󰃠"]
-    },
+    }
 }

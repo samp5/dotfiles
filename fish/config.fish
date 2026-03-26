@@ -1,8 +1,4 @@
-if status is-interactive
-    if string match -q -- '*ghostty*' $TERM
-        set -g fish_vi_force_cursor 1
-    end
-end
+
 set -x MANROFFOPT "-c"
 
 set fish_cursor_default     block     

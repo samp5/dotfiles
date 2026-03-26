@@ -4,8 +4,9 @@ import = [
 ]
 
 [window]
-opacity=0.90
+opacity=0.9
 padding.x = 2
+decorations = "None"
 
 [scrolling]
 history = 100000

@@ -2,12 +2,17 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    local nvimtree = require("nvim-tree")
+
     -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
+    -- change color to mauve
+    vim.cmd([[ highlight NvimTreeOpenedHL guifg=#A0A07A ]])
+
     -- configure nvim-tree
-    require("nvim-tree").setup({
+    nvimtree.setup({
       view = {
         relativenumber = false,
         float = {
@@ -30,9 +35,6 @@ return {
       },
       filters = {
         git_ignored = false,
-        custom = {
-          ".*\\.gd\\.uid"
-        }
       },
       git = {
         ignore = true,

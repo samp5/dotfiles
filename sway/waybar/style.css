@@ -111,23 +111,54 @@
 @define-color katanaGray #717C7C;
 
 * {
-    font-family: Iosevka Extended;
-    font-size: 11pt;
+    font-family: Iosevka Term;
+    font-size: 10pt;
     min-height: 0;
 }
 
+#memory,
+#cpu,
+#temperature,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#custom-wl-gammarelay-temperature,
+#network {
+    border-right: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+
+
+#memory,
+#cpu,
+#temperature,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#custom-wl-gammarelay-temperature,
+#network,
+#clock,
+#battery,
+#custom-cider {
+    margin: 0 2px;
+    padding: 2px 12px;
+}
+
 window#waybar {
-    background: @sumiInk1;
+    background: rgba(31, 31, 40, 0.9);
+    border-radius: 20px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.45);
+    padding: 4px 8px;
 }
 
 tooltip {
-  background-color: @sumiInk0;
-  border: 2px solid @dragonBlue;
-  border-radius: 1px;
+  background-color: rgba(31, 31, 40, 0.9);
+  border: 2px solid @springGreen;
+  border-radius: 6px;
 }
 
 tooltip label {
-  color: @fujiWhite;
+  color: @oldWhite;
 }
 
 #window {
@@ -135,131 +166,89 @@ tooltip label {
     background: @sumiInk2;
 }
 
-#custom-scratchpad-indicator {
-    padding: 0px 8px;
-    border-bottom: 2px solid #7AA89F;
-    border-radius: 2px;
-    color: @oldWhite;
-}
-
 #workspaces button {
+    border-radius: 20px;
     color: @katanaGray;
     background: transparent;
-    border-bottom: 2px solid transparent;
+}
+
+#workspaces button:hover {
+    background: alpha(@sumiInk3, 0.4);
+    color: @fujiWhite;
 }
 
 #workspaces button.focused {
-    color: @sumiInk3;
-    border-radius: 3px;
-    background: @autumnGreen;
+    color: @sumiInk1;
+    background: alpha(@springGreen, 0.5);
 }
 
 
-#mode {
-  font-weight: bold;
-  margin:0px 2px 0px 2px;
-  background: @sumiInk1;
-  color: @oldWhite;
+.modules-right {
+    background: alpha(@sumiInk2, 0.4);
+    border-radius: 20px;
 }
+
 
 #custom-cider {
-  margin:0px 2px 0px 2px;
-  padding: 0px 8px;
   border-bottom: 2px solid #98BB6C;
   color: @autumnGreen;
 }
 
 #memory {
-    margin:0px 2px 0px 2px;
-    padding: 0px 8px;
     color: @carpYellow;
-    border-bottom: 2px solid @carpYellow;
 }
 #cpu {
-  margin:0px 2px 0px 2px;
-  padding: 0px 8px;
   color: @boatYellow1;
-  border-bottom: 2px solid @boatYellow1;
 }
 #temperature {
-    margin:0px 2px 0px 2px;
-    padding: 0px 8px;
-    background-color: #1F1F28;
     color: @waveAqua1;
-    border-bottom: 2px solid @waveAqua1;
 }
 #bluetooth{
-    margin:0px 2px 0px 2px;
-    padding: 0px 10px;
-    border-bottom: 2px solid @sumiInk1;
-
+    color: @oldWhite;
 }
 #bluetooth.connected{
-    margin: 0px 2px 0px 2px;
-    padding: 0px 10px;
     color: @dragonBlue;
-    border-bottom: 2px solid @dragonBlue;
 }
 #pulseaudio{
-    margin:0px 2px 0px 2px;
-    padding: 0px 10px;
     color: @dragonBlue;
-    border-bottom: 2px solid @dragonBlue;
 
 }
 #pulseaudio.muted{
-    margin: 0px 2px 0px 2px;
-    padding: 0px 10px;
     color: @springViolet1;
-    border-bottom: 2px solid @springViolet1;
 }
 #backlight{
-    margin:0px 2px 0px 2px;
-    padding: 0px 8px;
     color: @oniViolet;
-    border-bottom: 2px solid @oniViolet;
 }
 #custom-wl-gammarelay-temperature{
-    margin:0px 2px 0px 2px;
-    padding: 0px 8px;
     color: @crystalBlue;
-    border-bottom: 2px solid @crystalBlue;
 }
 #network {
-    margin:0px 2px 0px 2px;
-    padding: 0px 8px;
     color: @springViolet2;
-    border-bottom: 2px solid @springViolet2;
 }
 #clock {
-  margin:0px 2px 0px 2px;
-  padding: 0px 8px;
-  background-color: @sumiInk1;
+  font-weight: bold;
+  font-size: 12pt;
+  background-color: alpha(@sumiInk2, 0.4);
+  border-radius: 10px;
   color: @springBlue;
-  border-bottom: 2px solid @springBlue;
 }
 
 #battery {
-    padding: 0px 8px;
-    border-radius: 2px;
-    border-bottom: 2px solid @springGreen;
     color: @springGreen;
+    border-radius: 20px;
 }
 
 #battery.charging {
     color: @winterGreen;
     background-color: @autumnGreen;
-    border-bottom: 2px solid transparent;
 }
 
 #battery.critical:not(.charging) {
     background: @samuraiRed;
     color: @sumiInk0;
-    border-bottom: 2px transparent ;
 }
 
 #battery.warning:not(.charging) {
     background: @autumnYellow;
     color: @sumiInk0;
-    border-bottom: 2px transparent ;
 }

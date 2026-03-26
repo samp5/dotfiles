@@ -11,7 +11,6 @@ return {
       local actions = require 'telescope.actions'
       require('telescope').setup({
         defaults = {
-          file_ignore_patterns  = { "%.class" },
           path_display = { "smart" },
           vimgrep_arguments = {
             "rg",

@@ -1,4 +1,3 @@
-
 font-family = "Iosevka Term"
 font-size = 12
 
@@ -17,13 +16,13 @@ shell-integration-features = true
 
 resize-overlay = never
 
-cursor-style = block
+cursor-style = underline
 cursor-opacity = 1
 
 quit-after-last-window-closed = true
 quit-after-last-window-closed-delay = 5m
 
-background-opacity = 0.85
+background-opacity = 0.9
 link-url= true
 link-previews = true
 
