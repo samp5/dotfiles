@@ -13,7 +13,7 @@ history = 100000
 
 [font]
 normal.family = "Iosevka Term"
-normal.style = "medium"
+normal.style = "medium-light"
 size = 12
 
 [terminal]

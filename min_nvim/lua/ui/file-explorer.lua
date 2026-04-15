@@ -2,12 +2,17 @@ return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    local nvimtree = require("nvim-tree")
+
     -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
+    -- change color to mauve
+    vim.cmd([[ highlight NvimTreeOpenedHL guifg=#A0A07A ]])
+
     -- configure nvim-tree
-    require("nvim-tree").setup({
+    nvimtree.setup({
       view = {
         relativenumber = false,
         float = {
@@ -18,7 +23,7 @@ return {
             title = "󱏒",
             width = 60,
             height = 30,
-          },
+          }
         },
       },
       -- change folder arrow icons
@@ -30,9 +35,6 @@ return {
       },
       filters = {
         git_ignored = false,
-        custom = {
-          ".*\\.gd\\.uid",
-        },
       },
       git = {
         ignore = true,
@@ -40,25 +42,24 @@ return {
     })
 
     -- set keymaps
-    local t = require("nvim-tree.api")
-    local wk = require("which-key")
+    local t = require "nvim-tree.api"
+    local wk = require "which-key"
 
     wk.add({
-      { "<leader>e", group = "Fil[E] Exploxer" },
-      { "<leader>ed", t.tree.toggle, desc = "Open file explorer" },
-      { "<leader>ef", t.tree.focus, desc = "Float file explorer" },
-      { "<leader>er", t.tree.reload, desc = "Reload file explorer" },
+      { "<leader>e",  group = "Fil[E] Exploxer" },
+      { "<leader>ed", t.tree.toggle,            desc = "Open file explorer" },
+      { "<leader>ef", t.tree.focus,             desc = "Float file explorer" },
+      { "<leader>er", t.tree.reload,            desc = "Reload file explorer" },
       {
         "<leader>eb",
         function()
           t.tree.find_file({
-            update_root = true,
-            open = true,
-            focus = true,
+            update_root = "!", open = true, focus = true
           })
         end,
-        desc = "Focus the current buffer",
+        desc = "Focus the current buffer"
       },
     })
   end,
 }
+

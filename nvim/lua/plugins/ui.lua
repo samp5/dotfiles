@@ -1,5 +1,20 @@
 return {
   {
+    "bufferline.nvim",
+    opts = {
+      options = {
+        highlights = {
+          fill = {
+            bg = {
+              attribute = "fg",
+              highlight = "Pmenu",
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "snacks.nvim",
     keys = {
       { "<leader>e", false },
@@ -8,8 +23,16 @@ return {
       { "<leader>E", false },
     },
     opts = {
-      scroll = { enabled = false },
-      dashboard = { enabled = false },
+      scroll = { enabled = true },
+      dashboard = {
+        preset = {
+          header = [[
+░█░░░░█▀▀░█░░█░░▄▀▀▄░░░█▀▀▀░█▀▀▄░█░▒█░█▀▀▀
+░█▀▀█░█▀▀░█░░█░░█░░█░░░█░▀▄░█▄▄▀░█░▒█░█░▀▄
+░▀░░▀░▀▀▀░▀▀░▀▀░░▀▀░░░░▀▀▀▀░▀░▀▀░░▀▀▀░▀▀▀▀
+        ]],
+        },
+      },
       explorer = { enabled = false },
       words = { enabled = false },
       notifier = { enabled = false },
@@ -32,7 +55,32 @@ return {
       },
     },
   },
-  { "folke/noice.nvim", enabled = false },
+  {
+    "folke/noice.nvim",
+    enabled = true,
+    opts = {
+      routes = { { view = "notify", filter = { event = "msg_showmode" } } },
+      views = {
+        cmdline_popup = {
+          border = {
+            style = "single",
+            padding = { 0, 0 },
+          },
+          filter_options = {},
+          win_options = {
+            winhighlight = {
+              Normal = "NoicePopup",
+              FloatTitle = "NoiceCmdlinePopupTitle",
+              FloatBorder = "NoicePopupBorder",
+              IncSearch = "",
+              CurSearch = "",
+              Search = "",
+            },
+          },
+        },
+      },
+    },
+  },
   {
     "nvim-lualine/lualine.nvim",
     opts = {
@@ -46,7 +94,15 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = { "navic" },
-        lualine_x = { "encoding", "filetype" },
+        lualine_x = {
+          "encoding",
+          "filetype",
+          {
+            require("noice").api.statusline.mode.get,
+            cond = require("noice").api.statusline.mode.has,
+            color = { fg = "#ff9e64" },
+          },
+        },
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },

@@ -1,0 +1,170 @@
+binds {
+    // Spawn which key for more infrequently used commands
+    Mod+O { spawn "wlr-which-key"; }
+
+
+    // Applicaiton Launcher
+    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+
+    // Applications
+    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    // Using spawn-sh allows to pass multiple arguments together with the command.
+    // "-l 1.0" limits the volume to 100%.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // Example media keys mapping using playerctl.
+    // This will work with any MPRIS-enabled media player.
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    // Example brightness key mappings for brightnessctl.
+    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
+    // but you need to manually put each argument in separate "" quotes.
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    Mod+Q repeat=false { close-window; }
+
+    //
+    // Window and column movement
+    //
+
+    // Directional Column focus
+    Mod+H                 { focus-column-left; }
+    Mod+L                 { focus-column-right; }
+    Mod+J                 { focus-window-or-workspace-down; }
+    Mod+K                 { focus-window-or-workspace-up; }
+
+    // Speical Column Focus
+    Mod+P                 { focus-window-previous; }
+    Mod+G                 { focus-column-first; }
+    Mod+SemiColon         { focus-column-last; }
+
+    Mod+Alt+C             { center-column; }
+
+    // Column Resizing
+    Mod+R                 { switch-preset-column-width; }
+    Mod+Minus             { set-column-width "-10%"; }
+    Mod+Equal             { set-column-width "+10%"; }
+
+    // Window resizing
+    Mod+Alt+R             { switch-preset-window-height; }
+    Mod+Alt+Minus         { set-window-height "-10%"; }
+    Mod+Alt+Equal         { set-window-height "+10%"; }
+
+
+    // Fullscreens
+    Mod+M                 { maximize-window-to-edges; }
+    Mod+F                 { maximize-column; }
+    Mod+Ctrl+F            { expand-column-to-available-width; }
+    Mod+Alt+F             { fullscreen-window; }
+
+    // Column Movement
+    Mod+Ctrl+H           { move-column-left; }
+    Mod+Ctrl+L           { move-column-right; }
+    Mod+Ctrl+J           { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K           { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+G            { move-column-to-first; }
+    Mod+Ctrl+SemiColon    { move-column-to-last; }
+
+    Mod+C  { consume-window-into-column; }
+    Mod+E { expel-window-from-column; }
+    Mod+Alt+H  { consume-or-expel-window-left; }
+    Mod+Alt+L { consume-or-expel-window-right; }
+
+    // Monitor Focus
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+L     { focus-monitor-right; }
+    Mod+Shift+N     { focus-monitor-next; }
+
+    // Column Movement between Monitors
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+
+    //
+    // Workspace focus
+    //
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+P { focus-workspace-previous; }
+
+
+    Mod+Shift+BracketLeft  { swap-window-left; }
+    Mod+Shift+BracketRight  { swap-window-right; }
+
+    // Cycling through the presets in reverse order is also possible.
+    // Mod+R { switch-preset-column-width-back; }
+
+    // Finer width adjustments.
+    // This command can also:
+    // * set width in pixels: "1000"
+    // * adjust width in pixels: "-5" or "+5"
+    // * set width as a percentage of screen width: "25%"
+    // * adjust width as a percentage of screen width: "-10%" or "+10%"
+    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
+    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    // Windows in this column will appear as vertical tabs,
+    // rather than stacked on top of each other.
+    Mod+T { toggle-column-tabbed-display; }
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    Mod+Alt+Space       { toggle-overview; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+}

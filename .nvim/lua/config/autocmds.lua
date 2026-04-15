@@ -10,6 +10,7 @@ api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+
 -- Enable spell check for:
 -- 1. Markdown
 -- 2. Text 

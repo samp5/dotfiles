@@ -35,6 +35,6 @@ return {
     { "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { silent = true } },
     { "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { silent = true } },
     { "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { silent = true } },
-    { "<C-j>", "<Cmd>NvimTmuxNavigateUp<CR>", { silent = true } },
+    { "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { silent = true } },
   },
 }

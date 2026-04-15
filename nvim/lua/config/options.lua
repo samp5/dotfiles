@@ -5,3 +5,4 @@ vim.g.snacks_animate = false
 vim.g.autoformat = false
 vim.b.autoformat = false
 vim.opt.clipboard = ""
+vim.wo.colorcolumn = "80"
