@@ -240,6 +240,7 @@ overview {
     zoom 0.25
     backdrop-color "#16161D"
 }
+
 // Put swaybg inside the overview backdrop.
 layer-rule {
     match namespace="^wallpaper$"

@@ -30,13 +30,13 @@ return {
           multi_icon = " ",
           mappings = {
             i = {
-              ["<c-t>"] = open_with_trouble,
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-t>"] = open_with_trouble,
+              ["<C-n>"] = actions.move_selection_next,
+              ["<C-p>"] = actions.move_selection_previous,
               ["<C-d>"] = actions.preview_scrolling_down,
               ["<C-u>"] = actions.preview_scrolling_up,
             },
-            n = { ["<c-t>"] = open_with_trouble },
+            n = { ["<C-t>"] = open_with_trouble },
           },
         },
         extensions = {

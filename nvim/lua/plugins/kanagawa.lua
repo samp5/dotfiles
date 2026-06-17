@@ -4,7 +4,7 @@ return {
     config = function()
       require("kanagawa").setup({
         transparent = true,
-        commentStyle = { dim = true, italic = false },
+        commentStyle = { dim = false, italic = false },
         keywordStyle = { italic = false },
         statementStyle = { bold = true },
         dimInactive = false, -- dim inactive window `:h hl-NormalNC`
