@@ -1,0 +1,30 @@
+{
+  "theme": "dark",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/dotfiles/scripts/tmux-notiy.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/dotfiles/scripts/tmux-notiy.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+
+}
