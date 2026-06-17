@@ -1,0 +1,29 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Sam Praneis"
+email = "sampraneis@gmail.com"
+
+[ui]
+editor = "nvim"
+merge-editor = "diffconflicts"
+graph.style = "square"
+default-command = "log"
+
+[merge-tools.diffconflicts]
+program = "nvim"
+merge-args = [
+    "-c", "let g:jj_diffconflicts_marker_length=$marker_length",
+    "-c", "JJDiffConflicts!", "$output", "$base", "$left", "$right",
+]
+merge-tool-edits-conflict-markers = true
+
+diff-formatter = ["difft", "--color=always", "$left", "$right"]
+
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+
+[colors]
+"diff token" = { underline = false }
+"diff removed token" = { bg = "#221111" }
+"diff added token" = { bg = "#002200" }
