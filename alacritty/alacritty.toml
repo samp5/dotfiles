@@ -25,3 +25,13 @@ term = "xterm-256color"
 [cursor]
 style.shape = "Underline"
 style.blinking = "Always"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
+[bell]
+animation = "EaseOutExpo"
+duration =  50
+color = "#16161D"

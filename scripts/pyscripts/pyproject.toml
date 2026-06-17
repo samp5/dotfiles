@@ -1,0 +1,34 @@
+[project]
+name = "tmux-tools"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sam Praneis", email = "sampraneis@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "libtmux>=0.61.0",
+    "tmuxp>=1.74.0",
+]
+
+[project.scripts]
+join-pane-to-window = "tmux_tools.join_pane_to_window:main"
+switch-session = "tmux_tools.switch_session:main"
+move-window-to-session = "tmux_tools.move_window_to_session:main"
+kill-session = "tmux_tools.kill_session:main"
+run-script = "meta_tools.run_script:main"
+pick-window = "tmux_tools.pick_window:main"
+pick-pane = "tmux_tools.pick_pane:main"
+session-tree = "tmux_tools.session_tree:main"
+break-pane = "tmux_tools.break_pane:main"
+layout-picker = "tmux_tools.layout_picker:main"
+workspace-window = "tmux_tools.workspace_window:main"
+workspace-session = "tmux_tools.workspace_session:main"
+workspace-detach = "tmux_tools.workspace_detach:main"
+
+pick-session = "tmux_tools.pick_session:main"
+
+[build-system]
+requires = ["uv_build>=0.8.3,<0.9.0"]
+build-backend = "uv_build"

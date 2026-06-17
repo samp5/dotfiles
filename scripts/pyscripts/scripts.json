@@ -1,0 +1,52 @@
+[
+  {
+    "name": "join-pane-to-window",
+    "description": "Move the focused pane into another tmux window",
+    "path": ".venv/bin/join-pane-to-window"
+  },
+  {
+    "name": "move-window-to-session",
+    "description": "Move the current window into another tmux session",
+    "path": ".venv/bin/move-window-to-session"
+  },
+  {
+    "name": "kill-session",
+    "description": "Kill another tmux session, with confirmation",
+    "path": ".venv/bin/kill-session"
+  },
+  {
+    "name": "break-pane",
+    "description": "Break the current pane into its own window",
+    "path": ".venv/bin/break-pane"
+  },
+  {
+    "name": "layout-picker",
+    "description": "Pick a tmux window layout",
+    "path": ".venv/bin/layout-picker"
+  },
+  {
+    "name": "pick-pane",
+    "description": "Jump to any pane across all sessions",
+    "path": ".venv/bin/pick-pane"
+  },
+  {
+    "name": "pick-window",
+    "description": "Jump to any window across all sessions",
+    "path": ".venv/bin/pick-window"
+  },
+  {
+    "name": "w-window",
+    "description": "Append windows from a tmuxp workspace to the current session",
+    "path": ".venv/bin/workspace-window"
+  },
+  {
+    "name": "w-session",
+    "description": "Create a new session from a tmuxp workspace",
+    "path": ".venv/bin/workspace-session"
+  },
+  {
+    "name": "w-detach",
+    "description": "Create a new session from a tmuxp workspace without attaching",
+    "path": ".venv/bin/workspace-detach"
+  }
+]
