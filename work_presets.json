@@ -1,0 +1,100 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "base-ninja",
+      "inherits": "base",
+      "generator": "Ninja"
+    },
+    {
+      "name": "base-make",
+      "inherits": "base",
+      "generator": "Unix Makefiles"
+    },
+    {
+      "name": "clang-base-ninja",
+      "inherits": "base-ninja",
+      "cacheVariables": {
+        "USE_CLANG21": "ON"
+      }
+    },
+    {
+      "name": "gcc-base-make",
+      "inherits": "base-make"
+    },
+    {
+      "name": "RDI",
+      "inherits": "clang-base-ninja",
+      "displayName": "Release with Debug Info built by Clang",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "RDI_GCC_MAKE",
+      "inherits": "gcc-base-make",
+      "displayName": "Release with Debug Info built by Clang",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "D",
+      "inherits": "clang-base-ninja",
+      "displayName": "Release with Debug Info built by Clang",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "D_GCC_MAKE",
+      "inherits": "gcc-base-make",
+      "displayName": "Release with Debug Info built by Clang",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "omelet",
+      "configurePreset": "RDI",
+      "targets": [
+        "omelet"
+      ]
+    },
+    {
+      "name": "all-tests",
+      "configurePreset": "RDI",
+      "displayName": "Build everything (all CTest-registered tests)"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "all-tests",
+      "configurePreset": "RDI",
+      "displayName": "Run all registered tests (mirrors CI ctest)",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "timeout": 600
+      }
+    }
+  ]
+}

@@ -115,4 +115,14 @@ return {
       },
     },
   },
+  {
+    "folke/trouble.nvim",
+    opts = {
+      modes = {
+        lsp = {
+          win = { type = "split", position = "left" },
+        },
+      },
+    },
+  },
 }

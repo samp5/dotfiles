@@ -23,8 +23,7 @@ shell.program = "/usr/bin/fish"
 term = "xterm-256color"
 
 [cursor]
-style.shape = "Underline"
-style.blinking = "Always"
+style.blinking = "Never"
 
 [[keyboard.bindings]]
 key = "Return"

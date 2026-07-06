@@ -1,0 +1,212 @@
+
+Language: Cpp
+
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+AlignArrayOfStructures: None
+AlignConsecutiveAssignments:
+  Enabled:         false
+  AcrossEmptyLines: false
+  AcrossComments:  false
+  AlignCompound:   false
+  AlignFunctionPointers: false
+  PadOperators:    false
+AlignConsecutiveBitFields:
+  Enabled:         false
+  AcrossEmptyLines: false
+  AcrossComments:  false
+  AlignCompound:   false
+  AlignFunctionPointers: false
+  PadOperators:    false
+AlignConsecutiveDeclarations:
+  Enabled:         false
+  AcrossEmptyLines: false
+  AcrossComments:  false
+  AlignCompound:   false
+  AlignFunctionPointers: false
+  PadOperators:    false
+AlignConsecutiveMacros:
+  Enabled:         true
+  AcrossEmptyLines: false
+  AcrossComments:  false
+  AlignCompound:   false
+  AlignFunctionPointers: false
+  PadOperators:    false
+AlignConsecutiveShortCaseStatements:
+  Enabled:         true
+  AcrossEmptyLines: true
+  AcrossComments:  true
+  AlignCaseColons: false
+AlignEscapedNewlines: Right
+AlignOperands: DontAlign
+AlignTrailingComments:
+  Kind:            Always
+  OverEmptyLines:  0
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowBreakBeforeNoexceptSpecifier: Never
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseExpressionOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortCompoundRequirementOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AttributeMacros:
+  - __capability
+BinPackArguments: false
+BinPackParameters: false
+BitFieldColonSpacing: Both
+BraceWrapping:
+    AfterCaseLabel: false
+    AfterClass: true
+    AfterControlStatement: Never
+    AfterEnum: true
+    AfterFunction: true
+    AfterNamespace: true
+    AfterStruct: true
+    AfterUnion: true
+    AfterExternBlock: false
+    BeforeCatch: false
+    BeforeElse: false
+    BeforeLambdaBody: true
+    BeforeWhile: false
+    SplitEmptyFunction: false
+    SplitEmptyRecord: false
+    SplitEmptyNamespace: false
+BreakAdjacentStringLiterals: true
+BreakAfterAttributes: Leave
+BreakAfterReturnType: Automatic
+BreakArrays: true
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Custom
+BreakBeforeConceptDeclarations: Always
+BreakBeforeInlineASMColon: OnlyMultiline
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeComma
+BreakFunctionDefinitionParameters: false
+BreakInheritanceList: BeforeComma
+BreakStringLiterals: true
+BreakTemplateDeclarations: Yes
+ColumnLimit: 120
+CommentPragmas:  '^ IWYU pragma:'
+CompactNamespaces: false
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+DisableFormat: false
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: LogicalBlock
+FixNamespaceComments: false
+ForEachMacros: [BOOST_FOREACH, FOR_EACH_ENUM]
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority:        2
+    SortPriority:    0
+    CaseSensitive:   false
+  - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
+    Priority:        3
+    SortPriority:    0
+    CaseSensitive:   false
+  - Regex:           '.*'
+    Priority:        1
+    SortPriority:    0
+    CaseSensitive:   false
+IncludeIsMainRegex: '(Test)?$'
+IncludeIsMainSourceRegex: ''
+IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: true
+IndentExternBlock: AfterExternBlock
+IndentGotoLabels: true
+IndentPPDirectives: None
+IndentRequiresClause: true
+IndentWidth: 4
+IndentWrappedFunctionNames: false
+InsertBraces: false
+InsertNewlineAtEOF: false
+InsertTrailingCommas: Wrapped
+IntegerLiteralSeparator:
+  Binary: 4
+  BinaryMinDigits: 0
+  Decimal: 3
+  DecimalMinDigits: 0
+  Hex: 2
+  HexMinDigits: 0
+KeepEmptyLines:
+  AtEndOfFile: true
+  AtStartOfBlock: true
+  AtStartOfFile: true
+LambdaBodyIndentation: Signature
+LineEnding: DeriveLF
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+PackConstructorInitializers: Never
+PenaltyBreakAssignment: 80
+PenaltyBreakBeforeFirstCallParameter: 80
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakOpenParenthesis: 80
+PenaltyBreakScopeResolution: 500
+PenaltyBreakString: 1000
+PenaltyBreakTemplateDeclaration: 120
+PenaltyExcessCharacter: 1000000
+PenaltyIndentedWhitespace: 0
+PenaltyReturnTypeOnItsOwnLine: 40
+PointerAlignment: Left
+PPIndentWidth: -1
+QualifierAlignment: Leave
+ReferenceAlignment: Pointer
+ReflowComments: false
+RemoveBracesLLVM: false
+RemoveParentheses: Leave
+RemoveSemicolon: false
+RequiresClausePosition: OwnLine
+RequiresExpressionIndentation: OuterScope
+SeparateDefinitionBlocks: Leave
+ShortNamespaceLines: 1
+SkipMacroDefinitionBody: true
+SortIncludes: CaseSensitive
+SortUsingDeclarations: Lexicographic
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeJsonColon: false
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterForeachMacros: false
+  AfterFunctionDefinitionName: false
+  AfterFunctionDeclarationName: false
+  AfterIfMacros: false
+  AfterOverloadedOperator: false
+  AfterPlacementOperator: true
+  AfterRequiresInClause: false
+  AfterRequiresInExpression: false
+  BeforeNonEmptyParentheses: false
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpacesInAngles: Never
+SpacesInContainerLiterals: true
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: -1
+SpacesInParens:  Never
+SpacesInSquareBrackets: false
+Standard: Latest
+TabWidth: 4
+UseTab: ForContinuationAndIndentation
+WrapNamespaceBodyWithEmptyLines: Leave
