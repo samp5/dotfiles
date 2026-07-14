@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(jj status *)",
-      "Bash(jj new *)"
+      "Bash(jj new *)",
+      "Bash(jj log *)"
     ]
   }
 }
