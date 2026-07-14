@@ -3,7 +3,9 @@
     "allow": [
       "Bash(jj status *)",
       "Bash(jj new *)",
-      "Bash(jj log *)"
+      "Bash(jj log *)",
+      "Bash(jj diff *)",
+      "Bash(jj describe *)"
     ]
   }
 }
