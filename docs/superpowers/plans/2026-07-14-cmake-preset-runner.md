@@ -750,7 +750,12 @@ def test_run_returns_quietly_when_file_picker_cancelled(monkeypatch, tmp_path):
     monkeypatch.setattr(_discovery, "find_presets_files", lambda root: [presets_path])
     monkeypatch.setattr(_pick, "pick_presets_file", lambda root, candidates: None)
 
+    executed = []
+    monkeypatch.setattr(_run.os, "execvp", lambda file, argv: executed.append((file, argv)))
+
     _run.run("configure")
+
+    assert executed == []
 
 
 def test_run_errors_when_no_presets_for_mode(monkeypatch, tmp_path):
@@ -778,7 +783,12 @@ def test_run_returns_quietly_when_preset_picker_cancelled(monkeypatch, tmp_path)
     )
     monkeypatch.setattr(_pick, "pick_preset", lambda presets, title: None)
 
+    executed = []
+    monkeypatch.setattr(_run.os, "execvp", lambda file, argv: executed.append((file, argv)))
+
     _run.run("test")
+
+    assert executed == []
 ```
 
 - [ ] **Step 2: Run tests to verify they fail**
