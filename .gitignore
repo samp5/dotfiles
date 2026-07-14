@@ -1,2 +1,3 @@
 api_keys
 .superpowers/
+__pycache__/
