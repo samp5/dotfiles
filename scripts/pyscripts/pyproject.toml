@@ -28,6 +28,9 @@ workspace-session = "tmux_tools.workspace_session:main"
 workspace-detach = "tmux_tools.workspace_detach:main"
 
 pick-session = "tmux_tools.pick_session:main"
+cmake-configure = "cmake_tools.configure:main"
+cmake-build = "cmake_tools.build:main"
+cmake-test = "cmake_tools.test:main"
 
 [build-system]
 requires = ["uv_build>=0.8.3,<0.9.0"]

@@ -48,5 +48,20 @@
     "name": "w-detach",
     "description": "Create a new session from a tmuxp workspace without attaching",
     "path": ".venv/bin/workspace-detach"
+  },
+  {
+    "name": "cmake-configure",
+    "description": "Pick a CMake configure preset and run cmake --preset",
+    "path": ".venv/bin/cmake-configure"
+  },
+  {
+    "name": "cmake-build",
+    "description": "Pick a CMake build preset and run cmake --build --preset",
+    "path": ".venv/bin/cmake-build"
+  },
+  {
+    "name": "cmake-test",
+    "description": "Pick a CTest test preset and run ctest --preset",
+    "path": ".venv/bin/cmake-test"
   }
 ]

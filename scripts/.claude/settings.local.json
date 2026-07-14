@@ -5,7 +5,10 @@
       "Bash(jj new *)",
       "Bash(jj log *)",
       "Bash(jj diff *)",
-      "Bash(jj describe *)"
+      "Bash(jj describe *)",
+      "Bash(/home/spraneis/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/task-brief *)",
+      "Bash(uv run *)",
+      "Bash(uv sync *)"
     ]
   }
 }
