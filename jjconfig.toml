@@ -9,6 +9,7 @@ default-command = "log"
 
 [aliases]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+logr = ["log", "-r"]
 
 
 [colors]
