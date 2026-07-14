@@ -2,8 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(jj status *)",
-      "Bash(jj log *)",
-      "Bash(/home/spraneis/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/review-package a8174143e03049b911e66f0e94f5cb29bacc2cce *)"
+      "Bash(jj new *)"
     ]
   }
 }
