@@ -1,0 +1,8 @@
+session_name: jrsy-sam-sim
+windows:
+  - window_name: sim
+    layout: main-vertical
+    panes:
+      - pscli repl -s jrsy-sam-sim
+      - ssh jersey4 journalctl -f -u omelet_fpga-JRSY_SAM_SIM.service
+      - ssh jersey4

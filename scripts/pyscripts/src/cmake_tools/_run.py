@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import sys
 from pathlib import Path
+from typing import NoReturn
 
 from cmake_tools import _discovery, _parse, _pick
 
@@ -15,7 +16,7 @@ MODES: dict[str, tuple[str, list[str]]] = {
 }
 
 
-def _error(message: str) -> None:
+def _error(message: str) -> NoReturn:
     print(f"error: {message}", file=sys.stderr)
     sys.exit(1)
 

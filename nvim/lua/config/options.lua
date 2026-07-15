@@ -7,7 +7,9 @@ vim.b.autoformat = false
 vim.opt.clipboard = ""
 vim.wo.colorcolumn = "80"
 
-vim.opt.expandtab = true    -- Use spaces, not tabs
-vim.opt.shiftwidth = 2      -- Indent width of 2
-vim.opt.tabstop = 8         -- Display tab character as 8 spaces
-vim.opt.softtabstop = 2     -- Insert 2 spaces when pressing Tab
+vim.opt.expandtab=false
+vim.opt.shiftwidth=0
+vim.opt.tabstop = 3
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '->', space = '·', eol = '󰌑' }

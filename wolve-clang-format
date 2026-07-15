@@ -5,12 +5,12 @@ AccessModifierOffset: -4
 AlignAfterOpenBracket: DontAlign
 AlignArrayOfStructures: None
 AlignConsecutiveAssignments:
-  Enabled:         false
-  AcrossEmptyLines: false
-  AcrossComments:  false
-  AlignCompound:   false
-  AlignFunctionPointers: false
-  PadOperators:    false
+  Enabled:         true
+  AcrossEmptyLines: true
+  AcrossComments:  true
+  AlignCompound:   true
+  AlignFunctionPointers: true
+  PadOperators:    true
 AlignConsecutiveBitFields:
   Enabled:         false
   AcrossEmptyLines: false
@@ -62,19 +62,19 @@ BinPackArguments: false
 BinPackParameters: false
 BitFieldColonSpacing: Both
 BraceWrapping:
-    AfterCaseLabel: false
+    AfterCaseLabel: true
     AfterClass: true
-    AfterControlStatement: Never
+    AfterControlStatement: Always
     AfterEnum: true
     AfterFunction: true
     AfterNamespace: true
     AfterStruct: true
     AfterUnion: true
-    AfterExternBlock: false
-    BeforeCatch: false
-    BeforeElse: false
+    AfterExternBlock: true
+    BeforeCatch: true
+    BeforeElse: true
     BeforeLambdaBody: true
-    BeforeWhile: false
+    BeforeWhile: true
     SplitEmptyFunction: false
     SplitEmptyRecord: false
     SplitEmptyNamespace: false
@@ -198,7 +198,7 @@ SpaceBeforeParensOptions:
   BeforeNonEmptyParentheses: false
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
-SpaceInEmptyBlock: false
+SpaceInEmptyBlock: true
 SpacesInAngles: Never
 SpacesInContainerLiterals: true
 SpacesInLineCommentPrefix:

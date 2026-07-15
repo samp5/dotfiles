@@ -8,8 +8,38 @@ graph.style = "square"
 default-command = "log"
 
 [aliases]
+log-mine = ["log", "-r", "author_name(\"Sam Praneis\")"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
-logr = ["log", "-r"]
+lgr = ["log", "-r"]
+heads = ["log", "-r", "heads(all())"]
+# fileat REVISION PATH -- show a file at a revision, highlighted by batcat
+fileat = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+if [ "$#" -ne 2 ]; then
+    echo "usage: jj fileat REVISION PATH" >&2
+    exit 2
+fi
+jj file show -r "$1" -- "$2" | batcat --file-name "$2" --style=header,numbers
+""", "jj-fileat"]
+
+# editd edit a diff -- open all changes at a revision in nvim
+editd = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+if [ "$#" -ne 1 ]; then
+	jj diff --name-only | xargs nvim
+	exit 1
+fi
+jj diff -r "$1" --name-only | xargs nvim
+""", "jj-editd"]
+
+[merge-tools.diffconflicts]
+program = "nvim"
+merge-args = [
+    "-c", "let g:jj_diffconflicts_marker_length=$marker_length",
+    "-c", "JJDiffConflicts!", "$output", "$base", "$left", "$right",
+]
+merge-tool-edits-conflict-markers = true
+
 
 
 [colors]

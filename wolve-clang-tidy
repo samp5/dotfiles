@@ -67,30 +67,6 @@ CheckOptions:
   - key: readability-identifier-naming.EnumCase
     value: CamelCase
 
-  # Typedefs/aliases: CapsCase with _t suffix
-  - key: readability-identifier-naming.TypeAliasCase
-    value: CamelCase
-  - key: readability-identifier-naming.TypeAliasSuffix
-    value: _t
-  - key: readability-identifier-naming.TypedefCase
-    value: CamelCase
-  - key: readability-identifier-naming.TypedefSuffix
-    value: _t
-
-  # Functions: camelCase
-  - key: readability-identifier-naming.FunctionCase
-    value: camelBack
-  - key: readability-identifier-naming.MemberFunctionCase
-    value: camelBack
-
-  # Variables and parameters: snake_case
-  - key: readability-identifier-naming.VariableCase
-    value: lower_case
-  - key: readability-identifier-naming.LocalVariableCase
-    value: lower_case
-  - key: readability-identifier-naming.ParameterCase
-    value: lower_case
-
   # Member variables: snake_case with trailing underscore (applies to struct and class members)
   - key: readability-identifier-naming.MemberCase
     value: lower_case
@@ -98,15 +74,9 @@ CheckOptions:
     value: _
 
   # Constants and constexprs: CAPS_UNDERSCORES (no leading k)
-  - key: readability-identifier-naming.ConstantCase
-    value: UPPER_CASE
-  - key: readability-identifier-naming.ConstexprVariableCase
-    value: UPPER_CASE
   - key: readability-identifier-naming.GlobalConstantCase
     value: UPPER_CASE
   - key: readability-identifier-naming.StaticConstantCase
-    value: UPPER_CASE
-  - key: readability-identifier-naming.LocalConstantCase
     value: UPPER_CASE
 
   # Enum constants: CapsCase when unscoped values, UPPER_CASE when values specified
@@ -117,12 +87,6 @@ CheckOptions:
   # Namespaces: snake_case
   - key: readability-identifier-naming.NamespaceCase
     value: lower_case
-
-  # Template type parameters: CapsCase with _T suffix (e.g. Value_T)
-  - key: readability-identifier-naming.TemplateParameterCase
-    value: CamelCase
-  - key: readability-identifier-naming.TemplateParameterSuffix
-    value: _T
 
   # Template non-type (value) parameters: CAPS_UNDERSCORES (e.g. SIZE)
   - key: readability-identifier-naming.ValueTemplateParameterCase
